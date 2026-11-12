@@ -22,7 +22,7 @@ def check_assets():
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--check',action='store_true')
     args=parser.parse_args();manifest=check_assets()
-    print(f'Workshop files verified: {len(manifest["files"])}. Talk 30 min + practical 30 min.')
+    print(f'Workshop files verified: {len(manifest["files"])}. Beginner hands-on: 30 min.')
     if not args.check:
         page=ROOT/'index.html';print(f'Open: {page}')
         webbrowser.open(page.as_uri())
