@@ -6,7 +6,7 @@ Open `index.html` in a browser and follow the links below. The saved examples wo
 
 Open `data/des27_reaction.fep` and the state diagram on index.html.
 
-Asp162 abstracts the substrate proton. The CH–HT and OR–NR bonds break, Asp OD1–HT forms, and other bonded/nonbonded terms also change. R/P map the same atoms; the22-atom reactive region has total charge−1 in both states. Q atom13 maps to global serial4014 (HT); Q atom21 maps to2526 (Asp162 OD1). Some source comments use stale residue numbers.
+Asp162 abstracts the substrate proton. The C3–Ht bond breaks, the N2–O1 ring bond breaks, and Asp162 OD1–Ht forms as the C3–N2 nitrile bond forms. **C3** is the substrate carbon that loses the proton; **Ht** is the transferred hydrogen; **O1** and **N2** are the ring oxygen and nitrogen; **Asp162** means enzyme aspartate residue 162, and **OD1** is one of its side-chain carboxylate oxygens that accepts Ht. These are atom labels, not EVB parameters. R/P map the same atoms; the 22-atom reactive region has total charge −1 in both states. In the Q6 atom map, atom 13 maps to global serial 4014 (Ht), and atom 21 maps to 2526 (Asp162 OD1). Some source comments use stale residue numbers.
 
 **Write down:** Which bond forms? What is a diabatic state? Why must total charge be consistent between states?
 
@@ -25,6 +25,8 @@ Open **Archived-parameter comparison** on index.html.
 The archived input gives H12=100.4 and native alpha −110 kcal/mol. Q6 uses negative-minimum Morse wells; the zero-minimum EVBOpenMM convention requires+44.5 on P, giving total P offset−65.5. This is bookkeeping, not the activation barrier. The short dataset yields about 9.57 kcal/mol at 18 coarse bins. The paper's Des27.7-IN mean is13.2±0.6 kcal/mol (replica SD), from different boundary/sampling conditions.
 
 **Q6 vs OpenMM plots:** Paper Figure 3e compares activation-barrier estimates; it is not a free-energy profile curve. The OpenMM viewer shows a short adapted profile from 21 windows and 50 records per window. The paper used Q6 with OPLS-AA, TIP3P water, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ, so the OpenMM profile is not a direct reproduction of the Q6 result. See the [paper's complete Figure 3](https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png) and the [OpenMM profile viewer](../viewers/source_profile.html).
+
+**What the calculations give:** The paper's Q6 workflow reports EVB activation-barrier estimates for the designed enzymes and compares them with experimental barriers. A complete OpenMM/EVBOpenMM run, after sampling and convergence checks, should yield a free-energy profile, an activation free energy, and the product-versus-reactant reaction free energy. The saved 9.57 kcal/mol OpenMM peak is a short, unvalidated workshop result, not that final validated output.
 
 **Write down:** Why is H12 not the barrier? Why is9.57 not established reproduction of13.2? Which engine produced this sample dataset?
 

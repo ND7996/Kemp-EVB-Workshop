@@ -17,7 +17,7 @@
   <header>
     <div class="kicker">A hands-on introduction</div>
     <h1>Try EVB with the Kemp reaction</h1>
-    <p>Never used EVB? Start here. In this workshop, you will follow one reaction, compare its starting and ending states, and try changing two EVB settings. You can use the saved examples in your browser; no installation is needed.</p>
+    <p>Follow one reaction, compare its starting and ending states, and try changing two EVB settings. The saved examples open in your browser; no installation is needed.</p>
     <div class="actions">
       <a class="button" href="#hands-on">Start the hands-on</a>
       <a class="button secondary" href="presentation.html">Open the short slides</a>
@@ -42,6 +42,12 @@
         <img src="assets/kemp_states.png" alt="Reactant and product descriptions for the Kemp reaction. Asp162 accepts a proton as the substrate ring opens.">
         <figcaption class="caption">The substrate C3-Ht proton moves to Asp162 OD1 as the N2-O1 bond breaks and the nitrile forms. Schematic, not to scale. <a class="plain-link" href="assets/kemp_reaction_scheme.pdf">Open the printable reaction scheme</a>.</figcaption>
       </figure>
+      <div class="three" aria-label="Atom label key">
+        <article class="card"><h3>C3</h3><p>Substrate carbon that initially bears Ht. In the product it is part of the new nitrile group.</p></article>
+        <article class="card"><h3>Ht</h3><p>The transferable hydrogen (proton) that moves from C3 to Asp162.</p></article>
+        <article class="card"><h3>O1 and N2</h3><p>O1 and N2 are the oxygen and nitrogen in the substrate ring. Their N2–O1 bond breaks as the ring opens.</p></article>
+      </div>
+      <article class="card" style="margin-top:16px"><h3>Asp162 OD1</h3><p>Asp162 means the enzyme's aspartate residue at position 162. OD1 is one of the two oxygen atoms in its side-chain carboxylate. It accepts Ht and becomes protonated in the product state. These labels identify atoms in the reaction scheme; they are not EVB parameters.</p></article>
       <div class="two">
         <article class="card state-r"><div class="number">Before · reactant state</div><h3>The ring is closed</h3><p>The substrate still holds the proton. Asp162 is ready to accept it.</p></article>
         <article class="card state-p"><div class="number">After · product state</div><h3>The ring has opened</h3><p>Asp162 now holds the proton, and the substrate has the ring-opened product structure.</p></article>
@@ -53,6 +59,7 @@
       <div class="tag">The one idea to keep</div>
       <h2>EVB connects those two descriptions</h2>
       <p class="plain">A normal force field describes one set of bonds at a time. EVB uses two force-field descriptions of the same atoms: one for the reactant and one for the product. It lets the two descriptions mix as the atoms move, so the model can represent bonds changing.</p>
+      <p class="takeaway"><strong>What you get:</strong> Q6 in the paper gives EVB activation-barrier estimates for its designed enzyme variants, compared with experiment. A complete OpenMM/EVBOpenMM calculation should give a free-energy profile, an activation free energy, and a reaction free energy after convergence checks. The saved OpenMM profile here is a short, unvalidated example.</p>
       <div class="three">
         <article class="card"><div class="number">Reactant and product</div><h3>Two states</h3><p>Each state says which bonds and charges the atoms have before or after the reaction.</p></article>
         <article class="card"><div class="number">Relative position</div><h3>Energy offset (α)</h3><p>This shifts the product-state energy up or down compared with the reactant state.</p></article>
@@ -71,6 +78,10 @@
       <div class="two">
         <article class="card"><div class="number">Paper plot</div><h3>Q6: activation barriers</h3><p>Figure 3e compares experimental and Q6 activation-barrier estimates for Des27 and Des27.7, including the substrate's “in” and “out” conformations. It is a barrier comparison, not a free-energy profile trace.</p><a class="plain-link" href="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png" target="_blank" rel="noopener">Open the complete Figure 3 from the paper →</a></article>
         <article class="card"><div class="number">Workshop plot</div><h3>OpenMM: short-run profile</h3><p>The viewer shows the profile from the saved 21-window OpenMM adaptation. It has 50 records per window and 18 analysis bins. Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.</p><a class="plain-link" href="viewers/source_profile.html">Open the OpenMM profile viewer →</a></article>
+      </div>
+      <div class="two" style="margin-top:16px">
+        <article class="card"><h3>What Q6 gives in the paper</h3><p>Q6 runs the paper's EVB simulations and analysis. The reported results include calculated activation-barrier estimates for enzyme variants, which the paper compares with experimental barriers. Figure 3e is that comparison; it is not a free-energy curve.</p></article>
+        <article class="card"><h3>What OpenMM gives here</h3><p>This workshop includes a saved, short OpenMM/EVBOpenMM adaptation profile. A full, adequately sampled OpenMM EVB calculation would produce a free-energy profile, an activation free energy, and a reaction free energy, with convergence checks. The included 9.57 kcal/mol peak is only an unvalidated teaching result.</p></article>
       </div>
       <p class="plain">These are different plots: Q6 Figure 3e reports barrier estimates, while the OpenMM viewer plots free energy against an energy-gap coordinate. The paper used Q6 with a surface-constrained solvent sphere and local reaction field; the short OpenMM adaptation has different boundary and electrostatics treatment, a different Morse energy reference, and much less sampling. The two results should not be overlaid or treated as a direct engine comparison.</p>
     </section>

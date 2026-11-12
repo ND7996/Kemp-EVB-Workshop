@@ -8,7 +8,7 @@ Say: “We will use one reaction to see what EVB does. You do not need to know t
 
 ## 2. The reaction
 
-Asp162 accepts a proton from the substrate. The C–H bond breaks as the ring opens. Use the figure to distinguish the reactant and product descriptions. Avoid starting with atom serial numbers.
+Asp162 accepts a proton from the substrate. The C–H bond breaks as the ring opens. Explain the labels: C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen; Asp162 OD1 is the accepting enzyme oxygen. Use the figure to distinguish the reactant and product descriptions; these labels identify atoms, not EVB settings.
 
 ## 3. The two states
 
@@ -21,6 +21,8 @@ The energy offset α shifts the product description relative to the reactant. H�
 ## 5. Q6 and OpenMM
 
 Paper Figure 3e shows activation-barrier estimates, not a free-energy profile. The workshop's OpenMM viewer shows a short profile from 21 windows and 50 records per window. The paper uses Q6 with OPLS-AA, TIP3P, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ, so these are not direct profile-to-profile results. Link to the complete paper figure and OpenMM profile viewer from the slide.
+
+Explain the outputs: the paper's Q6 workflow reports calculated EVB activation-barrier estimates for its enzyme variants. A complete, adequately sampled OpenMM EVB run should provide a free-energy profile, activation free energy, and reaction free energy. The saved OpenMM profile is a short, unvalidated example only.
 
 ## 6. The full calculation sequence
 

@@ -103,11 +103,11 @@ def build():
     y = para(c, "The substrate is the molecule the enzyme acts on. Asp162, part of the enzyme, accepts a proton (a hydrogen nucleus) from it. As the C–H bond breaks, the small ring opens and the product forms.", 68, y, 790, BODY)
     image = ImageReader(str(ROOT / "assets" / "kemp_states.png"))
     iw, ih = image.getSize()
-    max_w, max_h = 810, 245
+    max_w, max_h = 810, 210
     scale = min(max_w / iw, max_h / ih)
     draw_w, draw_h = iw * scale, ih * scale
-    c.drawImage(image, (PAGE_W - draw_w) / 2, 80, width=draw_w, height=draw_h, preserveAspectRatio=True, mask="auto")
-    para(c, "Same atoms; different bonding descriptions. This is a state map, not a simulation snapshot.", 120, 75, PAGE_W - 240, CENTER)
+    c.drawImage(image, (PAGE_W - draw_w) / 2, 130, width=draw_w, height=draw_h, preserveAspectRatio=True, mask="auto")
+    para(c, "Atom labels: C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen. Asp162 is enzyme aspartate residue 162; OD1 is one of its carboxylate oxygens and accepts Ht.", 68, 118, PAGE_W - 136, SMALL)
     c.showPage()
 
     # 3: Two states
@@ -142,6 +142,7 @@ def build():
     c.drawString(84, 198, "Open complete Figure 3")
     c.drawString(68 + box_w + gap + 16, 198, "Open the OpenMM profile viewer")
     para(c, "These plots report different quantities. Q6 used OPLS-AA, TIP3P, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ in the OpenMM adaptation, so it is not a direct reproduction or engine-to-engine comparison.", 68, 155, PAGE_W - 136, BODY)
+    para(c, "The Q6 paper reports activation-barrier estimates for its enzyme variants. A complete, converged OpenMM EVB calculation would produce a free-energy profile, activation free energy, and reaction free energy. The saved OpenMM peak is only an unvalidated teaching result.", 68, 100, PAGE_W - 136, SMALL)
     c.showPage()
 
     # 6: Full calculation workflow
@@ -163,7 +164,7 @@ def build():
     c.setFont(BOLD, 16)
     c.drawString(88, 233, "Open the EVB example")
     c.linkURL("https://nd7996.github.io/Kemp-EVB-Workshop/viewers/evb_core.html", (68, 214, 378, 266), relative=0)
-    para(c, "Take about 5 minutes. The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
+    para(c, "The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
     c.showPage()
 
     # 8: Read profile
@@ -203,6 +204,8 @@ def build():
     para(c, "Listov et al., Nature (2025). DOI: 10.1038/s41586-025-09136-2", 68, 140, 720, SMALL)
     c.linkURL("https://doi.org/10.1038/s41586-025-09136-2", (68, 48, 760, 70), relative=0)
     c.save()
+    from add_slide_notes import patch as add_slide_notes
+    add_slide_notes(OUTPUT)
     print(OUTPUT)
 
 

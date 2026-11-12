@@ -31,6 +31,7 @@
       <p>The substrate is the molecule the enzyme acts on. Asp162, part of the enzyme, accepts a proton (a hydrogen nucleus) from it. As the C–H bond breaks, the small ring opens and the product forms.</p>
       <img class="reaction-img" src="assets/kemp_states.png" alt="Kemp elimination: Asp162 accepts substrate proton Ht as the N2-O1 bond breaks; the product has a nitrile and phenoxide">
       <p class="caption">Same atoms; different bonding descriptions.</p>
+      <p class="note"><b>Atom labels:</b> C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen whose bond breaks. Asp162 is enzyme aspartate residue 162; OD1 is one of its carboxylate oxygens and accepts Ht.</p>
       <p class="note">This workshop follows the linked changes between reactant and product. It does not add a separately simulated intermediate.</p>
     </section>
 
@@ -63,6 +64,7 @@
         <article class="card"><div class="state">This workshop · OpenMM</div><h3>Short-run free-energy profile</h3><p>The viewer plots the saved 21-window adaptation (50 records per window, 18 bins). Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.</p><a class="plain-link" href="viewers/source_profile.html">Open the OpenMM profile →</a></article>
       </div>
       <p class="note">These plots report different quantities. The Q6 paper uses OPLS-AA, TIP3P, SCAAS solvent and a local reaction field; this OpenMM adaptation differs in boundary treatment, electrostatics, Morse energy reference, and sampling. It is not a direct reproduction or engine-to-engine comparison.</p>
+      <p class="note"><b>End result:</b> The paper's Q6 analysis reports calculated activation-barrier estimates that can be compared with experiment. A complete, converged OpenMM EVB run would yield a free-energy profile, activation free energy and reaction free energy. This workshop's saved OpenMM profile is only a short, unvalidated example.</p>
     </section>
 
     <section class="slide">
@@ -81,7 +83,7 @@
       <h2>Try changing the settings</h2>
       <p>Open the small EVB example. Move one control at a time. Watch how the curve changes when you change the energy offset, then when you change the coupling.</p>
       <a class="action" href="viewers/evb_core.html">Open the EVB example</a>
-      <p class="source">Take about 5 minutes. The small example teaches the controls; it is not the full enzyme calculation.</p>
+      <p class="source">The small example teaches the controls; it is not the full enzyme calculation.</p>
     </section>
 
     <section class="slide">

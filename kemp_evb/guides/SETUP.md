@@ -38,4 +38,4 @@ Q6, AmberTools, Rosetta, LAMMPS, SciPy, and Matplotlib are not needed to open or
 
 ## Optional workshop-file rebuilding
 
-Rebuilding the reaction figure and participant handout requires PyMuPDF. Rebuilding the slide PDF from its source requires ReportLab. These tools are only needed to edit or regenerate the supplied workshop files; they are not needed to view the site, slides, or PDFs.
+Rebuilding the reaction figure, participant handout, or slide PDF requires PyMuPDF. Rebuilding the slide PDF also requires ReportLab. These tools are only needed to edit or regenerate the supplied workshop files; they are not needed to view the site, slides, or PDFs.

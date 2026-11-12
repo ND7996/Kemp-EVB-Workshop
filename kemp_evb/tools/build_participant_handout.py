@@ -22,7 +22,8 @@ def card(p,box,label,title,body,color=ACCENT):
 # Page 1: reaction
 p=base('Kemp elimination: what changes?','Reaction at a glance')
 p.insert_textbox(fitz.Rect(62,115,W-124,155),'Asp162 accepts a proton from 5-nitrobenzisoxazole as the substrate ring opens to form the cyanophenoxide product.',fontsize=14,fontname='helv',color=INK)
-p.insert_image(fitz.Rect(90,163,W-90,480),filename=str(FIG),keep_proportion=False)
+p.insert_image(fitz.Rect(90,155,W-90,425),filename=str(FIG),keep_proportion=True)
+p.insert_textbox(fitz.Rect(62,432,924,488),'Atom labels: C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen. Asp162 is enzyme aspartate residue 162; OD1 is one of its side-chain oxygens and accepts Ht.',fontsize=11,fontname='helv',color=INK,lineheight=1.25)
 
 # Page 2: the EVB idea and browser activities
 p=base('Two bonding descriptions, one reaction','Understanding EVB')
