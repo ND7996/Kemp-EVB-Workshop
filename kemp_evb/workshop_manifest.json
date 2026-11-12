@@ -1,0 +1,52 @@
+{
+  "scope": "Ready-to-teach browser and optional computation pack; not a physically validated Q6 reproduction.",
+  "talk_minutes": 30,
+  "practical_minutes": 30,
+  "talk_slides": [
+    1,
+    13
+  ],
+  "practical_slides": [
+    14,
+    15
+  ],
+  "browser_only_needs": "Local HTML-capable browser. Python launcher optional. No OpenMM/plotting packages required.",
+  "compute_needs": "Full repository, Python3.12, NumPy, OpenMM8.6.1 and tested EVBOpenMM API; see SETUP.md.",
+  "files": {
+    ".gitattributes": "31177d0179beab299a78f3fb229385a3b5ef2a646dd4a430a7fa17fed1ae841a",
+    ".gitignore": "96eea629706f233ede159e92bb8ce943205c7cdf2f44e37f40ee91df94b4136f",
+    "Kemp_EVB_workshop.pdf": "e8cc22e12747f2715f3a8406124938cd307ff676cff36d61e2d0b0f0e806d9f5",
+    "PARTICIPANT_HANDOUT.pdf": "1d3e29ae3b2c7a13ad5154c5043f20aac3147715dbae02564a0e3cb6d5dfdf07",
+    "README.md": "47f1d68308046d795c7bd0a0b09f7da5a660cce965b5a21cf7886fe4797c19da",
+    "assets/full_enzyme_result.png": "e54689268011af9d20bf6705ea391650318282e12f7e78b7a490218fdf7ef3b3",
+    "assets/kemp_states.png": "7237e665a7c74078b1b6c45102e17605b630d60fab9c44b3319c1f8ec60b978b",
+    "assets/paper/ATTRIBUTION.md": "c2f415a207c27d0241f1c0c11d0f4a7a274e90d18bbb38b44a48498542c40dc4",
+    "assets/paper/article_intro.png": "f4fc26f9cd0e53ec523d368814ca35f793e2d75d7938d59d2f512add05c326dc",
+    "assets/paper/article_mechanism_design.png": "7269699d7f7cb665d61ceadc3f4a0151654cc46adade60462c5ce6d2067f1fb6",
+    "assets/paper/article_results.png": "7eb460a9c282fd12af8d2277dac1eeda28b54c5f09536cca6963774c46043dd1",
+    "assets/paper/manifest.json": "ecdbc056a4cafb5ca5170f66692b910e31bafca9b5c251cd7d3b07d5cc4cf1f8",
+    "assets/paper/si_table3.png": "d9b4e93de2d23fe8dba186f042534c2f67b96c8701d31711005b8bb973573339",
+    "assets/q_openmm_comparison.png": "ddfd071b873ebb416ce83b98440a9c551dab61ee5814b0f62d48b494f39ac3e3",
+    "assets/reduced_evb_result.png": "61e540953ab01d5fa85c2f8d07244f6c9022db0c7d8b61ce07abbd7617bbdba4",
+    "assets/source_parameter_profile.png": "1df30e539d20d0eb6367fabc0f4656d1510f3938c8b9886ae4c518318d29d535",
+    "assets/workshop_axis_explanation.png": "7d4ad46dfea100b50611cd50182db80db77b2ed09e0f5f719ffd0ea44ec77fb2",
+    "assets/workshop_parameter_combinations.png": "b34cbe454d02deb2a2bcd62f68fc6d80abd9fcd08d993ca70fe8c1f8f404b280",
+    "data/PROVENANCE.json": "b16437fa0a669936e3ddcea18f86eeb47fa92150166ed0494ad0922d4560de6a",
+    "data/README.md": "d5f98378418f3fb626f0e1000c00d48e643f2d19f620a088d0d3a7cfb3b0a2aa",
+    "data/des27_reaction.fep": "01e51c25c3434747b29c418ce3579fd63d538b42bfac9056ca3000f02212e8ae",
+    "data/qfep_reference.inp": "14cdc987bc9aacedee0a959529f0210c34f4e1518ae4dade755d1d7b0299d601",
+    "data/short_run/replica_101_raw.json": "99946c99cd0d8769044d70a611146f4a5438001e728cbd0e4e05a833401978a1",
+    "guides/HANDS_ON.md": "21ce486d118b909cc8413d9f9ac33ff6d9586e2bc5e18d9d738a2c55a3f41859",
+    "guides/INSTRUCTOR_GUIDE.md": "59f9b55df9c94c3acb87f613ab5cf25d9ce049358d585061fd681c084d796cbc",
+    "guides/SETUP.md": "9d3a24ebf18e0bffe456a9e35a9336de5f3677bcb03767623e15ae114fea474b",
+    "guides/SLIDES.md": "75773b596e469543f8fac4ee41377b0a3c537737c4dac436ed7ad77e45cc1d9f",
+    "guides/SOURCES.md": "e36d41268b830f54f2e19c50916344afccecba0244dee949383dc1f25fea113e",
+    "index.html": "8622328f9edbe1e2966cd8a375f002dc2dcf597a8f0a0dc3645496f58bfb6cf4",
+    "presentation.html": "1f284bee9bb1631e2380690de5bffdb6990a7e701be142ec61bafbc67f37c862",
+    "run_practical.py": "fdb0df4ab1f59dddf2077e6e322d51a342d60215010592b4504e111e6e75f0ec",
+    "start_workshop.py": "9791453bd8411255530c664477506ab13251537e62f0c3c8f2f4ffc886e8f6c0",
+    "viewers/evb_core.html": "5aa4cbd09f7594cf6ab38165d39ac0f85e926bd1a556f6ea51a8876d11505898",
+    "viewers/parameter_scan.html": "4f743a7be61843b516745d84401d7b398417403627a549dd4785e08b730dd755",
+    "viewers/source_profile.html": "1351db3ca997e9d86706bd4f66ed58fc70fb2185e6d3da3630e5c7bfdff0c1f4"
+  }
+}

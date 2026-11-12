@@ -1,0 +1,204 @@
+[FEP]
+states 2
+
+[atoms]
+#Q index        PDB index      #   PDB ID      STATE 1 TYPE
+1               4002           #   251.CH      SUB.CH       !
+2               4003           #   251.CB2     SUB.CB2       
+3               4004           #   251.CA      SUB.CA        
+4               4005           #   251.OR      SUB.OR       !
+5               4006           #   251.NR      SUB.NR       !
+6               4007           #   251.CB1     SUB.CB1       
+7               4008           #   251.CC1     SUB.CC1       
+8               4009           #   251.CZ      SUB.CZ        
+9               4010           #   251.CC2     SUB.CC2       
+10              4011           #   251.NO      SUB.NO        
+11              4012           #   251.ON1     SUB.ON1       
+12              4013           #   251.ON2     SUB.ON2       
+13              4014           #   251.HT      SUB.HT       !
+14              4015           #   251.HB1     SUB.HB1       
+15              4016           #   251.HC1     SUB.HC1       
+16              4017           #   251.HC2     SUB.HC2       
+17              2522           #   100.CB      ASP.CB        
+18              2523           #   100.HB2     ASP.HB2       
+19              2524           #   100.HB3     ASP.HB3       
+20              2525           #   100.CG      ASP.CG        
+21              2526           #   100.OD1     ASP.OD1      !
+22              2527           #   100.OD2     ASP.OD2       
+
+
+[atom_types]
+HA              69.58       4.91          5        2.5      49.20       3.47      1.008 ! LK: like PTPs 
+HC              84.57       5.41          1        2.5      59.80       3.83      1.008 
+HO               0.00       0.00          5        2.5       0.00       0.00      1.008 ! LK: like PTPs 
+C2            1802.24      34.18          1        2.5    1274.38      24.17      12.01 
+CA            1059.13      23.67          1        2.5     748.92      16.74      12.01 
+CT             944.52      22.03          1        2.5     667.88      15.58      12.01 
+O2             616.44      23.77         90        2.5     435.89      16.81      16.00 ! LK: like PTPs` 
+O1             616.44      23.77          1        2.5     435.89      16.81      16.00 
+ODE            601.15      22.27         90        2.5     425.08      15.74      16.00 ! LK: like PTPs
+sub_CA        1059.13      23.67         90        2.5     748.92      16.74      12.01 ! LK: shrank this too 
+sub_OR       445.1250    18.2511         90        2.5   314.7509    12.9054     15.999 ! LK: shrank this too
+sub_NR       971.7502    28.3077         90        2.5   687.1311    20.0166     14.007 ! LK: small test just to see
+sub_NO       816.4334    23.7832          1        2.5   577.3056    16.8173     14.007 
+sub_ON       554.6317    21.3860          1        2.5   392.1839    15.1222     15.999 
+pro_CA      1831.6092    37.6664         90        2.5  1295.1433    26.6342     12.011 ! LK: small test just to see
+pro_OR       616.4387    23.7692         90        2.5   435.8880    16.8074     15.999 ! LK: small test just to see
+pro_NR       885.4302    27.0212         90        2.5   626.0937    19.1069     14.007 ! LK: small test just to see 
+
+[change_atoms]
+1          sub_CA       pro_CA           #    SUB.CH     !
+2          CA           CA               #    SUB.CB2   
+3          CA           CA               #    SUB.CA    
+4          sub_OR       pro_OR           #    SUB.OR     !
+5          sub_NR       pro_NR           #    SUB.NR     !
+6          CA           CA               #    SUB.CB1   
+7          CA           CA               #    SUB.CC1   
+8          CA           CA               #    SUB.CZ    
+9          CA           CA               #    SUB.CC2   
+10         sub_NO       sub_NO           #    SUB.NO    
+11         sub_ON       sub_ON           #    SUB.ON1   
+12         sub_ON       sub_ON           #    SUB.ON2   
+13         HA           HO               #    SUB.HT     !
+14         HA           HA               #    SUB.HB1   
+15         HA           HA               #    SUB.HC1   
+16         HA           HA               #    SUB.HC2   
+17         CT           CT               #    ASP.CB    
+18         HC           HC               #    ASP.HB2   
+19         HC           HC               #    ASP.HB3   
+20         C2           C2               #    ASP.CG    
+21         O2           ODE              #    ASP.OD1    !
+22         O2           O1               #    ASP.OD2   
+
+
+[change_charges]
+1         0.1634     0.4584     #    SUB.CH     dq= 0.2950  !
+2        -0.0516    -0.3286     #    SUB.CB2    dq=-0.2770 
+3         0.5146     0.7236     #    SUB.CA     dq= 0.2090 
+4        -0.1794    -0.6838     #    SUB.OR     dq=-0.5044  !
+5        -0.3257    -0.5876     #    SUB.NR     dq=-0.2619  !
+6        -0.4238    -0.4576     #    SUB.CB1    dq=-0.0338 
+7        -0.0613    -0.0906     #    SUB.CC1    dq=-0.0293 
+8        -0.0588    -0.1376     #    SUB.CZ     dq=-0.0788 
+9        -0.2382    -0.1061     #    SUB.CC2    dq= 0.1321 
+10        0.8385     0.7998     #    SUB.NO     dq=-0.0387 
+11       -0.4782    -0.5444     #    SUB.ON1    dq=-0.0662 
+12       -0.4782    -0.5444     #    SUB.ON2    dq=-0.0662 
+13        0.1405     0.4500     #    SUB.HT     dq= 0.3095  !
+14        0.2264     0.1812     #    SUB.HB1    dq=-0.0452 
+15        0.1900     0.1598     #    SUB.HC1    dq=-0.0302 
+16        0.2218     0.1579     #    SUB.HC2    dq=-0.0639 
+17       -0.2200    -0.1200     #    ASP.CB     dq= 0.1000 
+18        0.0600     0.0600     #    ASP.HB2    dq= 0.0000 
+19        0.0600     0.0600     #    ASP.HB3    dq= 0.0000 
+20        0.7000     0.5200     #    ASP.CG     dq=-0.1800 
+21       -0.8000    -0.5300     #    ASP.OD1    dq= 0.2700  !
+22       -0.8000    -0.4400     #    ASP.OD2    dq= 0.3600 
+
+
+[soft_pairs]
+21    13      # ODE-HO              
+1     13      # sub_CA-HA           
+4     5       # sub_OR-sub_NR       
+
+
+
+[off_diagonals]
+1   2      21    13  0  0  # ODE-HO              
+1   2       1    13  0  0  # sub_CA-HA           
+1   2       4     5  0  0  # sub_OR-sub_NR       
+1   2       1     5  0  0  # sub_CA-sub_NR
+1   2	    1     4  0  0  # sub_CA-sub_OR
+
+[bond_types]
+1              1312.0      1.250   # C2-O2               
+2               900.0      1.364   # C2-ODE              
+3              1140.0      1.229   # C2-O1               
+4             138.250          2    0.94500   # HO-ODE               !
+5              938.00     1.4210   # sub_CA-CA           
+6              800.00     1.4510   # pro_CA-CA           
+7              820.00     1.3200   # sub_CA-sub_NR       
+8             1300.00     1.1570   # pro_CA-pro_NR       
+9              91.750     2       1.08000   # sub_CA-HA            !
+10             91.000     2.00    1.40000   # sub_OR-sub_NR        ! From Warshel PNAS
+
+[change_bonds]
+2525      2526          1    2   #    100.CD-100.OE1        C2-O2                C2-ODE              
+2525      2527          1    3   #    100.CD-100.OE2        C2-O2                C2-O1               
+2526      4014          0    4   #    100.OE1-251.HT        None                 HO-ODE              
+4002      4003          5    6   #    251.CH-251.CB2        sub_CA-CA            pro_CA-CA           
+4002      4006          7    8   #    251.CH-251.NR         sub_CA-sub_NR        pro_CA-pro_NR       
+4002      4014          9    0   #    251.CH-251.HT         sub_CA-HA            None                
+4005      4006         10    0   #    251.OR-251.NR         sub_OR-sub_NR        None                
+
+
+[angle_types]
+1        140.000    117.000   # CT-C2-O2            
+2        160.000    120.400   # CT-C2-O1            
+3         70.000    113.000   # HO-ODE-C2           
+4         126.00   120.0000   # sub_CA-CA-CA        
+5         140.00   120.0000   # CA-CA-pro_CA        
+6         140.00   105.3000   # sub_CA-sub_NR-sub_OR
+7         140.00   111.9000   # CA-sub_CA-sub_NR    
+8          70.00   180.0000   # CA-pro_CA-pro_NR ! LK reduced angle
+9          70.00   128.6000   # CA-sub_CA-HA        
+10        140.00   108.9000   # CA-sub_OR-sub_NR    
+11         70.00   118.9000   # sub_NR-sub_CA-HA    
+
+
+[change_angles]
+2522      2525      2527          1    2   #   100.CG-100.CD-100.OE2          CT-C2-O2                       CT-C2-O1                      
+2525      2526      4014          0    3   #   100.CD-100.OE1-251.HT          None                           HO-ODE-C2                     
+4002      4003      4004          4    5   #   251.CH-251.CB2-251.CA          sub_CA-CA-CA                   CA-CA-pro_CA                  
+4002      4003      4010          4    5   #   251.CH-251.CB2-251.CC2         sub_CA-CA-CA                   CA-CA-pro_CA                  
+4002      4006      4005          6    0   #   251.CH-251.NR-251.OR           sub_CA-sub_NR-sub_OR           None                          
+4003      4002      4006          7    8   #   251.CB2-251.CH-251.NR          CA-sub_CA-sub_NR               CA-pro_CA-pro_NR              
+4003      4002      4014          9    0   #   251.CB2-251.CH-251.HT          CA-sub_CA-HA                   None                          
+4004      4005      4006         10    0   #   251.CA-251.OR-251.NR           CA-sub_OR-sub_NR               None                          
+4006      4002      4014         11    0   #   251.NR-251.CH-251.HT           sub_NR-sub_CA-HA               None                          
+
+
+[torsion_types]
+1            1.5     -1.000      0.000   # CT-C2-ODE-HO        
+2           2.45      2.000    180.000   # CT-C2-ODE-HO        
+3          0.000      1.000      0.000   # O2-C2-CT-HC         
+4          0.000      2.000    180.000   # HC-CT-C2-O1         /data/local_runs/miha_scripts/qscripts/
+5           2.45      2.000    180.000   # O1-C2-ODE-HO        
+6         3.6250     2.0000   180.0000   # CA-sub_OR-sub_NR-sub_CA
+7         3.6250     2.0000   180.0000   # CA-sub_CA-sub_NR-sub_OR
+8         3.6250     2.0000   180.0000   # CA-CA-sub_OR-sub_NR 
+9         3.6250     2.0000   180.0000   # sub_NR-sub_CA-CA-CA 
+10        3.6250     1.0000     0.0000   # pro_NR-pro_CA-CA-CA ! LK: test because torsion to C=N is breaking (or angle)
+11        3.6250     2.0000   180.0000   # HA-sub_CA-CA-CA     
+12        3.6250     2.0000   180.0000   # HA-sub_CA-sub_NR-sub_OR
+
+
+[change_torsions]
+2522      2525      2526      4014          0    1        # 100.CG-100.CD-100.OE1-251.HT                 None                                CT-C2-ODE-HO                       
+2522      2525      2526      4014          0    2        # 100.CG-100.CD-100.OE1-251.HT                 None                                CT-C2-ODE-HO                       
+2523      2522      2525      2527          3    0        # 100.HG2-100.CG-100.CD-100.OE2                O2-C2-CT-HC                         None                               
+2523      2522      2525      2527          0    4        # 100.HG2-100.CG-100.CD-100.OE2                None                                HC-CT-C2-O1                        
+2524      2522      2525      2527          3    0        # 100.HG3-100.CG-100.CD-100.OE2                O2-C2-CT-HC                         None                               
+2524      2522      2525      2527          0    4        # 100.HG3-100.CG-100.CD-100.OE2                None                                HC-CT-C2-O1                        
+2527      2525      2526      4014          0    5        # 100.OE2-100.CD-100.OE1-251.HT                None                                O1-C2-ODE-HO                       
+4002      4006      4005      4004          6    0        # 251.CH-251.NR-251.OR-251.CA                  CA-sub_OR-sub_NR-sub_CA             None                               
+4003      4002      4006      4005          7    0        # 251.CB2-251.CH-251.NR-251.OR                 CA-sub_CA-sub_NR-sub_OR             None                               
+4003      4004      4005      4006          8    0        # 251.CB2-251.CA-251.OR-251.NR                 CA-CA-sub_OR-sub_NR                 None                               
+4004      4003      4002      4006          0   10        # 251.CA-251.CB2-251.CH-251.NR                 None                                pro_NR-pro_CA-CA-CA                
+4004      4003      4002      4006          9    0        # 251.CA-251.CB2-251.CH-251.NR                 sub_NR-sub_CA-CA-CA                 None                               
+4004      4003      4002      4014         11    0        # 251.CA-251.CB2-251.CH-251.HT                 HA-sub_CA-CA-CA                     None                               
+4005      4006      4002      4014         12    0        # 251.OR-251.NR-251.CH-251.HT                  HA-sub_CA-sub_NR-sub_OR             None                               
+4006      4002      4003      4010          0   10        # 251.NR-251.CH-251.CB2-251.CC2                None                                pro_NR-pro_CA-CA-CA                
+4006      4002      4003      4010          9    0        # 251.NR-251.CH-251.CB2-251.CC2                sub_NR-sub_CA-CA-CA                 None                               
+4006      4005      4004      4007          8    0        # 251.NR-251.OR-251.CA-251.CB1                 CA-CA-sub_OR-sub_NR                 None                               
+4010      4003      4002      4014         11    0        # 251.CC2-251.CB2-251.CH-251.HT                HA-sub_CA-CA-CA                     None                               
+
+
+[improper_types]
+1         1.1000   180.0000   # CA-sub_CA-HA-sub_NR 
+
+[change_impropers]
+# LK Changed the order of the improper so now it's HT first CB2 3rd, basically swapped 1/3
+4014      4002      4003      4006          1    0    #  251.HT-251.CH-251.CB2-251.NR             CA-sub_CA-HA-sub_NR                 None                               
+
+

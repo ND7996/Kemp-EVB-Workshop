@@ -1,0 +1,34 @@
+[
+  {
+    "file": "article_intro.png",
+    "source_pdf": "41586_2025_Article_9136.pdf",
+    "source_sha256": "2e67aca9f7af537f62b64a7a15a1eae3ec437e50635791a4640c0d06e85d1020",
+    "page_1_based": 1,
+    "description": "Article introduction, PDF page 1",
+    "transformation": "Full page rendered to PNG; no cropping, annotation or content alteration."
+  },
+  {
+    "file": "article_mechanism_design.png",
+    "source_pdf": "41586_2025_Article_9136.pdf",
+    "source_sha256": "2e67aca9f7af537f62b64a7a15a1eae3ec437e50635791a4640c0d06e85d1020",
+    "page_1_based": 2,
+    "description": "Figure 1: mechanism and design workflow, PDF page 2",
+    "transformation": "Full page rendered to PNG; no cropping, annotation or content alteration."
+  },
+  {
+    "file": "article_results.png",
+    "source_pdf": "41586_2025_Article_9136.pdf",
+    "source_sha256": "2e67aca9f7af537f62b64a7a15a1eae3ec437e50635791a4640c0d06e85d1020",
+    "page_1_based": 4,
+    "description": "Figure 3 and results discussion, PDF page 4",
+    "transformation": "Full page rendered to PNG; no cropping, annotation or content alteration."
+  },
+  {
+    "file": "si_table3.png",
+    "source_pdf": "41586_2025_9136_MOESM3_ESM.pdf",
+    "source_sha256": "12faec06aac26f8701ff010cdcc34d74e708ff895496723338280c822f096c1a",
+    "page_1_based": 3,
+    "description": "Supplementary Table 3, PDF page 3",
+    "transformation": "Full page rendered to PNG; no cropping, annotation or content alteration."
+  }
+]
