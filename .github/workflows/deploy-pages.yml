@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - "kemp_evb/**"
-      - ".github/workflows/deploy-pages.yml"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 permissions:
