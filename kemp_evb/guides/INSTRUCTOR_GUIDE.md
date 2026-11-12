@@ -4,17 +4,15 @@
 
 Open `index.html` and `presentation.html`. Check that the three links to the saved exercises work. The browser-only workshop needs no installation and does not run a simulation.
 
-## 30-minute session
+## Suggested session flow
 
-| Time | Activity |
-| --- | --- |
-| 0–3 min | Welcome. Tell participants they can follow the saved examples without prior EVB experience. |
-| 3–8 min | Use the reaction figure to show what changes from reactant to product. |
-| 8–12 min | Explain that EVB connects two bonding descriptions of the same atoms. Define the offset and coupling in plain language. |
-| 12–17 min | Open the small EVB viewer. Ask participants to change one control at a time. |
-| 17–22 min | Open the saved profile. Identify the axes, barrier and product-versus-reactant energy. |
-| 22–28 min | Open the settings comparison. Compare two parameter pairs with similar peak heights. |
-| 28–30 min | Recap what EVB shows and what the short example cannot establish. |
+1. Welcome participants and explain that the saved examples need no prior EVB experience.
+2. Use the reaction figure to show the proton transfer and ring opening.
+3. Explain how EVB connects two bonding descriptions of the same atoms. Define the offset and coupling in plain language.
+4. Open the EVB viewer and invite participants to change one control at a time.
+5. Read the saved profile together. Identify the axes, barrier estimate, and product-versus-reactant energy.
+6. Compare parameter pairs with similar peak heights.
+7. Recap what the examples show and what they cannot establish.
 
 ## Keep these points clear
 

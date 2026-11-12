@@ -1,8 +1,8 @@
-# Participant worksheet — 30 minutes
+# Participant worksheet
 
-Open `index.html` in a browser and follow the links below. The saved examples work offline; this 30-minute activity does not need a terminal or package installation.
+Open `index.html` in a browser and follow the links below. The saved examples work offline; no terminal or package installation is needed.
 
-## 0–5 min: define the reaction and states
+## Start with the reaction and states
 
 Open `data/des27_reaction.fep` and the state diagram on index.html.
 
@@ -10,13 +10,13 @@ Asp162 abstracts the substrate proton. The CH–HT and OR–NR bonds break, Asp 
 
 **Write down:** Which bond forms? What is a diabatic state? Why must total charge be consistent between states?
 
-## 5–10 min: explore the EVB teaching core
+## Explore the EVB teaching core
 
 Open **EVB fundamentals** on index.html. Move the coupling and extra-offset sliders. Observe the avoided crossing and state mixing. The sliders update a saved teaching example; they do not launch molecular dynamics.
 
 **Write down:** How do coupling and offset differ? Is this geometric five-atom potential curve an enzyme activation free energy?
 
-## 10–15 min: source parameters and the saved Kemp profile
+## Look at the source parameters and saved Kemp profile
 
 Read `data/qfep_reference.inp`, then:
 
@@ -26,7 +26,7 @@ The archived input gives H12=100.4 and native alpha −110 kcal/mol. Q6 uses neg
 
 **Write down:** Why is H12 not the barrier? Why is9.57 not established reproduction of13.2? Which engine produced this sample dataset?
 
-## 15–25 min: compare parameter combinations
+## Compare parameter combinations
 
 Open **Workshop combinations** on index.html.
 
@@ -36,7 +36,7 @@ Use the dropdown/table to compare25 grid pairs and five refined examples matchin
 
 **Write down:** Two matching pairs and their reaction ΔG. Does one barrier determine two parameters uniquely? Does a target match establish convergence or physical calibration?
 
-## 25–30 min: explain the maximum and coordinate zero
+## Explain the maximum and coordinate zero
 
 Select grid H12=80, alpha −90. Find the blue diamond (binned maximum) and the open grey baseline marker. The displayed raw peak is about−74.36 kcal/mol, with a coarse bin width about 52.86; the maximum is not required to be at raw gap zero.
 

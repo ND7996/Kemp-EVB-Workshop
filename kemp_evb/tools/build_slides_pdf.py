@@ -62,7 +62,7 @@ def begin(c, number, kicker, title):
     c.line(68, 51, PAGE_W - 68, 51)
     c.setFont(FONT, 10)
     c.setFillColor(MUTED)
-    c.drawString(68, 35, "Kemp EVB workshop · 30-minute hands-on")
+    c.drawString(68, 35, "Kemp EVB workshop | Kemp reaction hands-on")
     c.drawRightString(PAGE_W - 68, 35, f"{number} / 9")
     return y - 18
 
@@ -87,7 +87,7 @@ def build():
     c.setAuthor("Kemp EVB workshop")
 
     # 1: Welcome
-    y = begin(c, 1, "30 minutes · browser-based hands-on", "Try EVB with the Kemp reaction")
+    y = begin(c, 1, "Browser-based hands-on", "Try EVB with the Kemp reaction")
     y = para(c, "Follow one reaction. See how EVB connects the starting and ending states. Then try changing two model settings yourself.", 68, y, 730, LEAD)
     para(c, "No installation is needed for the saved examples. Use the links on the workshop website to open each exercise.", 68, y - 17, 700, BODY)
     c.setFillColor(SOFT)

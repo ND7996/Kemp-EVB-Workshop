@@ -1,6 +1,6 @@
 # Kemp workshop setup and calculation stages
 
-Everything in this repository is for the **Kemp reaction**. The 30-minute hands-on uses saved examples and needs only a current web browser. Open `index.html`; no installation, account, or simulation run is required.
+Everything in this repository is for the **Kemp reaction**. The hands-on uses saved examples and needs only a current web browser. Open `index.html`; no installation, account, or simulation run is required.
 
 To check that the downloaded workshop files are intact, install Python 3 and run this from the `kemp_evb` folder:
 
@@ -35,3 +35,7 @@ The downloaded materials contain the Kemp reaction mapping, saved short-run data
 When the Kemp run scripts and inputs are added, the calculation environment will need Python, NumPy, OpenMM, and a compatible EVBOpenMM checkout. A CPU is sufficient for small checks; longer enzyme sampling may use a supported GPU. The current repository does not provide a pinned Conda environment or working live-run commands, so do not treat the saved-data exercises as a substitute for those inputs.
 
 Q6, AmberTools, Rosetta, LAMMPS, SciPy, and Matplotlib are not needed to open or complete this browser hands-on.
+
+## Optional workshop-file rebuilding
+
+Rebuilding the reaction figure and participant handout requires PyMuPDF. Rebuilding the slide PDF from its source requires ReportLab. These tools are only needed to edit or regenerate the supplied workshop files; they are not needed to view the site, slides, or PDFs.

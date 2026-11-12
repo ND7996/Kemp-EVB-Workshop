@@ -1,6 +1,6 @@
 # Slide notes for the hands-on
 
-The session takes about 30 minutes. Keep the workshop page open so participants can open each saved Kemp viewer. No package installation or simulation run is needed.
+Keep the workshop page open so participants can open each saved Kemp viewer. No package installation or simulation run is needed.
 
 ## 1. Welcome
 
