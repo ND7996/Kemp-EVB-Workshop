@@ -88,7 +88,6 @@ def build():
 
     # 1: Welcome
     y = begin(c, 1, "Browser-based hands-on", "Try EVB with the Kemp reaction")
-    y = para(c, "Let's look at the Kemp reaction together. We'll compare the reactant with the product, then change two EVB settings and see what happens to the energy profile.", 68, y, 730, LEAD)
     c.setFillColor(SOFT)
     c.roundRect(68, 100, 360, 50, 6, fill=1, stroke=0)
     c.setFillColor(ACCENT)

@@ -7,15 +7,10 @@ import pymupdf as fitz
 def patch(pdf_path: Path) -> None:
     pdf = fitz.open(pdf_path)
 
-    # Replace the generic welcome copy with the matching plain-language text.
+    # Remove the welcome paragraph as requested.
     page = pdf[0]
     page.add_redact_annot(fitz.Rect(68, 145, 850, 280), fill=(1, 1, 1))
     page.apply_redactions()
-    page.insert_textbox(
-        fitz.Rect(68, 150, 850, 275),
-        "Let's look at the Kemp reaction. We'll compare reactant and product, then change two EVB settings and see how the profile responds.",
-        fontsize=20, fontname="helv", color=(0.20, 0.29, 0.32), lineheight=1.15,
-    )
 
     # Refresh the scheme image after correcting the product C≡N bond.
     page = pdf[1]
