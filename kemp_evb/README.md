@@ -1,6 +1,6 @@
 # Kemp EVB workshop
 
-**Public webpage:** [Kemp EVB workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). The site is deployed from this workshop-only repository using GitHub Pages. The first deployment may take a few minutes after the workflow completes.
+**Public repository:** [Kemp EVB Workshop on GitHub](https://github.com/ND7996/Kemp-EVB-Workshop). The website is intended at [nd7996.github.io/Kemp-EVB-Workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). If it is not open yet, enable Pages in repository **Settings → Pages** and set the source to **GitHub Actions**. The workflow publishes this workshop folder only; share the website link after the deployment succeeds.
 
 
 **Open the local `index.html` file** in Edge, Chrome or Firefox. It introduces the paper and reaction, then guides you through EVB, the OpenMM adaptation and the hands-on exercises. The session is a 30-minute introduction followed by a 30-minute practical. You can use the slides and saved data without installing software or running a simulation. Keep the folder together so its figures and interactive exercises load.
