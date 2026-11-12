@@ -130,12 +130,18 @@ def build():
     c.showPage()
 
     # 5: Q6 and OpenMM
-    y = begin(c, 5, "4 · The software", "Same EVB idea, different implementations")
+    y = begin(c, 5, "4 · Read the comparison", "These plots show different things")
     gap, box_y, box_h = 20, 185, 205
     box_w = (PAGE_W - 136 - gap) / 2
-    card(c, 68, box_y, box_w, box_h, "The paper", "Q6", "The published simulations used Q6 with OPLS-AA, TIP3P water, a surface-constrained solvent sphere (SCAAS), and a local reaction field.")
-    card(c, 68 + box_w + gap, box_y, box_w, box_h, "This workshop", "OpenMM + EVBOpenMM", "OpenMM is the simulation engine; EVBOpenMM supplies EVB forces. The saved 21-window example is a short adaptation, not a rerun of the paper’s calculation.")
-    para(c, "The solvent boundary, long-range electrostatics, Morse energy reference, and sampling differ. Use the same EVB concepts, but do not treat the saved OpenMM profile as a direct reproduction of the Q6 result.", 68, 155, PAGE_W - 136, BODY)
+    card(c, 68, box_y, box_w, box_h, "Paper · Figure 3e", "Q6 activation barriers", "Compares experimental and Q6 barrier estimates for Des27 and Des27.7, including the in and out substrate conformations. It is not a free-energy profile trace.")
+    card(c, 68 + box_w + gap, box_y, box_w, box_h, "This workshop · OpenMM", "Short-run free-energy profile", "The viewer plots saved data from 21 windows, 50 records per window, and 18 bins. Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.")
+    c.linkURL("https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png", (68, 189, 68 + box_w, 217), relative=0)
+    c.linkURL("https://nd7996.github.io/Kemp-EVB-Workshop/viewers/source_profile.html", (68 + box_w + gap, 189, PAGE_W - 68, 217), relative=0)
+    c.setFillColor(ACCENT)
+    c.setFont(BOLD, 12)
+    c.drawString(84, 198, "Open complete Figure 3")
+    c.drawString(68 + box_w + gap + 16, 198, "Open the OpenMM profile viewer")
+    para(c, "These plots report different quantities. Q6 used OPLS-AA, TIP3P, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ in the OpenMM adaptation, so it is not a direct reproduction or engine-to-engine comparison.", 68, 155, PAGE_W - 136, BODY)
     c.showPage()
 
     # 6: Full calculation workflow

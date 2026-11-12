@@ -20,7 +20,7 @@ The energy offset Î± shifts the product description relative to the reactant. Hâ
 
 ## 5. Q6 and OpenMM
 
-The paper uses Q6 with OPLS-AA, TIP3P, a SCAAS solvent sphere, and a local reaction field. This workshop's saved data are from a short OpenMM/EVBOpenMM adaptation. The solvent boundary, long-range electrostatics, Morse energy reference, and sampling differ; it is not a direct reproduction of the paper's profile.
+Paper Figure 3e shows activation-barrier estimates, not a free-energy profile. The workshop's OpenMM viewer shows a short profile from 21 windows and 50 records per window. The paper uses Q6 with OPLS-AA, TIP3P, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ, so these are not direct profile-to-profile results. Link to the complete paper figure and OpenMM profile viewer from the slide.
 
 ## 6. The full calculation sequence
 

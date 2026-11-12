@@ -24,7 +24,7 @@ Open **Archived-parameter comparison** on index.html.
 
 The archived input gives H12=100.4 and native alpha −110 kcal/mol. Q6 uses negative-minimum Morse wells; the zero-minimum EVBOpenMM convention requires+44.5 on P, giving total P offset−65.5. This is bookkeeping, not the activation barrier. The short dataset yields about 9.57 kcal/mol at 18 coarse bins. The paper's Des27.7-IN mean is13.2±0.6 kcal/mol (replica SD), from different boundary/sampling conditions.
 
-**Q6 vs OpenMM:** The paper ran EVB with Q6, OPLS-AA, TIP3P water, SCAAS solvent, and a local reaction field. The workshop's saved data come from a short OpenMM/EVBOpenMM adaptation. Their solvent boundary, long-range electrostatics, Morse energy reference, and sampling differ, so the short profile is not a direct reproduction of the Q6 result.
+**Q6 vs OpenMM plots:** Paper Figure 3e compares activation-barrier estimates; it is not a free-energy profile curve. The OpenMM viewer shows a short adapted profile from 21 windows and 50 records per window. The paper used Q6 with OPLS-AA, TIP3P water, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ, so the OpenMM profile is not a direct reproduction of the Q6 result. See the [paper's complete Figure 3](https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png) and the [OpenMM profile viewer](../viewers/source_profile.html).
 
 **Write down:** Why is H12 not the barrier? Why is9.57 not established reproduction of13.2? Which engine produced this sample dataset?
 

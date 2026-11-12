@@ -26,7 +26,7 @@
 
   <nav aria-label="Workshop sections">
     <a href="#reaction">The reaction</a>
-    <a href="#evb">EVB in plain language</a>
+    <a href="#evb">How EVB works</a>
     <a href="#engines">Q6 and OpenMM</a>
     <a href="#hands-on">Try it</a>
     <a href="#workflow">The calculation stages</a>
@@ -68,11 +68,11 @@
         <article class="card"><div class="number">The paper</div><h3>Q6</h3><p>The published Kemp EVB simulations used Q6 with OPLS-AA, TIP3P water, a surface-constrained solvent sphere, and a local reaction field.</p></article>
         <article class="card"><div class="number">This workshop's adaptation</div><h3>OpenMM + EVBOpenMM</h3><p>OpenMM is the molecular-dynamics engine; EVBOpenMM adds EVB forces and analysis. The saved example is a short OpenMM adaptation, not a rerun of the paper's Q6 simulations.</p></article>
       </div>
-      <p class="plain">The EVB idea is shared, but the solvent boundary, long-range electrostatics, Morse-energy reference convention, and amount of sampling differ. Parameters and profile values therefore cannot be copied or compared as if the two calculations were identical. The workshop's saved OpenMM profile is a learning example, not a direct reproduction of the published Q6 barrier.</p>
-      <figure class="figure">
-        <img src="assets/q_openmm_comparison.png" alt="Published Q6 activation free-energy estimate and short OpenMM adaptation shown as separate measurements with different sampling conditions">
-        <figcaption class="caption">Published Q6 Des27.7-IN estimate: 13.2 ± 0.6 kcal/mol. Short OpenMM adaptation: 9.57 kcal/mol, unvalidated. The two points use different systems and sampling; this is context, not a like-for-like engine benchmark.</figcaption>
-      </figure>
+      <div class="two">
+        <article class="card"><div class="number">Paper plot</div><h3>Q6: activation barriers</h3><p>Figure 3e compares experimental and Q6 activation-barrier estimates for Des27 and Des27.7, including the substrate's “in” and “out” conformations. It is a barrier comparison, not a free-energy profile trace.</p><a class="plain-link" href="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png" target="_blank" rel="noopener">Open the complete Figure 3 from the paper →</a></article>
+        <article class="card"><div class="number">Workshop plot</div><h3>OpenMM: short-run profile</h3><p>The viewer shows the profile from the saved 21-window OpenMM adaptation. It has 50 records per window and 18 analysis bins. Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.</p><a class="plain-link" href="viewers/source_profile.html">Open the OpenMM profile viewer →</a></article>
+      </div>
+      <p class="plain">These are different plots: Q6 Figure 3e reports barrier estimates, while the OpenMM viewer plots free energy against an energy-gap coordinate. The paper used Q6 with a surface-constrained solvent sphere and local reaction field; the short OpenMM adaptation has different boundary and electrostatics treatment, a different Morse energy reference, and much less sampling. The two results should not be overlaid or treated as a direct engine comparison.</p>
     </section>
 
     <section id="hands-on">

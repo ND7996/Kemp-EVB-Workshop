@@ -56,13 +56,13 @@
     </section>
 
     <section class="slide">
-      <div class="kicker">4 · The software</div>
-      <h2>Same EVB idea, different implementations</h2>
+      <div class="kicker">4 · Read the comparison</div>
+      <h2>These plots show different things</h2>
       <div class="grid">
-        <article class="card"><div class="state">The paper</div><h3>Q6</h3><p>The published simulations used Q6 with OPLS-AA, TIP3P water, a surface-constrained solvent sphere (SCAAS), and a local reaction field.</p></article>
-        <article class="card"><div class="state">This workshop</div><h3>OpenMM + EVBOpenMM</h3><p>OpenMM is the simulation engine; EVBOpenMM supplies EVB forces. The saved 21-window example is a short adaptation, not a rerun of the paper's calculation.</p></article>
+        <article class="card"><div class="state">The paper · Figure 3e</div><h3>Q6 activation barriers</h3><p>The figure compares experimental and Q6 barrier estimates for Des27 and Des27.7, including “in” and “out” substrate conformations. It is not a free-energy profile trace.</p><a class="plain-link" href="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png">Open the paper's complete Figure 3 →</a></article>
+        <article class="card"><div class="state">This workshop · OpenMM</div><h3>Short-run free-energy profile</h3><p>The viewer plots the saved 21-window adaptation (50 records per window, 18 bins). Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.</p><a class="plain-link" href="viewers/source_profile.html">Open the OpenMM profile →</a></article>
       </div>
-      <p class="note">The solvent boundary, long-range electrostatics, Morse energy reference, and sampling differ. Use the same EVB concepts, but do not treat the saved OpenMM profile as a direct reproduction of the Q6 result.</p>
+      <p class="note">These plots report different quantities. The Q6 paper uses OPLS-AA, TIP3P, SCAAS solvent and a local reaction field; this OpenMM adaptation differs in boundary treatment, electrostatics, Morse energy reference, and sampling. It is not a direct reproduction or engine-to-engine comparison.</p>
     </section>
 
     <section class="slide">
