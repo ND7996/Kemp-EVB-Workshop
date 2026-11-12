@@ -1,6 +1,6 @@
 # Kemp EVB workshop
 
-**Public webpage:** [https://nd7996.github.io/EVB_MHETase/](https://nd7996.github.io/EVB_MHETase/). On first publication, enable GitHub Pages in the repository settings (Settings → Pages → Build and deployment → Source: GitHub Actions). The deployment workflow publishes this workshop folder only. The page is available after the GitHub Actions deployment completes successfully.
+**Public webpage:** [Kemp EVB workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). The site is deployed from this workshop-only repository using GitHub Pages. The first deployment may take a few minutes after the workflow completes.
 
 
 **Open the local `index.html` file** in Edge, Chrome or Firefox. It introduces the paper and reaction, then guides you through EVB, the OpenMM adaptation and the hands-on exercises. The session is a 30-minute introduction followed by a 30-minute practical. You can use the slides and saved data without installing software or running a simulation. Keep the folder together so its figures and interactive exercises load.
