@@ -88,8 +88,7 @@ def build():
 
     # 1: Welcome
     y = begin(c, 1, "Browser-based hands-on", "Try EVB with the Kemp reaction")
-    y = para(c, "Follow one reaction. See how EVB connects the starting and ending states. Then try changing two model settings yourself.", 68, y, 730, LEAD)
-    para(c, "No installation is needed for the saved examples. Use the links on the workshop website to open each exercise.", 68, y - 17, 700, BODY)
+    y = para(c, "Let's look at the Kemp reaction together. We'll compare the reactant with the product, then change two EVB settings and see what happens to the energy profile.", 68, y, 730, LEAD)
     c.setFillColor(SOFT)
     c.roundRect(68, 100, 360, 50, 6, fill=1, stroke=0)
     c.setFillColor(ACCENT)
@@ -167,13 +166,11 @@ def build():
     para(c, "The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
     c.showPage()
 
-    # 8: Read profile
-    y = begin(c, 8, "7 · Read a profile", "What do the axes show?")
-    box_y, box_h, gap = 175, 175, 20
-    box_w = (PAGE_W - 136 - gap) / 2
-    card(c, 68, box_y, box_w, box_h, "Across", "Energy gap", "Compares the reactant- and product-state energies. It is not distance or time.")
-    card(c, 68 + box_w + gap, box_y, box_w, box_h, "Up", "Free energy", "Shown relative to the reactant. The rise estimates the barrier; the product level gives the reaction free energy.")
-    para(c, "A peak in a binned profile is not, by itself, a picture of the molecular transition state.", 68, 145, PAGE_W - 136, BODY)
+    # 8: The labeled profile
+    y = begin(c, 8, "7 · The saved profile", "Kemp free-energy profile")
+    image = ImageReader(str(ROOT / "assets" / "source_profile_slide.png"))
+    c.drawImage(image, 68, 100, width=PAGE_W - 136, height=330, preserveAspectRatio=True, anchor="c", mask="auto")
+    para(c, "This saved short-run profile is not validated.", 68, 90, PAGE_W - 136, SMALL)
     c.showPage()
 
     # 9: Parameter scan
@@ -200,7 +197,6 @@ def build():
         c.setFillColor(SOFT)
         c.circle(81, yy - 5, 7, fill=1, stroke=0)
         para(c, item, 102, yy + 8, 710, BODY)
-    para(c, "The short OpenMM example is for learning how to read a profile. It does not reproduce the paper’s longer Q6 calculation.", 68, 185, 780, SMALL)
     para(c, "Listov et al., Nature (2025). DOI: 10.1038/s41586-025-09136-2", 68, 140, 720, SMALL)
     c.linkURL("https://doi.org/10.1038/s41586-025-09136-2", (68, 48, 760, 70), relative=0)
     c.save()

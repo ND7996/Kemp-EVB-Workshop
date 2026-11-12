@@ -17,7 +17,7 @@
   <header>
     <div class="kicker">A hands-on introduction</div>
     <h1>Try EVB with the Kemp reaction</h1>
-    <p>Follow one reaction, compare its starting and ending states, and try changing two EVB settings. The saved examples open in your browser; no installation is needed.</p>
+    <p>Let’s look at the Kemp reaction together. We’ll compare the reactant with the product, then change two EVB settings and see what happens to the energy profile.</p>
     <div class="actions">
       <a class="button" href="#hands-on">Start the hands-on</a>
       <a class="button secondary" href="presentation.html">Open the short slides</a>
@@ -110,14 +110,12 @@
     </section>
 
     <section id="profile">
-      <div class="tag">A quick guide</div>
-      <h2>How to read the profile</h2>
-      <div class="two">
-        <article class="card"><h3>Horizontal axis</h3><p>The plot's horizontal axis is an energy-gap coordinate: it compares the reactant-state and product-state energies. It is not a distance and not time.</p></article>
-        <article class="card"><h3>Vertical axis</h3><p>The vertical axis shows free energy relative to the reactant. The rise toward the highest region is the estimated activation barrier; the product height relative to the reactant is the reaction free energy.</p></article>
-      </div>
-      <p class="plain">The highest sampled bin is not automatically a precise transition-state structure. The workshop's short OpenMM profile also does not reproduce the paper's longer Q6 calculation. Treat both as examples for learning how EVB profiles are made and read, not as a validated prediction.</p>
-      <div class="takeaway"><strong>Take-home:</strong> EVB connects reactant and product force-field descriptions. The chosen states, offset, coupling, and quality of sampling all matter when interpreting the result.</div>
+      <div class="tag">Saved OpenMM example</div>
+      <h2>The reaction profile</h2>
+      <figure class="figure">
+        <img src="assets/source_profile.svg" alt="Saved Kemp free-energy profile. Horizontal axis: offset-adjusted EVB energy gap in kilocalories per mole. Vertical axis: free energy relative to reactant in kilocalories per mole.">
+        <figcaption class="caption">Saved short-run profile; its peak is not validated. <a class="plain-link" href="viewers/source_profile.html">Open the profile and archived data →</a></figcaption>
+      </figure>
     </section>
 
     <section id="sources">

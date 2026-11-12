@@ -116,9 +116,13 @@ Oprod=(1460,260); point_to_atom(v[1],Oprod,25,INK,5); atom(Oprod[0],Oprod[1],'O1
 text(1490,267,'-',22,RED,True)
 Cprod=(1465,474); point_to_atom(v[2],Cprod,25,INK,5); atom(Cprod[0],Cprod[1],'C3',INK,25,20)
 Nprod=(1560,474)
-atom_bond(Cprod,Nprod,25,25,GREEN,8)
-atom_bond((Cprod[0],Cprod[1]-9),(Nprod[0],Nprod[1]-9),20,20,GREEN,3)
-atom_bond((Cprod[0],Cprod[1]+9),(Nprod[0],Nprod[1]+9),20,20,GREEN,3)
+atom_bond(Cprod,Nprod,25,25,GREEN,3)
+# Draw the two outer strokes to the atom-circle edges, so the nitrile reads as
+# one C≡N triple bond rather than lines continuing through the atom labels.
+outer_offset=7
+outer_radius=math.sqrt(25**2-outer_offset**2)
+atom_bond((Cprod[0],Cprod[1]-outer_offset),(Nprod[0],Nprod[1]-outer_offset),outer_radius,outer_radius,GREEN,3)
+atom_bond((Cprod[0],Cprod[1]+outer_offset),(Nprod[0],Nprod[1]+outer_offset),outer_radius,outer_radius,GREEN,3)
 atom(Nprod[0],Nprod[1],'N2',BLUE,25,20)
 # Asp protonated product state
 p.draw_rect(fitz.Rect(1144,552,1680,610),color=LINE,fill=(0.97,0.98,0.99),width=1.5)
