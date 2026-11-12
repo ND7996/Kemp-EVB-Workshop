@@ -63,7 +63,7 @@ def begin(c, number, kicker, title):
     c.setFont(FONT, 10)
     c.setFillColor(MUTED)
     c.drawString(68, 35, "Kemp EVB workshop | Kemp reaction hands-on")
-    c.drawRightString(PAGE_W - 68, 35, f"{number} / 9")
+    c.drawRightString(PAGE_W - 68, 35, f"{number} / 10")
     return y - 18
 
 
@@ -129,8 +129,17 @@ def build():
     para(c, "Neither α nor H12 is the reaction barrier. Both affect the profile, so real calculations need evidence to choose them.", 68, 127, PAGE_W - 136, SMALL)
     c.showPage()
 
-    # 5: Full calculation workflow
-    y = begin(c, 5, "4 · A full Kemp calculation", "Prepare, relax, then sample")
+    # 5: Q6 and OpenMM
+    y = begin(c, 5, "4 · The software", "Same EVB idea, different implementations")
+    gap, box_y, box_h = 20, 185, 205
+    box_w = (PAGE_W - 136 - gap) / 2
+    card(c, 68, box_y, box_w, box_h, "The paper", "Q6", "The published simulations used Q6 with OPLS-AA, TIP3P water, a surface-constrained solvent sphere (SCAAS), and a local reaction field.")
+    card(c, 68 + box_w + gap, box_y, box_w, box_h, "This workshop", "OpenMM + EVBOpenMM", "OpenMM is the simulation engine; EVBOpenMM supplies EVB forces. The saved 21-window example is a short adaptation, not a rerun of the paper’s calculation.")
+    para(c, "The solvent boundary, long-range electrostatics, Morse energy reference, and sampling differ. Use the same EVB concepts, but do not treat the saved OpenMM profile as a direct reproduction of the Q6 result.", 68, 155, PAGE_W - 136, BODY)
+    c.showPage()
+
+    # 6: Full calculation workflow
+    y = begin(c, 6, "5 · A full Kemp calculation", "Prepare, relax, then sample")
     gap, box_y, box_h = 14, 151, 240
     box_w = (PAGE_W - 136 - 2 * gap) / 3
     card(c, 68, box_y, box_w, box_h, "Prepare", "Build R and P", "Use the same atoms and atom order. Assign bonds, charges, force-field terms, and EVB settings. Check mapping, total charge, proton position, solvent, and ions.")
@@ -139,8 +148,8 @@ def build():
     para(c, "This workshop includes saved Kemp data for learning the analysis, not the full live scripts for these three simulation stages.", 68, 125, PAGE_W - 136, SMALL)
     c.showPage()
 
-    # 6: Core example
-    y = begin(c, 6, "5 · Your turn", "Try changing the settings")
+    # 7: Core example
+    y = begin(c, 7, "6 · Your turn", "Try changing the settings")
     para(c, "Open the small EVB example. Move one control at a time. Watch how the curve changes when you change the energy offset, then when you change the coupling.", 68, y, 780, LEAD)
     c.setFillColor(ACCENT)
     c.roundRect(68, 214, 310, 52, 6, fill=1, stroke=0)
@@ -151,8 +160,8 @@ def build():
     para(c, "Take about 5 minutes. The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
     c.showPage()
 
-    # 7: Read profile
-    y = begin(c, 7, "6 · Read a profile", "What do the axes show?")
+    # 8: Read profile
+    y = begin(c, 8, "7 · Read a profile", "What do the axes show?")
     box_y, box_h, gap = 175, 175, 20
     box_w = (PAGE_W - 136 - gap) / 2
     card(c, 68, box_y, box_w, box_h, "Across", "Energy gap", "Compares the reactant- and product-state energies. It is not distance or time.")
@@ -160,8 +169,8 @@ def build():
     para(c, "A peak in a binned profile is not, by itself, a picture of the molecular transition state.", 68, 145, PAGE_W - 136, BODY)
     c.showPage()
 
-    # 8: Parameter scan
-    y = begin(c, 8, "7 · Compare settings", "One barrier does not choose one model")
+    # 9: Parameter scan
+    y = begin(c, 9, "8 · Compare settings", "One barrier does not choose one model")
     para(c, "Try the parameter comparison. Different offset/coupling pairs can give similar peak heights while giving different product-versus-reactant energies.", 68, y, 780, LEAD)
     c.setFillColor(ACCENT)
     c.roundRect(68, 214, 340, 52, 6, fill=1, stroke=0)
@@ -172,8 +181,8 @@ def build():
     para(c, "These are teaching examples made from saved data. Matching a target is not a parameter fit or a validated prediction.", 68, 184, 740, SMALL)
     c.showPage()
 
-    # 9: Take-home
-    y = begin(c, 9, "8 · The point of the exercise", "What should you take away?")
+    # 10: Take-home
+    y = begin(c, 10, "9 · The point of the exercise", "What should you take away?")
     items = [
         "EVB connects reactant and product bonding descriptions.",
         "The offset and coupling shape the profile in different ways.",

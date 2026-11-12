@@ -34,7 +34,7 @@ p.insert_text((62,365),'Explore the saved examples in this order',fontsize=18,fo
 activities=[('1','EVB fundamentals','Change coupling and offset one at a time.'),('2','Saved reaction profile','Find the reactant, high-energy region, and product.'),('3','Parameter comparison','Compare parameter pairs and their product energies.')]
 for i,(n,t,b) in enumerate(activities):
  y=405+i*29; p.insert_text((68,y),n,fontsize=12,fontname='hebo',color=ACCENT); p.insert_text((94,y),t,fontsize=12,fontname='hebo',color=INK); p.insert_text((285,y),b,fontsize=11,fontname='helv',color=MUTED)
-p.insert_text((62,488),'These browser activities use saved Kemp examples; slider changes do not launch simulations.',fontsize=10,fontname='helv',color=MUTED)
+p.insert_textbox(fitz.Rect(62,478,924,496),'Q6 (paper) and OpenMM + EVBOpenMM use different solvent boundaries, long-range electrostatics, Morse energy references, and sampling. This saved profile is not a direct Q6 reproduction.',fontsize=9,fontname='helv',color=MUTED)
 
 # Page 3: real calculation stages
 p=base('From a structure to a free-energy profile','Full calculation workflow')

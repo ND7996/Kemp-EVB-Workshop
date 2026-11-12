@@ -1,4 +1,5 @@
 from pathlib import Path
+import math
 import pymupdf as fitz
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,6 +40,18 @@ def atom(x, y, label, fill, radius=28, size=22):
 def line(a,b,color=INK,width=5,dashes=None):
     p.draw_line(fitz.Point(*a),fitz.Point(*b),color=color,width=width,dashes=dashes)
 
+def atom_bond(a,b,ra,rb,color=INK,width=5):
+    dx,dy=b[0]-a[0],b[1]-a[1]
+    length=math.hypot(dx,dy)
+    ux,uy=dx/length,dy/length
+    line((a[0]+ux*ra,a[1]+uy*ra),(b[0]-ux*rb,b[1]-uy*rb),color,width)
+
+def point_to_atom(point,center,radius,color=INK,width=5):
+    dx,dy=center[0]-point[0],center[1]-point[1]
+    length=math.hypot(dx,dy)
+    ux,uy=dx/length,dy/length
+    line(point,(center[0]-ux*radius,center[1]-uy*radius),color,width)
+
 def hexagon(cx,cy,r, nitro_side='left'):
     pts=[(cx,cy-r),(cx+r*.866,cy-r*.5),(cx+r*.866,cy+r*.5),(cx,cy+r),(cx-r*.866,cy+r*.5),(cx-r*.866,cy-r*.5)]
     for i in range(6): line(pts[i],pts[(i+1)%6],INK,5)
@@ -72,10 +85,10 @@ cx,cy,r=300,385,104
 v=hexagon(cx,cy,r,'left')
 # fused side v1-v2 and the three outer atoms O1-N2-C3
 O=(445,279); N=(535,360); C3=(490,469)
-line(v[1],O,INK,5); line(O,N,RED,7); line(N,C3,INK,5); line(C3,v[2],INK,5)
+point_to_atom(v[1],O,25,INK,5); atom_bond(O,N,25,25,RED,7); atom_bond(N,C3,25,25,INK,5); point_to_atom(v[2],C3,25,INK,5)
 atom(O[0],O[1],'O1',RED,25,20); atom(N[0],N[1],'N2',BLUE,25,20); atom(C3[0],C3[1],'C3',INK,25,20)
 # Acidic C-H bond, highlighted in gold
-Ht=(585,502); line(C3,Ht,GOLD,6); atom(Ht[0],Ht[1],'Ht',GOLD,24,19)
+Ht=(585,502); atom_bond(C3,Ht,25,24,GOLD,6); atom(Ht[0],Ht[1],'Ht',GOLD,24,19)
 text(564,540,'proton',16,GOLD,True)
 # Asp catalytic base
 p.draw_rect(fitz.Rect(84,552,620,610),color=LINE,fill=(0.97,0.98,0.99),width=1.5)
@@ -99,10 +112,14 @@ centered(center_x,580,'C3-N2  becomes nitrile',18,GREEN,True)
 cx,cy,r=1330,385,104
 v=hexagon(cx,cy,r,'left')
 # O1 remains attached to aromatic fusion; N2 now forms a nitrile at C3
-Oprod=(1460,260); line(v[1],Oprod,INK,5); atom(Oprod[0],Oprod[1],'O1',RED,25,20)
+Oprod=(1460,260); point_to_atom(v[1],Oprod,25,INK,5); atom(Oprod[0],Oprod[1],'O1',RED,25,20)
 text(1490,267,'-',22,RED,True)
-Cprod=(1465,474); line(v[2],Cprod,INK,5); atom(Cprod[0],Cprod[1],'C3',INK,25,20)
-Nprod=(1560,474); line((Cprod[0]+24,Cprod[1]),(Nprod[0]-25,Nprod[1]),GREEN,8); line((Cprod[0]+24,Cprod[1]-9),(Nprod[0]-25,Nprod[1]-9),GREEN,3); line((Cprod[0]+24,Cprod[1]+9),(Nprod[0]-25,Nprod[1]+9),GREEN,3); atom(Nprod[0],Nprod[1],'N2',BLUE,25,20)
+Cprod=(1465,474); point_to_atom(v[2],Cprod,25,INK,5); atom(Cprod[0],Cprod[1],'C3',INK,25,20)
+Nprod=(1560,474)
+atom_bond(Cprod,Nprod,25,25,GREEN,8)
+atom_bond((Cprod[0],Cprod[1]-9),(Nprod[0],Nprod[1]-9),20,20,GREEN,3)
+atom_bond((Cprod[0],Cprod[1]+9),(Nprod[0],Nprod[1]+9),20,20,GREEN,3)
+atom(Nprod[0],Nprod[1],'N2',BLUE,25,20)
 # Asp protonated product state
 p.draw_rect(fitz.Rect(1144,552,1680,610),color=LINE,fill=(0.97,0.98,0.99),width=1.5)
 text(1161,578,'Asp162',19,INK,True); text(1161,601,'now protonated',16,MUTED)

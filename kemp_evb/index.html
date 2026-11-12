@@ -27,6 +27,7 @@
   <nav aria-label="Workshop sections">
     <a href="#reaction">The reaction</a>
     <a href="#evb">EVB in plain language</a>
+    <a href="#engines">Q6 and OpenMM</a>
     <a href="#hands-on">Try it</a>
     <a href="#workflow">The calculation stages</a>
     <a href="#profile">Read the plot</a>
@@ -60,14 +61,28 @@
       <p class="small">In the exercises, changing α or H₁₂ changes the calculated profile. The sliders are a way to see what the settings do; they do not fit or validate a physical enzyme model.</p>
     </section>
 
+    <section id="engines">
+      <div class="tag">Same EVB idea, different software</div>
+      <h2>How Q6 and OpenMM differ</h2>
+      <div class="two">
+        <article class="card"><div class="number">The paper</div><h3>Q6</h3><p>The published Kemp EVB simulations used Q6 with OPLS-AA, TIP3P water, a surface-constrained solvent sphere, and a local reaction field.</p></article>
+        <article class="card"><div class="number">This workshop's adaptation</div><h3>OpenMM + EVBOpenMM</h3><p>OpenMM is the molecular-dynamics engine; EVBOpenMM adds EVB forces and analysis. The saved example is a short OpenMM adaptation, not a rerun of the paper's Q6 simulations.</p></article>
+      </div>
+      <p class="plain">The EVB idea is shared, but the solvent boundary, long-range electrostatics, Morse-energy reference convention, and amount of sampling differ. Parameters and profile values therefore cannot be copied or compared as if the two calculations were identical. The workshop's saved OpenMM profile is a learning example, not a direct reproduction of the published Q6 barrier.</p>
+      <figure class="figure">
+        <img src="assets/q_openmm_comparison.png" alt="Published Q6 activation free-energy estimate and short OpenMM adaptation shown as separate measurements with different sampling conditions">
+        <figcaption class="caption">Published Q6 Des27.7-IN estimate: 13.2 ± 0.6 kcal/mol. Short OpenMM adaptation: 9.57 kcal/mol, unvalidated. The two points use different systems and sampling; this is context, not a like-for-like engine benchmark.</figcaption>
+      </figure>
+    </section>
+
     <section id="hands-on">
       <div class="tag">Open the examples in order</div>
       <h2>Try the examples</h2>
       <div class="steps">
-        <article class="step"><div><h3>See how the two states mix <span class="small">· 5 min</span></h3><p>Move the controls and watch the two energy descriptions interact. Notice that changing the offset and changing the coupling do different things.</p><a class="plain-link" href="viewers/evb_core.html">Open the EVB example →</a></div></article>
-        <article class="step"><div><h3>Look at the saved enzyme profile <span class="small">· 5 min</span></h3><p>Find the reactant, the high part of the curve, and the product. This is a short OpenMM example used for learning how to read a profile.</p><a class="plain-link" href="viewers/source_profile.html">Open the profile →</a></div></article>
-        <article class="step"><div><h3>Try different settings <span class="small">· 15 min</span></h3><p>Compare settings that give similar peak heights. Do they also give the same product-versus-reactant energy? The exercise shows why one barrier alone cannot choose all EVB parameters.</p><a class="plain-link" href="viewers/parameter_scan.html">Open the settings comparison →</a></div></article>
-        <article class="step"><div><h3>Explain what the plot means <span class="small">· 5 min</span></h3><p>Use the guide below. Then explain in your own words what α, H₁₂, and the profile tell you.</p><a class="plain-link" href="#profile">Read the plot guide →</a></div></article>
+        <article class="step"><div><h3>See how the two states mix</h3><p>Move the controls and watch the two energy descriptions interact. Notice that changing the offset and changing the coupling do different things.</p><a class="plain-link" href="viewers/evb_core.html">Open the EVB example →</a></div></article>
+        <article class="step"><div><h3>Look at the saved enzyme profile</h3><p>Find the reactant, the high part of the curve, and the product. This is a short OpenMM example used for learning how to read a profile.</p><a class="plain-link" href="viewers/source_profile.html">Open the profile →</a></div></article>
+        <article class="step"><div><h3>Try different settings</h3><p>Compare settings that give similar peak heights. Do they also give the same product-versus-reactant energy? The exercise shows why one barrier alone cannot choose all EVB parameters.</p><a class="plain-link" href="viewers/parameter_scan.html">Open the settings comparison →</a></div></article>
+        <article class="step"><div><h3>Explain what the plot means</h3><p>Use the guide below. Then explain in your own words what α, H₁₂, and the profile tell you.</p><a class="plain-link" href="#profile">Read the plot guide →</a></div></article>
       </div>
     </section>
 
