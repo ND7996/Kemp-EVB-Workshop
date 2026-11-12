@@ -1,7 +1,7 @@
 # Kemp EVB Workshop
 
-Browse the [public Kemp-EVB-Workshop repository](https://github.com/ND7996/Kemp-EVB-Workshop) for the workshop files. The website is intended to be available at [nd7996.github.io/Kemp-EVB-Workshop](https://nd7996.github.io/Kemp-EVB-Workshop/) after Pages is enabled.
+The workshop files are in [`kemp_evb/`](kemp_evb/). To use the workshop offline, open [`kemp_evb/index.html`](kemp_evb/index.html) in a browser.
 
-The complete workshop source and supporting files are in [`kemp_evb/`](kemp_evb/). To use it offline, open [`kemp_evb/index.html`](kemp_evb/index.html) in a browser and keep the folder structure intact so figures and interactive exercises load.
+**Public webpage:** [nd7996.github.io/Kemp-EVB-Workshop](https://nd7996.github.io/Kemp-EVB-Workshop/) — not published yet.
 
-GitHub Pages publishes only `kemp_evb/` as the website. For the first deployment, open the repository **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. Then check the [deployment workflow](.github/workflows/deploy-pages.yml) and wait for it to succeed before sharing the website URL.
+To publish it, open this repository’s **Settings → Pages** and select **GitHub Actions** as the source. The workflow then publishes the workshop page.
