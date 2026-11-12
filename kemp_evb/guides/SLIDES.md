@@ -1,6 +1,6 @@
 # Slide notes for the hands-on
 
-The session takes about 30 minutes. Keep the workshop page open so participants can open each saved viewer. No package installation or simulation run is needed.
+The session takes about 30 minutes. Keep the workshop page open so participants can open each saved Kemp viewer. No package installation or simulation run is needed.
 
 ## 1. Welcome
 
@@ -18,18 +18,22 @@ Explain that the reactant and product states describe the same atoms with differ
 
 The energy offset α shifts the product description relative to the reactant. H₁₂ controls how strongly the two descriptions mix. Neither setting is the reaction barrier. Keep the explanation at this level unless the group asks for the equation.
 
-## 5. Try the core example
+## 5. The full calculation sequence
+
+Explain that a live Kemp calculation has three jobs: prepare matching R and P states, relax each endpoint, then sample λ windows and analyze the FEP profile. The workshop describes these stages but does not include the live run scripts.
+
+## 6. Try the core example
 
 Ask participants to change one control at a time. Have them say what changed in the curve. The small example introduces the controls; it is not the full enzyme free-energy calculation.
 
-## 6. Read a profile
+## 7. Read a profile
 
 The horizontal energy-gap axis is not a distance or time. The vertical axis is free energy relative to the reactant. The peak estimates a barrier; the product level gives the reaction free energy. A binned maximum is not itself a transition-state structure.
 
-## 7. Compare settings
+## 8. Compare settings
 
 Invite participants to find two parameter pairs with similar peak heights, then compare their product energies. The point is that one barrier does not determine all model parameters.
 
-## 8. Close
+## 9. Close
 
 Repeat the take-home: EVB connects reactant and product bonding descriptions. Real predictions also need suitable reference data and adequate sampling. The short OpenMM example is a teaching result, not a reproduction of the paper’s Q6 calculation.

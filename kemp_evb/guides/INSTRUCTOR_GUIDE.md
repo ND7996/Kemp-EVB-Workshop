@@ -26,4 +26,4 @@ Open `index.html` and `presentation.html`. Check that the three links to the sav
 
 ## If someone wants to run calculations
 
-The session uses saved browser examples. Optional live calculations need the separate setup in [`SETUP.md`](SETUP.md); they are not part of the timed hands-on.
+The session uses saved browser examples. The added workflow slide explains the three stages of a full Kemp calculation: prepare matching R/P states, relax both endpoints, then sample and analyze the FEP profile. Those stages are not run during the hands-on, and the live R/P and FEP scripts are not included in this workshop package. See [`SETUP.md`](SETUP.md) for the current scope and dependencies.

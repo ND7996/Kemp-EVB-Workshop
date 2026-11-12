@@ -1,11 +1,6 @@
-# Participant worksheet —30 minutes
+# Participant worksheet — 30 minutes
 
-Start in `workshop/kemp_evb`. Complete SETUP.md beforehand if you will recompute. Otherwise use the corresponding links in index.html; the same concepts and recorded results are available offline.
-
-```bash
-conda activate kemp-openmm
-python run_practical.py --check
-```
+Open `index.html` in a browser and follow the links below. The saved examples work offline; this 30-minute activity does not need a terminal or package installation.
 
 ## 0–5 min: define the reaction and states
 
@@ -15,25 +10,17 @@ Asp162 abstracts the substrate proton. The CH–HT and OR–NR bonds break, Asp 
 
 **Write down:** Which bond forms? What is a diabatic state? Why must total charge be consistent between states?
 
-## 5–10 min: evaluate the EVB teaching core
+## 5–10 min: explore the EVB teaching core
 
-```bash
-python run_practical.py --step core
-```
-
-Browser-only route: open **EVB fundamentals** on index.html. Move the coupling and extra-offset sliders. Observe the avoided crossing and state mixing. The live command evaluates OpenMM energies; moving a saved-viewer slider is algebraic post-processing.
+Open **EVB fundamentals** on index.html. Move the coupling and extra-offset sliders. Observe the avoided crossing and state mixing. The sliders update a saved teaching example; they do not launch molecular dynamics.
 
 **Write down:** How do coupling and offset differ? Is this geometric five-atom potential curve an enzyme activation free energy?
 
-## 10–15 min: source parameters and the full-enzyme comparison
+## 10–15 min: source parameters and the saved Kemp profile
 
 Read `data/qfep_reference.inp`, then:
 
-```bash
-python run_practical.py --step profile
-```
-
-Browser-only route: open **Archived-parameter comparison** on index.html.
+Open **Archived-parameter comparison** on index.html.
 
 The archived input gives H12=100.4 and native alpha −110 kcal/mol. Q6 uses negative-minimum Morse wells; the zero-minimum EVBOpenMM convention requires+44.5 on P, giving total P offset−65.5. This is bookkeeping, not the activation barrier. The short dataset yields about 9.57 kcal/mol at 18 coarse bins. The paper's Des27.7-IN mean is13.2±0.6 kcal/mol (replica SD), from different boundary/sampling conditions.
 
@@ -41,11 +28,7 @@ The archived input gives H12=100.4 and native alpha −110 kcal/mol. Q6 uses neg
 
 ## 15–25 min: compare parameter combinations
 
-```bash
-python run_practical.py --step scan
-```
-
-Browser-only route: open **Workshop combinations** on index.html.
+Open **Workshop combinations** on index.html.
 
 Use the dropdown/table to compare25 grid pairs and five refined examples matching the chosen13.2 target. Find two different H12/alpha pairs with the same forward barrier. Record their reaction free energies. One selected example holds alpha −110 and uses H12 ≈88.72; it is a target match, not an independent prediction.
 
@@ -65,4 +48,4 @@ Toggle **Centre selected profile maximum at x = 0 (display only)**. Both curves 
 
 A screenshot of two matching parameter examples, their reaction free energies, and one sentence explaining why they are workshop target matches rather than validated predictions. Add a sentence identifying the grey curve and explaining the display-only centring operation.
 
-Outputs are saved under `outputs/`. The bundled input data are unchanged. Full-enzyme dynamics, longer production and independent physical validation are outside this30-minute exercise.
+This worksheet analyzes the bundled saved Kemp data. It does not prepare R/P systems, relax endpoints, or run λ-window FEP. Those three stages are described in [`SETUP.md`](SETUP.md) and the website's calculation workflow section.

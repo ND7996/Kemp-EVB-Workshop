@@ -28,6 +28,7 @@
     <a href="#reaction">The reaction</a>
     <a href="#evb">EVB in plain language</a>
     <a href="#hands-on">Try it</a>
+    <a href="#workflow">The calculation stages</a>
     <a href="#profile">Read the plot</a>
   </nav>
 
@@ -68,6 +69,18 @@
         <article class="step"><div><h3>Try different settings <span class="small">· 15 min</span></h3><p>Compare settings that give similar peak heights. Do they also give the same product-versus-reactant energy? The exercise shows why one barrier alone cannot choose all EVB parameters.</p><a class="plain-link" href="viewers/parameter_scan.html">Open the settings comparison →</a></div></article>
         <article class="step"><div><h3>Explain what the plot means <span class="small">· 5 min</span></h3><p>Use the guide below. Then explain in your own words what α, H₁₂, and the profile tell you.</p><a class="plain-link" href="#profile">Read the plot guide →</a></div></article>
       </div>
+    </section>
+
+    <section id="workflow">
+      <div class="tag">For a full Kemp calculation</div>
+      <h2>Prepare → relax → sample the profile</h2>
+      <p class="plain">The browser activities use saved examples. A full calculation has three separate stages. Each stage checks something different before you move on.</p>
+      <div class="three">
+        <article class="card"><div class="number">1 · Prepare</div><h3>Build matching R and P states</h3><p>Start from the Kemp enzyme and substrate. Make reactant and product descriptions with the same atoms and atom order. Assign each state's bonds, charges, force-field terms, and EVB settings; check the mapping, total charge, proton position, solvent, and ions.</p></article>
+        <article class="card"><div class="number">2 · Relax</div><h3>Settle each endpoint</h3><p>Minimize and equilibrate R and P separately. Check for clashes and unstable geometry, then confirm the energy and temperature behave sensibly. This prepares the endpoints; it does not calculate the reaction barrier.</p></article>
+        <article class="card"><div class="number">3 · FEP/profile</div><h3>Sample across lambda windows</h3><p>Map between the R and P energy descriptions through lambda windows. Sample every window, check overlap and convergence, and compare independent replicas. Analyze the energies to estimate the profile, activation barrier, and reaction free energy.</p></article>
+      </div>
+      <p class="small">The files in this workshop include a saved short Kemp dataset for learning the analysis. They do not include the complete live R/P preparation, endpoint-relaxation, and FEP run scripts. The viewers therefore do not launch those three simulation stages.</p>
     </section>
 
     <section id="profile">

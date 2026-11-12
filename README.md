@@ -1,7 +1,5 @@
 # Kemp EVB workshop
 
-This is a 30-minute hands-on introduction to EVB. No installation is needed for the saved examples.
+This public repository contains a short hands-on about the Kemp reaction. Start at the [workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/) or open [`kemp_evb/index.html`](kemp_evb/index.html) locally. The saved browser activities need no installation.
 
-Open the [workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/) or, for offline use, open [`kemp_evb/index.html`](kemp_evb/index.html). The slides are in [`kemp_evb/presentation.html`](kemp_evb/presentation.html).
-
-For optional live calculations, use [`kemp_evb/guides/SETUP.md`](kemp_evb/guides/SETUP.md).
+The workshop explains the full Kemp calculation sequence: prepare matched reactant and product states, relax each endpoint, then sample and analyze the FEP profile. The saved activities teach EVB concepts and profile reading; they are not live runs of that full sequence.

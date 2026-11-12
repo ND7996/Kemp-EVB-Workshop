@@ -63,7 +63,7 @@ def begin(c, number, kicker, title):
     c.setFont(FONT, 10)
     c.setFillColor(MUTED)
     c.drawString(68, 35, "Kemp EVB workshop · 30-minute hands-on")
-    c.drawRightString(PAGE_W - 68, 35, f"{number} / 8")
+    c.drawRightString(PAGE_W - 68, 35, f"{number} / 9")
     return y - 18
 
 
@@ -129,8 +129,18 @@ def build():
     para(c, "Neither α nor H12 is the reaction barrier. Both affect the profile, so real calculations need evidence to choose them.", 68, 127, PAGE_W - 136, SMALL)
     c.showPage()
 
-    # 5: Core example
-    y = begin(c, 5, "4 · Your turn", "Try changing the settings")
+    # 5: Full calculation workflow
+    y = begin(c, 5, "4 · A full Kemp calculation", "Prepare, relax, then sample")
+    gap, box_y, box_h = 14, 151, 240
+    box_w = (PAGE_W - 136 - 2 * gap) / 3
+    card(c, 68, box_y, box_w, box_h, "Prepare", "Build R and P", "Use the same atoms and atom order. Assign bonds, charges, force-field terms, and EVB settings. Check mapping, total charge, proton position, solvent, and ions.")
+    card(c, 68 + box_w + gap, box_y, box_w, box_h, "Relax", "Settle both endpoints", "Minimize and equilibrate R and P separately. Check geometry and stability. This prepares the states; it does not calculate the barrier.")
+    card(c, 68 + 2 * (box_w + gap), box_y, box_w, box_h, "FEP/profile", "Sample lambda windows", "Sample the path between R and P. Check window overlap and convergence, compare replicas, then analyze the profile, barrier, and reaction free energy.")
+    para(c, "This workshop includes saved Kemp data for learning the analysis, not the full live scripts for these three simulation stages.", 68, 125, PAGE_W - 136, SMALL)
+    c.showPage()
+
+    # 6: Core example
+    y = begin(c, 6, "5 · Your turn", "Try changing the settings")
     para(c, "Open the small EVB example. Move one control at a time. Watch how the curve changes when you change the energy offset, then when you change the coupling.", 68, y, 780, LEAD)
     c.setFillColor(ACCENT)
     c.roundRect(68, 214, 310, 52, 6, fill=1, stroke=0)
@@ -141,8 +151,8 @@ def build():
     para(c, "Take about 5 minutes. The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
     c.showPage()
 
-    # 6: Read profile
-    y = begin(c, 6, "5 · Read a profile", "What do the axes show?")
+    # 7: Read profile
+    y = begin(c, 7, "6 · Read a profile", "What do the axes show?")
     box_y, box_h, gap = 175, 175, 20
     box_w = (PAGE_W - 136 - gap) / 2
     card(c, 68, box_y, box_w, box_h, "Across", "Energy gap", "Compares the reactant- and product-state energies. It is not distance or time.")
@@ -150,8 +160,8 @@ def build():
     para(c, "A peak in a binned profile is not, by itself, a picture of the molecular transition state.", 68, 145, PAGE_W - 136, BODY)
     c.showPage()
 
-    # 7: Parameter scan
-    y = begin(c, 7, "6 · Compare settings", "One barrier does not choose one model")
+    # 8: Parameter scan
+    y = begin(c, 8, "7 · Compare settings", "One barrier does not choose one model")
     para(c, "Try the parameter comparison. Different offset/coupling pairs can give similar peak heights while giving different product-versus-reactant energies.", 68, y, 780, LEAD)
     c.setFillColor(ACCENT)
     c.roundRect(68, 214, 340, 52, 6, fill=1, stroke=0)
@@ -162,8 +172,8 @@ def build():
     para(c, "These are teaching examples made from saved data. Matching a target is not a parameter fit or a validated prediction.", 68, 184, 740, SMALL)
     c.showPage()
 
-    # 8: Take-home
-    y = begin(c, 8, "End · The point of the exercise", "What should you take away?")
+    # 9: Take-home
+    y = begin(c, 9, "8 · The point of the exercise", "What should you take away?")
     items = [
         "EVB connects reactant and product bonding descriptions.",
         "The offset and coupling shape the profile in different ways.",
