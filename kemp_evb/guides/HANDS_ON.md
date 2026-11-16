@@ -59,3 +59,11 @@ This worksheet analyzes the bundled saved Kemp data. It does not prepare R/P sys
 Open `viewers/native_q6_short.html` for the actual seed101 shortened result:9.82kcal/mol versus paper13.2±0.6(replicaSD). Inspect `data/native_q6_short/qfep.out` Part3 and identify the Rminimum, intervening maximum and Pminimum. Grey is the paper height; blue here is native Q6. Blue in the parameter-scan page is explicitly OpenMM. These are separate computations.
 
 To run Q6, follow the linked scientific repository's `Kemp_EVB/docs/NATIVE_Q6_REPRODUCTION.md`: it contains compiler/install, short51-window, QFEP and full30-replica commands. The website itself requires only a browser. Discuss why one replica cannot provide between-replica uncertainty, why SD differs from SEM, and why increasing samples cannot fix a changed Hamiltonian.
+
+## Two-replica SD/SEM exercise (last 5 minutes)
+
+Open `viewers/native_q6_replicas.html`. The native barriers are 9.82 and 8.10 kcal/mol. Calculate mean 8.96, sample SD 1.216, SEM 0.860. Use denominator n−1 for SD, then divide by √n for SEM. Do not use the OpenMM value as the second Q6 replica.
+
+The paper's ±0.6 is SD across 30 replicas. Why can our two-replica SEM be small while the mean differs from the paper? Identify shared short-run bias, uncertain variance at n=2, binning and reconstruction/model limitations. Explain what longer simulations and more independently seeded replicas can test, and what they cannot guarantee.
+
+Suggested 30-minute plan: 0–5 mechanism/atoms; 5–10 EVB matrix; 10–15 native profile; 15–20 OpenMM comparison; 20–25 parameter/coordinate controls; 25–30 replica SD/SEM. Installation and fresh dynamics are pre-work.

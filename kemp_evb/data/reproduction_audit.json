@@ -10,17 +10,25 @@
     "status": "Reported by authors; not recomputed here."
   },
   "local_native_Q6": {
-    "energy_files": "51 newly generated native .en files; hashes in native_q6_short/execution_audit.json; originals not recovered",
+    "energy_files": "102 newly generated native .en files across two shortened replicas; per-replica hashes are retained in native_q6_short/execution_audit.json and native_q6_short_202/execution_audit.json. Original author trajectories were not recovered.",
     "qfep_executable": "Qfep6 built at recorded Q6 revision",
-    "qdyn_executable": "Qdyn6; all65 shortened stages terminated normally",
+    "qdyn_executable": "Qdyn6 at the recorded revision;65stages completed normally per replica,130total.",
     "original_energy_trajectories_available": false,
     "reconstruction_performed": true,
     "full_protocol_reproduced": false,
-    "shortened_replica_count_completed": 1,
-    "conditional_barrier_kcal_mol": 9.82,
+    "shortened_replica_count_completed": 2,
     "production_ps": 10.2,
     "windows": 51,
-    "native_QFEP_output": "native_q6_short/qfep.out"
+    "native_QFEP_output": "native_q6_short/qfep.out",
+    "conditional_replica_barriers_kcal_mol": [
+      9.82,
+      8.1
+    ],
+    "mean_barrier_kcal_mol": 8.96,
+    "sample_sd_kcal_mol": 1.216223663640862,
+    "sem_kcal_mol": 0.8600000000000002,
+    "native_replica_statistics": "native_q6_replicas/replica_statistics.json",
+    "convergence_established": false
   },
   "related_GNCA_analysis_input": {
     "dataset_doi": "10.5281/zenodo.12666978",

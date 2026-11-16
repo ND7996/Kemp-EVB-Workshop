@@ -18,9 +18,9 @@ The full calculation has three stages. The stage order matters because each stag
 
 Begin with the Kemp enzyme and substrate structure. Build a reactant (R) and a product (P) state with the same atoms in the same order. Assign the state-specific bond and charge descriptions, force-field terms, and EVB parameters. Check the atom map, total charge, proton placement, residue identities, solvent and ions. Save the structure and parameter sources so both endpoints can be reproduced. Do not proceed until R and P load correctly and their mapping is verified.
 
-### 2. Relax the endpoints
+### 2. Relax, heat and equilibrate the starting mapping state
 
-Minimize and equilibrate R and P separately, using the same environment and a documented restraint schedule. Check for clashes, distorted geometry, unstable energies, and sensible temperature and density. Relaxation prepares the endpoint structures; it does not calculate the reaction barrier.
+Follow the documented engine protocol. Native Q6 uses restrained low-temperature dynamics, heating and equilibration before sequential mapping windows. Our EVBOpenMM driver minimizes the reactant mapping state, heats and equilibrates it, then advances through the windows. These short examples do not independently equilibrate both endpoints. Check contacts, geometry, energies and temperature. Relaxation does not calculate the barrier; changing the preparation protocol requires documenting and validating that change.
 
 ### 3. Run FEP and analyze the profile
 
@@ -32,7 +32,7 @@ The downloaded materials contain the Kemp reaction mapping, saved short-run data
 
 ## Dependencies for later live calculations
 
-When the Kemp run scripts and inputs are added, the calculation environment will need Python, NumPy, OpenMM, and a compatible EVBOpenMM checkout. A CPU is sufficient for small checks; longer enzyme sampling may use a supported GPU. The current repository does not provide a pinned Conda environment or working live-run commands, so do not treat the saved-data exercises as a substitute for those inputs.
+The linked scientific repository already supplies runnable scripts, inputs and `Kemp_EVB/environment.yml` for the EVBOpenMM adaptation. It needs Python, NumPy, OpenMM and the documented compatible EVBOpenMM checkout. Native Q6 instead needs the pinned Q6 source build, GNU Fortran, make and its deposited topology/FEP inputs. See the backend README for installation and exact run commands. The standalone browser repository intentionally does not duplicate those engines.
 
 Q6, AmberTools, Rosetta, LAMMPS, SciPy, and Matplotlib are not needed to open or complete this browser hands-on.
 
@@ -43,3 +43,7 @@ Rebuilding the reaction figure, participant handout, or slide PDF requires PyMuP
 ## Scientific backend and native Q6 reconstruction
 
 The full scripts are maintained separately in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). Native execution and recovered-template provenance are documented in [NATIVE_Q6_REPRODUCTION.md](https://github.com/ND7996/EVB_MHETase/blob/main/Kemp_EVB/docs/NATIVE_Q6_REPRODUCTION.md). This standalone repository remains a saved-data/browser workshop; its Python launcher opens existing viewers and does not execute those simulations.
+
+## Replica exercise
+
+Fresh shortened Q6 replicas can require about an hour or more each on CPU. Run them before the workshop; use the saved native outputs and replica statistics in the practical. The two-replica runner in the scientific repository handles Qdyn, QFEP and SD/SEM automatically. SD measures between-run spread; SEM = SD/√n estimates mean precision under independence assumptions. With n=2 it is very uncertain and omits common startup/model/binning bias. The published ±0.6 is SD over30replicas, not SEM.

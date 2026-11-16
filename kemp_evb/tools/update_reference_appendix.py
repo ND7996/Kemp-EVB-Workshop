@@ -27,7 +27,7 @@ SLIDES=[
  ],'EVBOpenMM source: Martin-Floor/EVBOpenMM, revision dedf301eb9b0021a4be200327cea53f5b7f034c6'),
  ('What has actually been reproduced?',[
   'Reported Q6 Des27.7-IN:13.2 +/-0.6 kcal/mol. Recomputed short OpenMM estimate:9.572629 kcal/mol; difference=-3.627371.',
-  'Native Qdyn6/Qfep6 completed a shortened51-window replica: conditional barrier9.82kcal/mol, reactionDG=-37.46. A second seeded replica is running.',
+  'Two shortened native Q6/QFEP replicas: 9.82 and 8.10; mean=8.96, SD=1.216, SEM=0.860 kcal/mol (n=2).',
   'All65 shortened native stages completed normally; recovered/sibling templates are documented. Full-duration production and the30-replica result remain incomplete.',
   'Full-enzyme EVBOpenMM finite-energy/force checks passed. Saved-data repeatability does not establish convergence or parameter transfer.'
  ],'Evidence: data/reproduction_audit.json; full native instructions in EVB_MHETase/Kemp_EVB/docs'),

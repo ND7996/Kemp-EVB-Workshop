@@ -1,0 +1,46 @@
+{
+  "engine": "Native Qdyn6/Qfep6",
+  "case": "Des27.7-IN reconstructed shortened protocol",
+  "analysis_settings": {
+    "windows": 51,
+    "skip_records": 20,
+    "bins": 18,
+    "minimum_per_window_bin": 5,
+    "kT_kcal_mol": 0.596,
+    "native_alpha_kcal_mol": -110.0,
+    "coupling_kcal_mol": 100.4
+  },
+  "sampling_protocol_sha256": "5ea218beff0accd0db73f477a9d5cee574844671a2ad7eb9730e40b7e0959bfb",
+  "replica_seeds": [
+    101,
+    202
+  ],
+  "barriers_kcal_mol": [
+    9.82,
+    8.1
+  ],
+  "n": 2,
+  "mean_barrier_kcal_mol": 8.96,
+  "sample_sd_kcal_mol": 1.216223663640862,
+  "sem_kcal_mol": 0.8600000000000002,
+  "formula": "sample SD uses n\u22121; SEM = sample SD / sqrt(n)",
+  "paper_mean_kcal_mol": 13.2,
+  "paper_replica_sd_kcal_mol": 0.6,
+  "paper_n": 30,
+  "derived_paper_sem_kcal_mol": 0.10954451150103321,
+  "mean_difference_from_paper_kcal_mol": -4.239999999999998,
+  "convergence_established": false,
+  "full_paper_reproduction": false,
+  "interpretation": "SEM measures estimated precision of this shortened-protocol mean, not accuracy versus the paper. n counts complete independently seeded calculations, not lambda windows or saved frames. With only two replicas it is highly uncertain; shared starting-state/model bias is not captured. Zero spread of rounded barriers would not imply zero physical uncertainty. Published \u00b10.6 is SD, not SEM. A \u00b1SEM error bar is not a 95% confidence interval.",
+  "shortened_workshop_protocol": true,
+  "source_summaries": [
+    {
+      "name": "Kemp_EVB/demo_results/native_q6_short/summary.json",
+      "sha256": "d5b3317d07b26a73f91d591a5cf8c42c1afe41153a08a54893fd618f20fcd7ab"
+    },
+    {
+      "name": "/workspace/EVB_MHETase/Kemp_EVB/demo_results/native_q6_short_202/summary.json",
+      "sha256": "7f3ffb347eaeec6839cee99ef9b69cda1a81ab017e7156055e974968ff577111"
+    }
+  ]
+}
