@@ -13,13 +13,13 @@ tr{cursor:pointer}tr:hover{background:#eef5ff}.warning{background:#fff0d6;paddin
 Curves reuse the saved energies. Matching one barrier does not identify both parameters or establish convergence. Reaction free energies are shown too.</p>
 <label>Candidate: <select id="choice"></select></label>
 <div class="controls">
-<label><input id="archive" type="checkbox" checked><span id="baseline-label">Show grey archived baseline</span></label>
+<label><input id="archive" type="checkbox" checked><span id="baseline-label">Show grey OpenMM baseline (not paper Q6)</span></label>
 <label><input id="center-ts" type="checkbox">Centre selected profile maximum at x = 0 (display only)</label>
 </div>
 <p id="stats"></p>
 <p id="ts-status" aria-live="polite"></p>
 <svg id="plot" viewBox="0 0 1100 620" role="img" aria-label="Workshop profile comparison with legend and estimated maximum"></svg>
-<p><b>Reading the plot:</b> grey dashed = archived-parameter baseline; blue = selected example; red dashed = chosen barrier target.
+<p><b>Reading the plot:</b> grey dashed = archived parameters on our OpenMM samples (<strong>not the published Q6 curve</strong>); blue = selected example; red dashed = chosen barrier target.
 Both curves reuse the same saved OpenMM energies; their coupling/offset parameters differ. The marked profile maximum is a <b>binned TS estimate</b>, not a validated molecular transition state.
 Raw gap zero means equal unshifted state energies; offset-corrected gap zero means equal offset-corrected state energies.
 Neither equality guarantees a free-energy maximum. The peak need not lie at zero on either physical coordinate.</p>
@@ -35,7 +35,7 @@ it does not move atoms, fit energies, change barriers or prove that a molecular 
 const d=JSON.parse(document.getElementById('data').textContent),candidates=d.displayed_candidates;
 const $=id=>document.getElementById(id),num=(v,n=4)=>v===null||v===undefined?'unresolved':Number(v).toFixed(n);
 const sorted=[...candidates].sort((a,b)=>(a.target_error_kcal_mol??Infinity)-(b.target_error_kcal_mol??Infinity));
-$('baseline-label').textContent=`Show grey dashed baseline (archived H12=${num(d.baseline.coupling_kcal_mol,1)}, α=${num(d.baseline.native_alpha_kcal_mol,1)})`;
+$('baseline-label').textContent=`Grey: OpenMM samples, not Q6 (archived H12=${num(d.baseline.coupling_kcal_mol,1)}, α=${num(d.baseline.native_alpha_kcal_mol,1)})`;
 for(const r of sorted){
  const o=document.createElement('option');o.value=r.id;
  o.textContent=`${r.kind}: H12=${num(r.coupling_kcal_mol)}, α=${num(r.native_alpha_kcal_mol)}, barrier=${num(r.barrier_kcal_mol)}`;
@@ -73,6 +73,7 @@ function draw(){
  s+=`<path d="M605 55H640" stroke="#1769aa" stroke-width="2"/><text id="legend-selected" x="650" y="60" font-size="13">Blue: selected H12=${num(selected.coupling_kcal_mol,2)}, α=${num(selected.native_alpha_kcal_mol,1)}</text>`;
  s+='<path d="M104 72L110 78L104 84L98 78Z" fill="#1769aa"/><text x="140" y="83" font-size="13">Diamond: selected binned profile maximum (TS estimate)</text>';
  s+=`<path d="M605 78H640" stroke="#b44" stroke-dasharray="5 5"/><text x="650" y="83" font-size="13">Red dashed: chosen target=${num(d.target_barrier_kcal_mol,2)}</text>`;
+ s+='<text x="140" y="104" font-size="13">Grey uses our OpenMM samples; it is not the authors’ Q6 profile.</text>';
  s+='<path d="M90 115V485H1040" fill="none" stroke="#345"/>';
  const ticks=[],yticks=[];
  for(let i=0;i<6;i++){

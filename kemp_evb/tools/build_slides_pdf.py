@@ -201,6 +201,8 @@ def build():
     c.save()
     from add_slide_notes import patch as add_slide_notes
     add_slide_notes(OUTPUT)
+    from update_reference_appendix import refresh
+    refresh()
     print(OUTPUT)
 
 

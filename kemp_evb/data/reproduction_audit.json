@@ -1,0 +1,393 @@
+{
+  "schema": "kemp_reproduction_audit_v1",
+  "published_source": {
+    "article_doi": "10.1038/s41586-025-09136-2",
+    "archive_doi": "10.5281/zenodo.14563437",
+    "table": "Supplementary Table 3",
+    "case": "Des27.7-IN",
+    "barrier_kcal_mol": 13.2,
+    "replica_sd_kcal_mol": 0.6,
+    "status": "Reported by authors; not recomputed here."
+  },
+  "local_native_Q6": {
+    "energy_files": [],
+    "qfep_executable": "Qfep6 built at recorded Q6 revision",
+    "qdyn_executable": "Qdyn6 built and first-stage check executed",
+    "original_energy_trajectories_available": false,
+    "reconstruction_performed": false
+  },
+  "related_GNCA_analysis_input": {
+    "dataset_doi": "10.5281/zenodo.12666978",
+    "sha256": "14cdc987bc9aacedee0a959529f0210c34f4e1518ae4dade755d1d7b0299d601",
+    "coupling_kcal_mol": 100.4,
+    "native_alpha_kcal_mol": -110.0,
+    "native_windows": 51,
+    "skip_records_per_window": 4000,
+    "minimum_points_per_window_bin": 1000,
+    "provenance": "Related GNCA protocol; not a native Des27 QFEP output."
+  },
+  "saved_OpenMM_comparison": {
+    "raw_sha256": "99946c99cd0d8769044d70a611146f4a5438001e728cbd0e4e05a833401978a1",
+    "windows": 21,
+    "samples": 1050,
+    "samples_per_window": [
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50
+    ],
+    "conditional_barrier_kcal_mol": 9.572629012215984,
+    "minus_published_Q6_kcal_mol": -3.6273709877840155,
+    "bins": 18,
+    "minimum_points_per_window_bin": 20,
+    "independent_replica_uncertainty_available": false,
+    "native_QFEP_parity_established": false,
+    "calibrated": false,
+    "convergence_established": false,
+    "postprocessing_rerun_completed": true
+  },
+  "why_exact_reconstruction_is_not_currently_available": [
+    "No original Des27 native binary .en files or replica QFEP outputs have been supplied.",
+    "The published archive contains incomplete/placeholder run templates; omitted stages cannot be silently guessed.",
+    "The recovered QFEP settings come from the related GNCA archive; exact Des27 analysis provenance must be confirmed.",
+    "Current OpenMM droplet/direct electrostatics does not implement the native Q6 SCAAS/LRF Hamiltonian.",
+    "Single short OpenMM sampling and coarser analysis cannot reproduce the published replica distribution."
+  ],
+  "can_OpenMM_do_EVB": true,
+  "what_is_needed_next": [
+    "Recover native Des27 energy trajectories and QFEP outputs, or complete executable native run scripts with seeds/restarts and exact analysis input.",
+    "Reanalyse each native replica using the authors Q6 version and settings; compare profiles and the 30-replica mean/SD.",
+    "Compare R/P energies and forces on identical configurations after unit, LJ, exclusion and Morse-origin checks.",
+    "Implement and validate equivalent SCAAS/LRF/thermostat/restraint treatment, or explicitly retain an independently calibrated changed model.",
+    "Run matched-window, adequately equilibrated independent OpenMM replicas and assess uncertainty/convergence without fitting to the enzyme target."
+  ],
+  "published_archive_inspection": {
+    "filename": "kemp_source_EVB_Simulations.zip",
+    "sha256": "29928b957ae68317cdc7c0d7a21f5e3fb676b3ad1d3070229f15dcf0a5e48665",
+    "matches_supplied_archive_sha256": true,
+    "files": 89,
+    "empty_members": [
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_064.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_058.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_074.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_100.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_012.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_000.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_028.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_002.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_016.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_032.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_024.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_030.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_008.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_034.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_050.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_084.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_056.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_094.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_040.inp",
+      "EVB_Simulations/2_Q6_simulation/2_Q6_EVB/fep_054.inp",
+      "EVB_Simulations/2_Q6_simulation/1_Q6_equilibration/11.dyn_eq300k_3.inp",
+      "EVB_Simulations/2_Q6_simulation/1_Q6_equilibration/14.dyn_eq300k_6.inp",
+      "EVB_Simulations/2_Q6_simulation/1_Q6_equilibration/13.dyn_eq300k_5.inp",
+      "EVB_Simulations/2_Q6_simulation/1_Q6_equilibration/9.dyn_eq300k_1.inp",
+      "EVB_Simulations/2_Q6_simulation/1_Q6_equilibration/1.dyn_min_wat_noshake.inp"
+    ],
+    "native_energy_members": [],
+    "qfep_named_members": []
+  },
+  "zenodo_record_inspection": {
+    "record_id": 14563437,
+    "doi": "10.5281/zenodo.14563437",
+    "files": [
+      {
+        "name": "README.txt",
+        "bytes": 1605,
+        "checksum": "md5:48d6ca0c58acfeedd274b33b478ff383",
+        "download": "https://zenodo.org/api/records/14563437/files/README.txt/content"
+      },
+      {
+        "name": "EVB_Simulations.zip",
+        "bytes": 1691281,
+        "checksum": "md5:2373b531726a7662129c8e9759079bc9",
+        "download": "https://zenodo.org/api/records/14563437/files/EVB_Simulations.zip/content"
+      },
+      {
+        "name": "Classical_MD_Simulations.zip",
+        "bytes": 268373,
+        "checksum": "md5:c5174305d03b7be685cd9e6fefce4a35",
+        "download": "https://zenodo.org/api/records/14563437/files/Classical_MD_Simulations.zip/content"
+      }
+    ]
+  },
+  "native_Q6_execution_attempt": {
+    "Q6_revision": "f04f99ed0722be0611f22dd963263bcc5bc78290",
+    "build": "Qdyn6 and Qfep6 built with GNU Fortran14.2.0",
+    "first_stage_source": "Related GNCA first-stage template, adapted to Des27 and shortened to50steps",
+    "steps": 50,
+    "timestep_fs": 0.1,
+    "total_time_fs": 5,
+    "normal_termination": true,
+    "physical_barrier_available": false,
+    "production_completed": false,
+    "warnings": "Hot-atom warnings during initial relaxation; not equilibrated.",
+    "measured_main_loop_seconds": 43.6,
+    "required_published_sampling_per_replica_ns": 40.2,
+    "exact_missing_Nature_templates_recovered": false,
+    "full_reconstructed_stage_count": 65,
+    "initial_input_sha256": "7b01dd65e4649a30ac01efd423c0eca7c6459db3fe90a9fd11ab53c7daaad540",
+    "log_sha256": "a8dadd775273617b0955d8725a47e607292ae1def187f34f3b6d65786cf17884"
+  },
+  "OpenMM_execution_checks": {
+    "case": "Des27_7_IN",
+    "particles": 6330,
+    "reactive_atoms": 22,
+    "reactive_pairs": 3,
+    "boundary": "finite nonperiodic droplet; direct Coulomb within 9.9 nm; harmonic water-O wall; native outer protein frozen",
+    "native_q6_reproduction": false,
+    "calibrated": false,
+    "morse_P_minus_R_correction_kcal_mol": 44.5,
+    "limitations": [
+      "No LRF/SCAAS equivalence.",
+      "No validated coupling or physical state offset.",
+      "No converged free-energy barrier.",
+      "State exception conversion requires separate numerical validation."
+    ],
+    "force_finite_difference_check": {
+      "particle_zero_based": 4001,
+      "component": "x",
+      "analytic_kj_mol_nm": 1993.6423126711397,
+      "numerical_kj_mol_nm": 1993.6721163321636,
+      "absolute_error_kj_mol_nm": 0.029803661023834138,
+      "scope": "one coordinate; not independent native Hamiltonian parity"
+    },
+    "input_sha256": {
+      "inputs/q6/Des27_7_IN/Des27_7_IN.fep": "01e51c25c3434747b29c418ce3579fd63d538b42bfac9056ca3000f02212e8ae",
+      "inputs/q6/Des27_7_IN/Des27_7_IN.pdb.gz": "db4ae6a082e7010e2299b103a149ba3ea2701bba69f0c1e948db20c02886f91c",
+      "inputs/q6/Des27_7_IN/Des27_7_IN.top.gz": "4099e3dfe16e06b81f269abe4767d0e9b2b910b64cc728e8cdfbacac96648f9f"
+    },
+    "driver_sha256": "3ad1e3608bd226241fe3c2d8c2c037bd494656af21106c45d9f9afee6a327f19",
+    "checks": [
+      {
+        "lambda_R": 1.0,
+        "potential_energy_kj_mol": 11207.31047417455,
+        "max_force_kj_mol_nm": 558532.9994038753
+      },
+      {
+        "lambda_R": 0.5,
+        "potential_energy_kj_mol": 11986.373273644866,
+        "max_force_kj_mol_nm": 558532.4495895695
+      },
+      {
+        "lambda_R": 0.0,
+        "potential_energy_kj_mol": 12765.436073115183,
+        "max_force_kj_mol_nm": 558532.1651322437
+      }
+    ],
+    "mapping_linearity_residual_kj_mol": 0.0,
+    "status": "finite construction check; independent Hamiltonian parity and calibration still required",
+    "EVBOpenMM_revision": "dedf301eb9b0021a4be200327cea53f5b7f034c6",
+    "runtime_OpenMM_version": "8.4.0"
+  },
+  "OpenMM_saved_profile_recomputed": {
+    "analysis_method": "QFEP-style per-frame EVB mixing and within-window/bin exponential reweighting; count-weighted window combination",
+    "calibrated": false,
+    "physical_barrier_available": false,
+    "convergence_established": false,
+    "author_parameters_recovered": true,
+    "coupling_kcal_mol": 100.4,
+    "extra_product_offset_kcal_mol": -110.0,
+    "morse_convention_correction_kcal_mol": 44.5,
+    "total_product_offset_kcal_mol": -65.5,
+    "conditional_barrier_estimate_kcal_mol": 9.572629012215984,
+    "conditional_reaction_free_energy_kcal_mol": -44.45216591932897,
+    "resolved_bins": 18,
+    "internal_missing_bins": [],
+    "reference": "reactant",
+    "plot_title": "Kemp EVB \u2014 ARCHIVED PARAMETERS; TRANSFER NOT VALIDATED",
+    "gap_axis_label": "Offset-adjusted energy-gap coordinate (kcal/mol)",
+    "gap_csv_column": "offset_adjusted_energy_gap_kcal_mol",
+    "sampling_complete": true,
+    "sample_count": 1050,
+    "sampled_windows": 21,
+    "bins": 18,
+    "min_points_per_window_bin": 20,
+    "actual_extra_skip_samples_per_window": 0,
+    "raw_bin_counts": [
+      46,
+      74,
+      118,
+      77,
+      56,
+      62,
+      56,
+      52,
+      68,
+      71,
+      72,
+      72,
+      54,
+      43,
+      20,
+      34,
+      40,
+      35
+    ],
+    "accepted_bin_counts": [
+      41,
+      62,
+      110,
+      40,
+      51,
+      50,
+      51,
+      30,
+      51,
+      56,
+      60,
+      62,
+      48,
+      22,
+      20,
+      25,
+      21,
+      31
+    ],
+    "temperature_kelvin": 300.0,
+    "native_qfep": {
+      "source_dataset_doi": "10.5281/zenodo.12666978",
+      "qfep_sha256": "14cdc987bc9aacedee0a959529f0210c34f4e1518ae4dade755d1d7b0299d601",
+      "state_order": [
+        "R",
+        "P"
+      ],
+      "native_alpha_kcal_mol": -110.0,
+      "coupling_kcal_mol": 100.4,
+      "coupling_form": "constant",
+      "native_kT_kcal_mol": 0.596,
+      "native_skip_samples_per_window": 4000,
+      "native_bins": 51,
+      "native_min_points_per_window_bin": 1000,
+      "native_windows": 51,
+      "energy_filenames": [
+        "fep_100.en",
+        "fep_098.en",
+        "fep_096.en",
+        "fep_094.en",
+        "fep_092.en",
+        "fep_090.en",
+        "fep_088.en",
+        "fep_086.en",
+        "fep_084.en",
+        "fep_082.en",
+        "fep_080.en",
+        "fep_078.en",
+        "fep_076.en",
+        "fep_074.en",
+        "fep_072.en",
+        "fep_070.en",
+        "fep_068.en",
+        "fep_066.en",
+        "fep_064.en",
+        "fep_062.en",
+        "fep_060.en",
+        "fep_058.en",
+        "fep_056.en",
+        "fep_054.en",
+        "fep_052.en",
+        "fep_050.en",
+        "fep_048.en",
+        "fep_046.en",
+        "fep_044.en",
+        "fep_042.en",
+        "fep_040.en",
+        "fep_038.en",
+        "fep_036.en",
+        "fep_034.en",
+        "fep_032.en",
+        "fep_030.en",
+        "fep_028.en",
+        "fep_026.en",
+        "fep_024.en",
+        "fep_022.en",
+        "fep_020.en",
+        "fep_018.en",
+        "fep_016.en",
+        "fep_014.en",
+        "fep_012.en",
+        "fep_010.en",
+        "fep_008.en",
+        "fep_006.en",
+        "fep_004.en",
+        "fep_002.en",
+        "fep_000.en"
+      ],
+      "transfer_validated_for_current_model": false
+    },
+    "thermochemistry": {
+      "reactant": {
+        "index": 2,
+        "gap_kcal_mol": -220.29401286349207,
+        "free_energy_kcal_mol": -32.57482399457839,
+        "warning": false
+      },
+      "product": {
+        "index": 16,
+        "gap_kcal_mol": 519.726699449752,
+        "free_energy_kcal_mol": -77.02698991390736,
+        "warning": false
+      },
+      "transition_states": [
+        {
+          "index": 5,
+          "gap_kcal_mol": -61.71814593922548,
+          "free_energy_kcal_mol": -23.002194982362404
+        }
+      ],
+      "warnings": []
+    },
+    "not_identical_to_native_QFEP": "Different raw energies/boundary/sampling, configurable binning and skip; highest-gap endpoint is retained explicitly. No native binary .en parity run has been performed.",
+    "warnings": [
+      "Archived GNCA QFEP parameters, not newly fitted to13.2 or validated for this changed OpenMM boundary.",
+      "Short correlated single-replica samples do not establish convergence; no confidence interval is inferred.",
+      "Per-frame mixing before exponential averaging differs from the earlier illustrative eigenvalue-of-binned-free-energies construction.",
+      "Native binning, burn-in and minimum counts are recorded but not copied blindly into the short-run comparison.",
+      "Actual extra skip=0; archived analysis uses 4000 records/window. Original simulation equilibration was discarded before these raw production records."
+    ]
+  },
+  "literature_parameter_history": {
+    "older_model": {
+      "H12": 225.0,
+      "alpha": -324.0,
+      "solution_reference_activation": 21.2,
+      "source": "Hong2018 SI Table10, PDFpage23",
+      "reactive_parameter_tables": "Tables10\u201321"
+    },
+    "later_model": {
+      "H12": 100.4,
+      "alpha": -110.0,
+      "source": "Gutierrez-Rus archive qfep.inp",
+      "changes": "Morse and van der Waals updates explicitly stated in main text; same normalized reactive sections as supplied Des27 inputs."
+    },
+    "do_not_mix": "Do not insert the older coupling/offset into the newer force field or claim updated-model solution calibration is validated merely because historical targets are known."
+  },
+  "historical_reference_definition_located": true,
+  "updated_model_reference_validated_for_OpenMM": false
+}

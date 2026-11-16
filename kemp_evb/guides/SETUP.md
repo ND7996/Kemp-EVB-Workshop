@@ -39,3 +39,7 @@ Q6, AmberTools, Rosetta, LAMMPS, SciPy, and Matplotlib are not needed to open or
 ## Optional workshop-file rebuilding
 
 Rebuilding the reaction figure, participant handout, or slide PDF requires PyMuPDF. Rebuilding the slide PDF also requires ReportLab. These tools are only needed to edit or regenerate the supplied workshop files; they are not needed to view the site, slides, or PDFs.
+
+## Scientific backend and native Q6 reconstruction
+
+The full scripts are maintained separately in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). Native execution and recovered-template provenance are documented in [NATIVE_Q6_REPRODUCTION.md](https://github.com/ND7996/EVB_MHETase/blob/main/Kemp_EVB/docs/NATIVE_Q6_REPRODUCTION.md). This standalone repository remains a saved-data/browser workshop; its Python launcher opens existing viewers and does not execute those simulations.

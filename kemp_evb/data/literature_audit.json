@@ -1,0 +1,146 @@
+{
+  "review_date": "2026-11-16",
+  "scope": "Targeted backward-citation and archive review, not an exhaustive systematic review of every Q/Kemp paper.",
+  "sources": [
+    {
+      "id": "evb1980",
+      "citation": "Warshel A., Weiss R. M. (1980). An empirical valence bond approach for comparing reactions in solution and in enzymes. JACS 102, 6218–6226.",
+      "doi": "10.1021/ja00540a008",
+      "role": "Foundational EVB Hamiltonian and solution/enzyme comparison.",
+      "review": "Bibliographic citation verified in Hong2018 reference27; not a source of Des27 input files."
+    },
+    {
+      "id": "q1998",
+      "citation": "Marelius J. et al. Q: a molecular dynamics program for free energy calculations and empirical valence bond simulations in biomolecular systems. J. Mol. Graph. Model. 16, 213–225.",
+      "doi": "10.1016/S1093-3263(98)80006-5",
+      "role": "Original Q implementation/background.",
+      "review": "Bibliographic identity verified; software-method reference, not a Kemp parameter deposit."
+    },
+    {
+      "id": "q62018",
+      "citation": "Bauer P. et al. (2018). Q6: A comprehensive toolkit for empirical valence bond and related free energy calculations. SoftwareX.",
+      "doi": "10.1016/j.softx.2017.12.001",
+      "role": "Q6 implementation and reproducible software version.",
+      "review": "Crossref metadata and Q6 source inspected; native Qdyn6/Qfep6 built at topology-recorded revision."
+    },
+    {
+      "id": "kemp2010",
+      "citation": "Frushicheva M. P., Cao J., Chu Z. T., Warshel A. (2010). Exploring challenges in rational enzyme design by simulating the catalysis in artificial Kemp eliminase. PNAS 107, 16869–16874.",
+      "doi": "10.1073/pnas.1010381107",
+      "role": "Calibration antecedent cited by Hong2018 reference15.",
+      "review": "Citation verified in Hong2018; full-text XML retrieval returned HTTP500. No additional numerical parameters attributed directly to this source."
+    },
+    {
+      "id": "kemp2011",
+      "citation": "Frushicheva M. P., Cao J., Warshel A. (2011). Challenges and advances in validating enzyme design proposals: the case of Kemp eliminase catalysis. Biochemistry 50, 3849–3858.",
+      "doi": "10.1021/bi200063a",
+      "role": "Calibration antecedent cited by Hong2018 reference28.",
+      "review": "Citation verified in Hong2018; full-text XML retrieval returned HTTP500. No additional numerical parameters attributed directly to this source."
+    },
+    {
+      "id": "hong2018",
+      "citation": "Hong N.-S. et al. (2018). The evolution of multiple active site configurations in a designed enzyme. Nature Communications 9, 3900.",
+      "doi": "10.1038/s41467-018-06305-y",
+      "fulltext": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6156567/",
+      "si": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-018-06305-y/MediaObjects/41467_2018_6305_MOESM1_ESM.pdf",
+      "role": "Original KE07 calibration/parameter source identified through Risso2020 reference59.",
+      "review": "Full Methods and complete 38-page SI inspected. SI Table10 at PDFpage23: Hij225, alpha−324 kcal/mol. Tables10–21 provide reactive parameter tables.",
+      "historical_reference_activation_kcal_mol": 21.2,
+      "historical_H12_kcal_mol": 225.0,
+      "historical_alpha_kcal_mol": -324.0,
+      "engine": "Q5.10",
+      "si_sha256": "bba2c775aa44adf563093525bd2e5693e5445a62a3f63d11757a8224d1f3048c",
+      "si_bytes": 22200303,
+      "si_pages": 38,
+      "reference_definition_note": "Main text calls the aqueous reference substrate 4-nitrobenzisoxazole plus propionate for Glu101, while describing enzyme substrate as 5-nitrobenzisoxazole. Atom identity/convention must be checked rather than silently resolving this naming discrepancy."
+    },
+    {
+      "id": "risso2020",
+      "citation": "Risso V. A. et al. (2020). Enhancing a de novo enzyme activity by computationally-focused ultra-low-throughput screening. Chemical Science 11, 6134–6148.",
+      "doi": "10.1039/D0SC01935F",
+      "fulltext": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7407621/",
+      "role": "Connects GNCA Kemp model to Hong2018 reference59 and reuses its solution calibration.",
+      "review": "Full-text Methods inspected through Europe PMC. Q5.10, older 100ps windows and no new reference calibration; not the later Q6/200ps protocol. RSC direct retrieval blocked403; supplementary bundle download was incomplete."
+    },
+    {
+      "id": "gutierrez2025",
+      "citation": "Gutierrez-Rus L. I. et al. (2025). Enzyme Enhancement Through Computational Stability Design Targeting NMR-Determined Catalytic Hotspots. JACS 147, 14978–14996.",
+      "doi": "10.1021/jacs.4c09428",
+      "fulltext": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12151457/",
+      "si": "https://acs.figshare.com/doi/suppl/10.1021/jacs.4c09428",
+      "archive": "https://doi.org/10.5281/zenodo.12666978",
+      "role": "Updated Q6 protocol and actual GNCA input archive matching normalized reactive sections of the Des27 FEP files.",
+      "review": "Full EVB Methods and downloaded archive inspected. Authors explicitly report reactive Morse/LJ updates to reduce product-state instabilities. Archived qfep.inp gives constant100.4 and alpha−110. First-stage template recovered; no native Des27 trajectories supplied.",
+      "updated_H12_kcal_mol": 100.4,
+      "updated_alpha_kcal_mol": -110.0
+    },
+    {
+      "id": "listov2025",
+      "citation": "Listov D. et al. (2025). Complete computational design of high-efficiency Kemp elimination enzymes. Nature 643, 1421–1427.",
+      "doi": "10.1038/s41586-025-09136-2",
+      "fulltext": "https://www.nature.com/articles/s41586-025-09136-2",
+      "si": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_MOESM3_ESM.pdf",
+      "archive": "https://doi.org/10.5281/zenodo.14563437",
+      "role": "Target Des27/Des27.7 enzyme and reported Q6 barriers.",
+      "review": "Article/Methods, SI Table3 and re-downloaded EVB ZIP inspected. Reported Des27.7-IN13.2±0.6; not an original-energy-file reproduction."
+    },
+    {
+      "id": "risso2017",
+      "citation": "Risso V. A. et al. (2017). De novo active sites for resurrected Precambrian enzymes. Nature Communications 8, 16113.",
+      "doi": "10.1038/ncomms16113",
+      "archive": "https://doi.org/10.5061/dryad.53629",
+      "role": "Earlier GNCA structural/conventional-MD context.",
+      "review": "Main Methods/data availability inspected: deposited transition-state-analogue force fields and MD examples are not a substitute for a complete reactive Des27 EVB model."
+    }
+  ],
+  "citation_chain": [
+    "Listov2025 → Gutierrez-Rus2025 (Nature reference50)",
+    "Gutierrez-Rus2025 → Risso2020 (JACS reference18)",
+    "Risso2020 → Hong2018 (ChemicalScience reference59)",
+    "Hong2018 → Frushicheva2010/2011 (references15/28)"
+  ],
+  "parameter_history": {
+    "older_model": {
+      "H12": 225.0,
+      "alpha": -324.0,
+      "solution_reference_activation": 21.2,
+      "source": "Hong2018 SI Table10, PDFpage23",
+      "reactive_parameter_tables": "Tables10–21"
+    },
+    "later_model": {
+      "H12": 100.4,
+      "alpha": -110.0,
+      "source": "Gutierrez-Rus archive qfep.inp",
+      "changes": "Morse and van der Waals updates explicitly stated in main text; same normalized reactive sections as supplied Des27 inputs."
+    },
+    "do_not_mix": "Do not insert the older coupling/offset into the newer force field or claim updated-model solution calibration is validated merely because historical targets are known."
+  },
+  "what_is_now_located": [
+    "Historical aqueous-reference activation target and reported model definition.",
+    "Complete published older reactive parameter tables.",
+    "Updated reactive model inputs and analysis coupling/offset.",
+    "Recoverable related/sibling Q templates sufficient for a documented native reconstruction attempt."
+  ],
+  "still_unestablished": [
+    "Original Des27 QFEP per-replica results/energy trajectories and original missing script contents/seeds.",
+    "Reference-system coordinates/topology/trajectories and activation plus reaction-free-energy evidence for the updated model in our changed OpenMM boundary.",
+    "Independent native 30-replica barrier reproduction and matched OpenMM convergence/Hamiltonian parity."
+  ],
+  "review_limitations": [
+    "Older papers use different enzyme scaffolds and Q versions; they do not independently supply the Des27 target dataset.",
+    "The2018 main-text reference substrate naming discrepancy requires checking against actual structures.",
+    "Additional archive search hits for HG3 and functional descriptors are not treated as confirmed Q6/Kemp parameter sources without file-level inspection."
+  ],
+  "additional_archive_screening": [
+    {
+      "doi": "10.5281/zenodo.7140835",
+      "title": "Convergence in Determining Enzyme Functional Descriptors across Kemp Eliminase Variants",
+      "inspection": "Metadata lists KE07-R7-2 topology/coordinate files; 15.5MB ZIP not inspected. Not treated as a verified source of Des27 Q6 parameters."
+    },
+    {
+      "doi": "10.5281/zenodo.12756879",
+      "title": "Enriching productive mutational paths accelerates enzyme evolution",
+      "inspection": "Metadata describes HG3 full-QM/QM-MM geometries and multi-GB HDF5 files. No claim these are Des27 Q6/EVB inputs; large trajectories were not downloaded."
+    }
+  ]
+}

@@ -25,3 +25,9 @@ Open `index.html` and `presentation.html`. Check that the three links to the sav
 ## If someone wants to run calculations
 
 The session uses saved browser examples. The added workflow slide explains the three stages of a full Kemp calculation: prepare matching R/P states, relax both endpoints, then sample and analyze the FEP profile. Those stages are not run during the hands-on, and the live R/P and FEP scripts are not included in this workshop package. See [`SETUP.md`](SETUP.md) for the current scope and dependencies.
+
+## Matrix and reproduction explanations
+
+The website now contains a worked EVB matrix calculator, detailed Q6/OpenMM stages, actual native atom labels and a cited parameter-history review. The grey curve is archived parameters evaluated on OpenMM samples, never a paper Q6 profile. Native Q6 completed a first-stage execution check, not production; EVBOpenMM full-system checks and saved-data reconstruction ran in the scientific repository. The standalone workshop remains browser-only.
+
+Full scripts and native-Q6 commands are maintained in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). See the inline website reproduction status and bundled JSON audits for the limits of the9.57 versus13.2 comparison.

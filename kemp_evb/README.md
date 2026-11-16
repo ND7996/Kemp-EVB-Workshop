@@ -5,3 +5,5 @@ A short, beginner-friendly hands-on for the **Kemp reaction**. Open the [public 
 The website explains the full calculation sequence—**prepare the reactant and product states, relax each endpoint, then sample and analyze the FEP profile**—and shows which of those steps this teaching package can run. The interactive activities use saved Kemp examples.
 
 Open [`presentation.html`](presentation.html) for the slides, [`guides/HANDS_ON.md`](guides/HANDS_ON.md) for the participant worksheet, and [`guides/SETUP.md`](guides/SETUP.md) for the available files, dependencies, and simulation-stage overview.
+
+The matrix calculator, native-Q6 reconstruction status and cited parameter history are now included in the website. The original10 slides remain, with six optional detail slides. The actual OpenMM driver relaxes the reactant mapping state before window sampling; general advice about independently relaxing endpoints is distinguished from what that driver executed.
