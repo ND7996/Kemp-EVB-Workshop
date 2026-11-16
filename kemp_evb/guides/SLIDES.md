@@ -46,4 +46,4 @@ Repeat the take-home: EVB connects reactant and product bonding descriptions. Re
 
 ## Optional technical appendix (slides11–16)
 
-The browser presentation and PDF retain the original10 introductory slides, followed by six optional detail slides: the EVB matrix; native Q6 stages; EVBOpenMM stages; actual reproduction status; parameter/calibration history; and the grey-baseline interpretation. The website contains the interactive calculator and full linked bibliography.
+The browser presentation and PDF retain the original10 introductory slides, followed by six optional detail slides: the EVB matrix; native Q6 stages; EVBOpenMM stages; actual reproduction status; parameter/calibration history; and the paper-reference and computed-curve interpretation. The website contains the interactive calculator and full linked bibliography.

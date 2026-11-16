@@ -36,20 +36,26 @@ Open **Workshop combinations** on index.html.
 
 Use the dropdown/table to compare25 grid pairs and five refined examples matching the chosen13.2 target. Find two different H12/alpha pairs with the same forward barrier. Record their reaction free energies. One selected example holds alpha −110 and uses H12 ≈88.72; it is a target match, not an independent prediction.
 
-**Legend:** grey dashed = archived baseline on the same saved OpenMM energies; blue = selected candidate; red dashed = chosen target. The grey curve is not an experimental trace. Leave it visible while comparing.
+**Legend:** grey horizontal line/band = paper Q6 barrier13.2±0.6 (replica SD), not a full paper profile; blue = selected computed candidate. Optional amber = archived-parameter baseline on OpenMM samples. Enable the amber overlay when comparing the two computed curves.
 
 **Write down:** Two matching pairs and their reaction ΔG. Does one barrier determine two parameters uniquely? Does a target match establish convergence or physical calibration?
 
 ## Explain the maximum and coordinate zero
 
-Select grid H12=80, alpha −90. Find the blue diamond (binned maximum) and the open grey baseline marker. The displayed raw peak is about−74.36 kcal/mol, with a coarse bin width about 52.86; the maximum is not required to be at raw gap zero.
+Select grid H12=80, alpha −90. Find the blue diamond (binned maximum) and the optional amber baseline marker. The displayed raw peak is about−74.36 kcal/mol, with a coarse bin width about 52.86; the maximum is not required to be at raw gap zero.
 
-Toggle **Centre selected profile maximum at x = 0 (display only)**. Both curves receive the same horizontal shift. The selected marker goes to0; the grey marker goes to about−52.86. The original coordinates, energies and barrier heights do not change.
+Toggle **Centre selected profile maximum at x = 0 (display only)**. Both curves receive the same horizontal shift. The selected marker goes to0; the amber marker goes to about−52.86. The original coordinates, energies and barrier heights do not change.
 
 **Write down:** What does raw x=0 mean? What does centring prove? Is this binned maximum a validated molecular transition state? Name one shared EVB concept and one Q6/OpenMM implementation difference.
 
 ## What to submit or discuss
 
-A screenshot of two matching parameter examples, their reaction free energies, and one sentence explaining why they are workshop target matches rather than validated predictions. Add a sentence identifying the grey curve and explaining the display-only centring operation.
+A screenshot of two matching parameter examples, their reaction free energies, and one sentence explaining why they are workshop target matches rather than validated predictions. Add a sentence identifying the grey paper barrier line and explaining the display-only centring operation.
 
 This worksheet analyzes the bundled saved Kemp data. It does not prepare R/P systems, relax endpoints, or run λ-window FEP. Those three stages are described in [`SETUP.md`](SETUP.md) and the website's calculation workflow section.
+
+## Native Q6 hands-on
+
+Open `viewers/native_q6_short.html` for the actual seed101 shortened result:9.82kcal/mol versus paper13.2±0.6(replicaSD). Inspect `data/native_q6_short/qfep.out` Part3 and identify the Rminimum, intervening maximum and Pminimum. Grey is the paper height; blue here is native Q6. Blue in the parameter-scan page is explicitly OpenMM. These are separate computations.
+
+To run Q6, follow the linked scientific repository's `Kemp_EVB/docs/NATIVE_Q6_REPRODUCTION.md`: it contains compiler/install, short51-window, QFEP and full30-replica commands. The website itself requires only a browser. Discuss why one replica cannot provide between-replica uncertainty, why SD differs from SEM, and why increasing samples cannot fix a changed Hamiltonian.

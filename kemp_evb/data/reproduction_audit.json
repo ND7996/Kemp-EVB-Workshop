@@ -10,11 +10,17 @@
     "status": "Reported by authors; not recomputed here."
   },
   "local_native_Q6": {
-    "energy_files": [],
+    "energy_files": "51 newly generated native .en files; hashes in native_q6_short/execution_audit.json; originals not recovered",
     "qfep_executable": "Qfep6 built at recorded Q6 revision",
-    "qdyn_executable": "Qdyn6 built and first-stage check executed",
+    "qdyn_executable": "Qdyn6; all65 shortened stages terminated normally",
     "original_energy_trajectories_available": false,
-    "reconstruction_performed": false
+    "reconstruction_performed": true,
+    "full_protocol_reproduced": false,
+    "shortened_replica_count_completed": 1,
+    "conditional_barrier_kcal_mol": 9.82,
+    "production_ps": 10.2,
+    "windows": 51,
+    "native_QFEP_output": "native_q6_short/qfep.out"
   },
   "related_GNCA_analysis_input": {
     "dataset_doi": "10.5281/zenodo.12666978",

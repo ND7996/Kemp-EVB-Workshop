@@ -1,4 +1,5 @@
 from pathlib import Path
+import json, math
 import pymupdf as fitz
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'PARTICIPANT_HANDOUT.pdf'
@@ -41,11 +42,26 @@ p.insert_textbox(fitz.Rect(62,478,924,496),'Paper Figure 3e shows barrier estima
 p=base('From a structure to a free-energy profile','Full calculation workflow')
 boxes=[fitz.Rect(62,132,340,358),fitz.Rect(354,132,632,358),fitz.Rect(646,132,924,358)]
 card(p,boxes[0],'1 · Prepare','Build matched R and P','Use the same atoms in the same order. Assign state-specific bonds, charges, force-field terms, and EVB settings. Check the atom map, total charge, proton position, solvent, and ions before running.',BLUE)
-card(p,boxes[1],'2 · Relax','Stabilize both endpoints','Minimize and equilibrate R and P separately. Inspect geometry, contacts, and energy stability. Relaxation prepares each endpoint; it does not calculate the reaction barrier.',ACCENT)
+card(p,boxes[1],'2 · Relax','Follow the protocol','Q6 uses restrained low-temperature dynamics, heating and equilibration before mapping windows. Our OpenMM driver minimizes, heats and equilibrates the reactant mapping state before sequential windows. Check contacts and stability.',ACCENT)
 card(p,boxes[2],'3 · FEP/profile','Sample the lambda path','Sample a set of lambda windows between the state descriptions. Check neighboring-window overlap and convergence, compare independent replicas, then analyze the barrier and reaction free energy.',GREEN)
 p.draw_rect(fitz.Rect(62,382,924,470),color=LINE,fill=PALE,width=1)
 p.insert_text((80,409),'What this workshop contains',fontsize=15,fontname='hebo',color=INK)
-p.insert_textbox(fitz.Rect(80,418,905,462),'This repository includes saved Kemp data and browser exercises for learning the method. It does not include the complete live R/P builder, endpoint-relaxation inputs, or lambda-window run scripts, so the three simulation stages above are explained but not launched here.',fontsize=12,fontname='helv',color=INK,lineheight=1.25)
+p.insert_textbox(fitz.Rect(80,418,905,462),'This standalone browser pack includes saved results. The linked EVB_MHETase repository includes runnable native Q6 and EVBOpenMM preparation, relaxation, window-sampling and analysis scripts. The short runs demonstrate execution; they do not establish convergence.',fontsize=12,fontname='helv',color=INK,lineheight=1.25)
+
+# Page 4: actual calculations and uncertainty
+p=base('Compare runs and explain uncertainty','Native Q6 and EVBOpenMM')
+boxes=[fitz.Rect(62,132,340,365),fitz.Rect(354,132,632,365),fitz.Rect(646,132,924,365)]
+card(p,boxes[0],'Published Q6','13.2 +/-0.6 kcal/mol','Des27.7-IN, Nature2025 SI Table3. The uncertainty is replica SD over30replicas. Grey is this barrier height and SD band, not the paper profile curve.',MUTED)
+statistics_path=ROOT/'data/native_q6_replicas/replica_statistics.json'
+if statistics_path.is_file():
+    d=json.loads(statistics_path.read_text());body=f'Native Q6: n={d["n"]}, mean={d["mean_barrier_kcal_mol"]:.2f}, SD={d["sample_sd_kcal_mol"]:.3f}, SEM={d["sem_kcal_mol"]:.3f} kcal/mol. Both use10.2ps production. The saved OpenMM adaptation gives9.57; do not average different engines/models together.'
+else:
+    body='Native Q6 seed101:9.82kcal/mol from10.2ps production. A second seeded run is in progress. Saved OpenMM:9.57 from5.25ps, with a changed Hamiltonian. Neither reproduces the full paper protocol.'
+card(p,boxes[1],'Our shortened runs','Conditional estimates',body,BLUE)
+card(p,boxes[2],'SD and SEM','Different questions','Sample SD measures spread between replicas (denominator n-1). SEM = SD / sqrt(n) estimates precision of the mean under independence assumptions. Two replicas give a very uncertain SEM and cannot reveal all shared short-run/model bias.',ACCENT)
+p.insert_textbox(fitz.Rect(62,385,924,440),'Activity: identify both replica barriers, compute their mean, sample SD and SEM, then explain why a small SEM does not establish accuracy or convergence. The paper used30ns equilibration plus10.2ns production per replica,30replicas. Longer runs can improve sampling but cannot guarantee agreement or repair changed physics.',fontsize=12,fontname='helv',color=INK,lineheight=1.2)
+for i,(label,url) in enumerate([('Paper and SI: Listov et al., Nature2025','https://doi.org/10.1038/s41586-025-09136-2'),('Published inputs: Zenodo14563437','https://doi.org/10.5281/zenodo.14563437'),('Runnable Q6/OpenMM code and full instructions','https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB')]):
+    y=452+i*14;p.insert_text((62,y),label,fontsize=10,fontname='helv',color=BLUE);p.insert_link({'kind':fitz.LINK_URI,'from':fitz.Rect(60,y-11,500,y+2),'uri':url})
 
 doc.set_metadata({'title':'Kemp EVB participant guide','author':'Kemp EVB workshop'})
 doc.save(OUT,garbage=4,deflate=True)

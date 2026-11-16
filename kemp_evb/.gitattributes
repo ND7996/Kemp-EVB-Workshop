@@ -1,4 +1,11 @@
+# Byte-hashed offline files must stay identical on Windows and Linux.
+* -text
 *.pdf binary
 *.png binary
 *.jpg binary
 *.jpeg binary
+# Preserve the spacing of deposited and native-analysis records.
+data/**/*.fep whitespace=-blank-at-eol,-blank-at-eof
+data/**/*.inp whitespace=-blank-at-eol,-blank-at-eof
+data/**/*.out whitespace=-blank-at-eol,-blank-at-eof
+data/**/*.csv whitespace=cr-at-eol

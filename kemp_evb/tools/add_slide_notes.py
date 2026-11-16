@@ -41,7 +41,7 @@ def patch(pdf_path: Path) -> None:
     # Replace the explanatory cards with the profile itself; its axes carry
     # the labels and units.
     page = pdf[7]
-    page.add_redact_annot(fitz.Rect(60, 88, 900, 475), fill=(1, 1, 1))
+    page.add_redact_annot(fitz.Rect(60, 88, 900, 498), fill=(1, 1, 1))
     page.apply_redactions()
     page.insert_text((68, 128), "The saved reaction profile", fontsize=28, fontname="hebo", color=(0.12, 0.18, 0.21))
     page.insert_image(

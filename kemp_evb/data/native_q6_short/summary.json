@@ -1,0 +1,171 @@
+{
+  "conditional_barrier_kcal_mol": 9.82,
+  "conditional_reaction_dg_kcal_mol": -37.46,
+  "reactant_bin": 2,
+  "product_bin": 15,
+  "maximum_bin": 6,
+  "internal_missing_bins": [],
+  "warnings": [],
+  "reference_shift_kcal_mol": -33.48,
+  "convergence_established": false,
+  "paper_barrier_reproduced": false,
+  "seed": 101,
+  "shortened_workshop_protocol": true,
+  "engine": "Native Qdyn6/Qfep6",
+  "case": "Des27.7-IN reconstructed shortened protocol",
+  "source_sha256": "9d15ae7648dd396646a0f1b9a033274f599e44ce360c4af97ca3ec7b5589b7db",
+  "coupling_kcal_mol": 100.4,
+  "native_alpha_kcal_mol": -110,
+  "paper_mean_kcal_mol": 13.2,
+  "paper_replica_sd_kcal_mol": 0.6,
+  "paper_doi": "10.1038/s41586-025-09136-2",
+  "paper_location": "Supplementary Table3",
+  "estimate_method": "R/P minima selected by native c1/c2 state character; highest interior bin between them. Gaps are not interpolated. QFEP output precision is0.01kcal/mol.",
+  "rows": [
+    {
+      "bin": 1,
+      "gap_kcal_mol": -303.41,
+      "free_energy_kcal_mol": -31.21,
+      "points": 221,
+      "reactant_weight": 0.914,
+      "product_weight": 0.086
+    },
+    {
+      "bin": 2,
+      "gap_kcal_mol": -248.69,
+      "free_energy_kcal_mol": -33.48,
+      "points": 386,
+      "reactant_weight": 0.887,
+      "product_weight": 0.113
+    },
+    {
+      "bin": 3,
+      "gap_kcal_mol": -193.98,
+      "free_energy_kcal_mol": -33.11,
+      "points": 420,
+      "reactant_weight": 0.844,
+      "product_weight": 0.156
+    },
+    {
+      "bin": 4,
+      "gap_kcal_mol": -139.26,
+      "free_energy_kcal_mol": -29.72,
+      "points": 291,
+      "reactant_weight": 0.785,
+      "product_weight": 0.215
+    },
+    {
+      "bin": 5,
+      "gap_kcal_mol": -84.55,
+      "free_energy_kcal_mol": -25.57,
+      "points": 242,
+      "reactant_weight": 0.697,
+      "product_weight": 0.303
+    },
+    {
+      "bin": 6,
+      "gap_kcal_mol": -29.83,
+      "free_energy_kcal_mol": -23.66,
+      "points": 228,
+      "reactant_weight": 0.571,
+      "product_weight": 0.429
+    },
+    {
+      "bin": 7,
+      "gap_kcal_mol": 24.88,
+      "free_energy_kcal_mol": -27.4,
+      "points": 255,
+      "reactant_weight": 0.432,
+      "product_weight": 0.568
+    },
+    {
+      "bin": 8,
+      "gap_kcal_mol": 79.6,
+      "free_energy_kcal_mol": -33.49,
+      "points": 273,
+      "reactant_weight": 0.321,
+      "product_weight": 0.679
+    },
+    {
+      "bin": 9,
+      "gap_kcal_mol": 134.31,
+      "free_energy_kcal_mol": -41.88,
+      "points": 284,
+      "reactant_weight": 0.222,
+      "product_weight": 0.778
+    },
+    {
+      "bin": 10,
+      "gap_kcal_mol": 189.03,
+      "free_energy_kcal_mol": -51.12,
+      "points": 247,
+      "reactant_weight": 0.159,
+      "product_weight": 0.841
+    },
+    {
+      "bin": 11,
+      "gap_kcal_mol": 243.74,
+      "free_energy_kcal_mol": -58.58,
+      "points": 282,
+      "reactant_weight": 0.116,
+      "product_weight": 0.884
+    },
+    {
+      "bin": 12,
+      "gap_kcal_mol": 298.46,
+      "free_energy_kcal_mol": -63.96,
+      "points": 219,
+      "reactant_weight": 0.087,
+      "product_weight": 0.913
+    },
+    {
+      "bin": 13,
+      "gap_kcal_mol": 353.17,
+      "free_energy_kcal_mol": -68.13,
+      "points": 189,
+      "reactant_weight": 0.065,
+      "product_weight": 0.935
+    },
+    {
+      "bin": 14,
+      "gap_kcal_mol": 407.89,
+      "free_energy_kcal_mol": -69.91,
+      "points": 148,
+      "reactant_weight": 0.052,
+      "product_weight": 0.948
+    },
+    {
+      "bin": 15,
+      "gap_kcal_mol": 462.6,
+      "free_energy_kcal_mol": -70.94,
+      "points": 91,
+      "reactant_weight": 0.042,
+      "product_weight": 0.958
+    },
+    {
+      "bin": 16,
+      "gap_kcal_mol": 517.32,
+      "free_energy_kcal_mol": -70.91,
+      "points": 111,
+      "reactant_weight": 0.034,
+      "product_weight": 0.966
+    },
+    {
+      "bin": 17,
+      "gap_kcal_mol": 572.03,
+      "free_energy_kcal_mol": -70.0,
+      "points": 78,
+      "reactant_weight": 0.029,
+      "product_weight": 0.971
+    },
+    {
+      "bin": 18,
+      "gap_kcal_mol": 626.75,
+      "free_energy_kcal_mol": -68.21,
+      "points": 10,
+      "reactant_weight": 0.024,
+      "product_weight": 0.976
+    }
+  ],
+  "difference_from_paper_kcal_mol": -3.38
+}

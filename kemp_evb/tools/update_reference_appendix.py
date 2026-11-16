@@ -27,8 +27,8 @@ SLIDES=[
  ],'EVBOpenMM source: Martin-Floor/EVBOpenMM, revision dedf301eb9b0021a4be200327cea53f5b7f034c6'),
  ('What has actually been reproduced?',[
   'Reported Q6 Des27.7-IN:13.2 +/-0.6 kcal/mol. Recomputed short OpenMM estimate:9.572629 kcal/mol; difference=-3.627371.',
-  'Native Qdyn ran a50-step x0.1fs first-stage check and terminated normally, with hot-atom warnings. This is5fs, not an equilibrated barrier calculation.',
-  'A65-stage native reconstruction attempt is prepared with recovered/sibling templates and provenance. Full production and the30-replica result remain incomplete.',
+  'Native Qdyn6/Qfep6 completed a shortened51-window replica: conditional barrier9.82kcal/mol, reactionDG=-37.46. A second seeded replica is running.',
+  'All65 shortened native stages completed normally; recovered/sibling templates are documented. Full-duration production and the30-replica result remain incomplete.',
   'Full-enzyme EVBOpenMM finite-energy/force checks passed. Saved-data repeatability does not establish convergence or parameter transfer.'
  ],'Evidence: data/reproduction_audit.json; full native instructions in EVB_MHETase/Kemp_EVB/docs'),
  ('Parameter history and calibration',[
@@ -38,8 +38,8 @@ SLIDES=[
   'All papers, supporting information, archives and review limitations are linked in the website parameter-history section.'
  ],'Hong2018: 10.1038/s41467-018-06305-y; Risso2020: 10.1039/D0SC01935F'),
  ('Grey is not the paper profile',[
-  'Grey: archived parameters applied to our saved OpenMM samples. It is a baseline, not an original Q6 curve.',
-  'Blue: selected alternative coupling/offsets on those same samples. Red: the chosen13.2 target, not a new Q6 calculation.',
+  'Grey horizontal line/band: published Q6 barrier13.2 +/-0.6 (replica SD). It is not a full paper profile.',
+  'Blue: selected computed profile, changing with H12/alpha. Optional amber: archived parameters on our OpenMM samples.',
   'The binned maximum is not a validated molecular transition state. Shifting it to x=0 changes the display origin only.',
   'Target matching is an illustration of parameter sensitivity. The native barrier has not been independently reproduced and cannot be claimed from a matched teaching curve.'
  ],'Q6 method: Bauer et al.2018, 10.1016/j.softx.2017.12.001; full bibliography on the website')]
@@ -79,6 +79,7 @@ def refresh():
 
 def update_manifest():
     p=ROOT/'workshop_manifest.json';d=json.loads(p.read_text());d['slide_count']=16;d['core_slide_count']=10;d['optional_detail_slides']=6
+    d['talk_slides']=[1,10];d.pop('practical_slides',None)
     d['scope']='Standalone Kemp workshop with EVB Hamiltonian, cited parameter history and explicit native-Q6/OpenMM reconstruction limits.'
     d['files']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name!='workshop_manifest.json' and '__pycache__' not in p.parts and p.suffix not in ('.pyc','.pyo')}
     (ROOT/'workshop_manifest.json').write_text(json.dumps(d,indent=2)+'\n')

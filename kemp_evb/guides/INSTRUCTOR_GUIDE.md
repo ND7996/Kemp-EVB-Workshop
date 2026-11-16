@@ -28,6 +28,6 @@ The session uses saved browser examples. The added workflow slide explains the t
 
 ## Matrix and reproduction explanations
 
-The website now contains a worked EVB matrix calculator, detailed Q6/OpenMM stages, actual native atom labels and a cited parameter-history review. The grey curve is archived parameters evaluated on OpenMM samples, never a paper Q6 profile. Native Q6 completed a first-stage execution check, not production; EVBOpenMM full-system checks and saved-data reconstruction ran in the scientific repository. The standalone workshop remains browser-only.
+The website now contains a worked EVB matrix calculator, detailed Q6/OpenMM stages, actual native atom labels and a cited parameter-history review. The grey horizontal line and band are the published Q6 mean barrier13.2±0.6 kcal/mol (replica SD), not a full paper curve. Blue is the selected computed OpenMM profile; optional amber is archived parameters evaluated on the same OpenMM samples. Native Q6 completed a reconstructed shortened51-window mapping run and QFEP analysis:9.82kcal/mol, one replica, not full-protocol reproduction; EVBOpenMM full-system checks and saved-data reconstruction ran in the scientific repository. The standalone workshop remains browser-only.
 
 Full scripts and native-Q6 commands are maintained in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). See the inline website reproduction status and bundled JSON audits for the limits of the9.57 versus13.2 comparison.

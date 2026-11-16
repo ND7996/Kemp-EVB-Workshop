@@ -1,0 +1,604 @@
+{
+  "case": "Des27_7_IN",
+  "required_Q6_revision": "f04f99ed0722be0611f22dd963263bcc5bc78290",
+  "seed": 101,
+  "initial_execution_check_only": false,
+  "shortened_workshop_protocol": true,
+  "workshop_sampling_note": "1 replica;14 shortened prep stages;51 windows x200steps x1fs=10.2ps production;20-record skip,18bins,min5. Not published sampling.",
+  "exact_original_run_scripts_recovered": false,
+  "recovered_template_warning": "Not all missing Nature files are recovered byte-for-byte. Related/sibling templates are explicitly substituted; author confirmation is required for exact-protocol provenance.",
+  "steps": [
+    {
+      "input": "1.dyn_min_wat_noshake.inp",
+      "source": "inputs/protocol_reference/1.dyn_min_wat_noshake_template",
+      "source_sha256": "79c01adedb163e04401f98e979225c1c5018a3432281aa5ae87ce42f0d0dd49f",
+      "recovered_or_generated": true,
+      "note": "GNCA first-stage recovery; Des27 restraint end4017; seed substituted.",
+      "shortened_steps": 1000
+    },
+    {
+      "input": "2.dyn_min_wat.inp",
+      "source": "inputs/q6_templates/equilibration/2.dyn_min_wat.inp",
+      "source_sha256": "189730ea448a2332867396129bc6f740f0df20010dcaf691201461da2845ea23",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "3.dyn_min_wat_eq.inp",
+      "source": "inputs/q6_templates/equilibration/3.dyn_min_wat_eq.inp",
+      "source_sha256": "11ba83d241d3c883c75569eceb92c6aba1756248cd40f2ba59bbaa94b0abff36",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "4.dyn_cool.inp",
+      "source": "inputs/q6_templates/equilibration/4.dyn_cool.inp",
+      "source_sha256": "74d5a481d5cc634679985dbf8778101563af7956d522d743a2eb5a28639a1592",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "5.dyn_min.inp",
+      "source": "inputs/q6_templates/equilibration/5.dyn_min.inp",
+      "source_sha256": "1acbc23716d781c683b11c72baa6b0612e2b547c6f04c181063756c19afd4136",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "6.dyn_warm_30k.inp",
+      "source": "inputs/q6_templates/equilibration/6.dyn_warm_30k.inp",
+      "source_sha256": "238ad62015c5c5f6fb3f2dd3c7aeac4b81c2765fdc6bca48a69914bf491e32df",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "7.dyn_warm_150k.inp",
+      "source": "inputs/q6_templates/equilibration/7.dyn_warm_150k.inp",
+      "source_sha256": "f062c8c1a3ed2d608bcec46ee97ea45aeae73702cc40e5233dac0c26983c2c58",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "8.dyn_warm_300k.inp",
+      "source": "inputs/q6_templates/equilibration/8.dyn_warm_300k.inp",
+      "source_sha256": "0e906edceb525ab1d29fce66e60973674d37afd4e563a44837bd7b10e4863afb",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "9.dyn_eq300k_1.inp",
+      "source": "inputs/q6_templates/equilibration/10.dyn_eq300k_2.inp",
+      "source_sha256": "9e51d0e1f63505d0e45d7f62afb8b50f98a09a98d98adc82c2e6035f5acc38aa",
+      "recovered_or_generated": true,
+      "note": "Sibling restart/final names changed for missing stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "10.dyn_eq300k_2.inp",
+      "source": "inputs/q6_templates/equilibration/10.dyn_eq300k_2.inp",
+      "source_sha256": "9e51d0e1f63505d0e45d7f62afb8b50f98a09a98d98adc82c2e6035f5acc38aa",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "11.dyn_eq300k_3.inp",
+      "source": "inputs/q6_templates/equilibration/10.dyn_eq300k_2.inp",
+      "source_sha256": "9e51d0e1f63505d0e45d7f62afb8b50f98a09a98d98adc82c2e6035f5acc38aa",
+      "recovered_or_generated": true,
+      "note": "Sibling restart/final names changed for missing stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "12.dyn_eq300k_4.inp",
+      "source": "inputs/q6_templates/equilibration/12.dyn_eq300k_4.inp",
+      "source_sha256": "0c36a34d4a2b00818d47ff2d651f19b5d9780fbc49aa22af7ed9e83c50233763",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "13.dyn_eq300k_5.inp",
+      "source": "inputs/q6_templates/equilibration/10.dyn_eq300k_2.inp",
+      "source_sha256": "9e51d0e1f63505d0e45d7f62afb8b50f98a09a98d98adc82c2e6035f5acc38aa",
+      "recovered_or_generated": true,
+      "note": "Sibling restart/final names changed for missing stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "14.dyn_eq300k_6.inp",
+      "source": "inputs/q6_templates/equilibration/10.dyn_eq300k_2.inp",
+      "source_sha256": "9e51d0e1f63505d0e45d7f62afb8b50f98a09a98d98adc82c2e6035f5acc38aa",
+      "recovered_or_generated": true,
+      "note": "Sibling restart/final names changed for missing stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_100.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_098.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_096.inp",
+      "source": "inputs/q6_templates/production/fep_096.inp",
+      "source_sha256": "d98f821fa68ee6fdeb06de9911f827a817bb28e5b4621121d195f23f28a5f027",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_094.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_092.inp",
+      "source": "inputs/q6_templates/production/fep_092.inp",
+      "source_sha256": "9243a19e6f808269c20514c0bad3101388ca20178ff5c438b00444c579892721",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_090.inp",
+      "source": "inputs/q6_templates/production/fep_090.inp",
+      "source_sha256": "fbe2e5c42c3d85eb390fb73545e3db5a0a686cb4820b0310f036dd5fefea790d",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_088.inp",
+      "source": "inputs/q6_templates/production/fep_088.inp",
+      "source_sha256": "837d3430879c559f28129181bd1aae6a60b344cbe96bdee2127974ef3afffe92",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_086.inp",
+      "source": "inputs/q6_templates/production/fep_086.inp",
+      "source_sha256": "f80b0530de83abc187d2a09d965dfc6cd0900ded4fd23098e125e1a30c092eb3",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_084.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_082.inp",
+      "source": "inputs/q6_templates/production/fep_082.inp",
+      "source_sha256": "01e5e68a570725f43cce81f78cb29c05691a3609f86ea6c22c81a174fc4013b8",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_080.inp",
+      "source": "inputs/q6_templates/production/fep_080.inp",
+      "source_sha256": "811e28377b729f27d5e2c3dc69769ea334da760fb28e617385e90a9f8cb0037f",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_078.inp",
+      "source": "inputs/q6_templates/production/fep_078.inp",
+      "source_sha256": "ae295df1bd0dba42c5ade7aa84a0556fac93758e71ed195f98473b65f32773be",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_076.inp",
+      "source": "inputs/q6_templates/production/fep_076.inp",
+      "source_sha256": "bd3786fde875398c2b9d5ffd5a22e55ef3d6c42035469a13ff11b1fca22cc59c",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_074.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_072.inp",
+      "source": "inputs/q6_templates/production/fep_072.inp",
+      "source_sha256": "000788b7e81a15aae3e71931b1d4d5516bfa24de9f66852ffd4fff9f34b98155",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_070.inp",
+      "source": "inputs/q6_templates/production/fep_070.inp",
+      "source_sha256": "7aa58c3c418cc21870e773107db4deb454d2b74f82b1951a21dbbd1b9045e5dc",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_068.inp",
+      "source": "inputs/q6_templates/production/fep_068.inp",
+      "source_sha256": "361e15cbbc1f12238f381e964ffc6d1d06037c4933070de593e0540e4c3554c4",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_066.inp",
+      "source": "inputs/q6_templates/production/fep_066.inp",
+      "source_sha256": "1eb35a3e3043a732e8a8e3c7c3d2ea8b968b49cdd133655e9c4d303a003eaaaa",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_064.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_062.inp",
+      "source": "inputs/q6_templates/production/fep_062.inp",
+      "source_sha256": "50d514936c07ea4616493734d7098ff51e7fed039315a164964587e7e40c4363",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_060.inp",
+      "source": "inputs/q6_templates/production/fep_060.inp",
+      "source_sha256": "df69dd1ebbb22a1233e7d5d82e22fbc2afbf2a988294664a861f8e9b38e4ad4b",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_058.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_056.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_054.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_052.inp",
+      "source": "inputs/q6_templates/production/fep_052.inp",
+      "source_sha256": "e76889272901dc4447b0f7d29a6d7fbf21b93e79d9daee4d1513ae4782d6e32a",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_050.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_048.inp",
+      "source": "inputs/q6_templates/production/fep_048.inp",
+      "source_sha256": "391082ba3325a399f154e19787c52b0b3bf97321da44e5d0f34d1e5107eb870a",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_046.inp",
+      "source": "inputs/q6_templates/production/fep_046.inp",
+      "source_sha256": "0cf0919ba8b36837ef948801a57416547e3da675f687394339c4e364d0f6a60f",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_044.inp",
+      "source": "inputs/q6_templates/production/fep_044.inp",
+      "source_sha256": "e16bd7ed186ff73831e63309c485376d0b7e47851abca23f4fa1c25a4b2c6836",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_042.inp",
+      "source": "inputs/q6_templates/production/fep_042.inp",
+      "source_sha256": "790582bf3cf4478b5255cead2237f4d13a326dd2730565434df824f3700c04ac",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_040.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_038.inp",
+      "source": "inputs/q6_templates/production/fep_038.inp",
+      "source_sha256": "4d66641c7195e9345b3f09955064a2129fc500569eef3d27d422057fcb0d750d",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_036.inp",
+      "source": "inputs/q6_templates/production/fep_036.inp",
+      "source_sha256": "a3210b3fd3b564d9974f8d5970e8f5b8ec8b0c19c47ff82defa208ce351015b2",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_034.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_032.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_030.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_028.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_026.inp",
+      "source": "inputs/q6_templates/production/fep_026.inp",
+      "source_sha256": "80c0f4c462d70571ab556d83be12651a7745c91dc7f10f2ae959d3545f367306",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_024.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_022.inp",
+      "source": "inputs/q6_templates/production/fep_022.inp",
+      "source_sha256": "9870c140383f9e85071d5b11032ddee7f37da4c6c9eaa4c97fcba8d2653ceaf0",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_020.inp",
+      "source": "inputs/q6_templates/production/fep_020.inp",
+      "source_sha256": "227784e1d338264f73434f18daffb725f3a98707a7b74bfa34490f0ec28ab3c9",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_018.inp",
+      "source": "inputs/q6_templates/production/fep_018.inp",
+      "source_sha256": "27876bd81598ca6274fab3503b2959e8dbd407f57e9699d0a0b62cde75f96aa9",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_016.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_014.inp",
+      "source": "inputs/q6_templates/production/fep_014.inp",
+      "source_sha256": "2f452d604cc1a5af6a8b6f47b5b88851f02c9ba8aa9c56343a76b736d16ca9a4",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_012.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_010.inp",
+      "source": "inputs/q6_templates/production/fep_010.inp",
+      "source_sha256": "5e33dfe482015b9352384706b78e4ec0027bf02591bff6b17d4d6b1fd9e2c746",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_008.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_006.inp",
+      "source": "inputs/q6_templates/production/fep_006.inp",
+      "source_sha256": "3e87ec4e5d8ec5861678dd9deb5920b929eda51d25769439c49a4fdfad57d2aa",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_004.inp",
+      "source": "inputs/q6_templates/production/fep_004.inp",
+      "source_sha256": "690bc727819278f4d1f9c0e18bfffa38d4e2a850a16f3c116821e85cc4e9212d",
+      "recovered_or_generated": false,
+      "note": "Nonempty native template; placeholders substituted.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_002.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    },
+    {
+      "input": "fep_000.inp",
+      "source": "inputs/q6_templates/production/fep_098.inp",
+      "source_sha256": "891d15d552e360821eac6790d906dd9f6e5e2059d47ec7cbe3905b8ee2c4d999",
+      "recovered_or_generated": true,
+      "note": "Sibling lambda/restart/file names changed for empty production stage.",
+      "shortened_steps": 200
+    }
+  ],
+  "input_sha256": {
+    "Des27_7_IN.pdb": "922fbd498f28cda983c88dec8d8fecfcd5f9a90763b6b6444617e45d859effd3",
+    "fep_008.inp": "f34007053fa094b9f08ba204f1614c7b34db1a0dc621274853c77b2a24c51e26",
+    "fep_044.inp": "e9e15cb5988273dc8c679ce35c1a57a6b6fb5e2ecc4610effc9c6031d1b837ee",
+    "fep_072.inp": "107b54a9fa1dbc2cfa8a82504ff0b95238ba80ba07601ca7c9eac894ae17eb95",
+    "Des27_7_IN.fep": "01e51c25c3434747b29c418ce3579fd63d538b42bfac9056ca3000f02212e8ae",
+    "fep_062.inp": "ca1227b7a80b05fe25f84367615e1b79fcf070b0caba3c853aed3e09a5af73b3",
+    "fep_018.inp": "ca067f35d9bf9d4f541dc150bff046ebb159c49d6463bf719674b64c422dcd11",
+    "fep_010.inp": "3db1696d11f2146fa838ef5903a6903081c1352d999e8bfb04900d37e7babe9f",
+    "fep_030.inp": "e0db2f6d0614f98210a6dd1981e1df882b6f9eb435ea95a10af99003411705af",
+    "fep_098.inp": "bd97c0953eec9a9f27ade2f023a9a35937ec1ec1925b26e4f3cae6000f96fcd3",
+    "qfep_related_protocol.inp": "bc961fcd3e6374ca28a200640964b355fc98a3422cffa0df4a9ae308d7655851",
+    "fep_020.inp": "0f3c17f10bb5278af5c455383033a3d60c1d31bbfabfb48b4726d89b5cc138af",
+    "fep_050.inp": "2d382eb72a68cafcab9e76bd2d65c79b355fb54dc0e9b1cdaaba5e3a8eae078b",
+    "8.dyn_warm_300k.inp": "7dbf24e87cf56cddb06d1685e02ec365dfc963cb915a2e21ef167c719d029f8d",
+    "fep_064.inp": "ae49ee779bd37f26f09393cfa9cb3912c2a7c7aceddbcf55dbda7cb9db7152c0",
+    "fep_086.inp": "c2205d3afb15e2e59c32c60ec1d400e8703f9f5b2d493367c821dd25f70f6821",
+    "fep_100.inp": "8f2cfa7b47851299ad12f89bd1a374f283e047194faf783170ddf8c3b95884d9",
+    "fep_070.inp": "4970280426cdcb88bf068f6a5c7d0b361d63936c11e8d2146bab8e77da6c5bf3",
+    "fep_084.inp": "12638d7647c8c21bcac6d8bb138763a6f293ef9f7c64369c4dc0e282594d4fa6",
+    "fep_032.inp": "b93175761f52fa8501c5eb31a748ebd317f32c2075558ebd70eae813771be4b4",
+    "fep_094.inp": "42eddf1aa6e1418601b6cc5c61eebe6a41250e17fc06bef210159c3c3305e336",
+    "fep_002.inp": "c734ed6b102b80228e31f3c08356d52c9a7ddb03da8b2e178328bb2a9ee88343",
+    "fep_016.inp": "02590a715a9f05f6d2023103edcaf63cfceca1079c900166000ab4e491a4b48c",
+    "6.dyn_warm_30k.inp": "717b55faa241dcd537cdc865884f2a55f1d281ee2e21f302f178fa26b3d825ec",
+    "fep_080.inp": "57b8849f28f686e7a3f9d1a01a09bdb8d272c63c5d323d0d52f7492862e2277d",
+    "fep_042.inp": "432513b0a0a1c977c6666a4c39d3f1c73db927e5b009c8304b0327243081da6a",
+    "fep_096.inp": "5dab45e7fd9eca05748af0d9890a68259cd502359561ef84e5cd5c08ab98afe6",
+    "14.dyn_eq300k_6.inp": "b5413118c3f40679e226b95e2ffcd5b6d838ceaccd5ef155c6360f9348bd0443",
+    "4.dyn_cool.inp": "f4a2d42e0c2482d259443e703f04dbb8655e435fc320c9a5fea0c4a367ee0042",
+    "fep_054.inp": "fcc1b55aa4d16835cff9f8752a050834d4fbae830034d452b6322ea62c598877",
+    "fep_074.inp": "dec94824123251a0077b38d6198f560e7242bfc9dd7a961790a092d9225aba99",
+    "fep_092.inp": "58cda01640db8312f0c69a569bbf8281860bcfd48734922f7d49849e3168495e",
+    "fep_088.inp": "cb1ca20d6cfef1270d1ca1f7587a42e91b8548541b979fb1047a48d4610a9fa8",
+    "12.dyn_eq300k_4.inp": "28ada191fd546c52a357738b473cc066cdf056903c1ea0aa435dc46b6cd8b8dd",
+    "fep_060.inp": "f1ed4984561b33fcf4f62d12e9c3df28b78c09bc6058cadaf632570523eedcee",
+    "fep_076.inp": "73a055dc32c49c093adfde1ecfce587de741c751b5d7e57cb9c3ed1c50fe1d9c",
+    "fep_036.inp": "12be666f0c0d8ebd208e9a31f0ef582bd36c08590fa63ea457e80e2a3c8b0e06",
+    "fep_068.inp": "3edfe07ff2ccd6f631d13d210d7ac563d9ee1f60c78acdee7406361924b9adc5",
+    "fep_000.inp": "ba53f108d7f1fffffdd77ac5cffd3784ec28f44ddfbfc57f459781cbfc011c34",
+    "fep_022.inp": "d58a58691da72811a4280eedbf0b73e88b5f0090556609befb0d7d606eab043a",
+    "fep_058.inp": "3cb160206c46904eb642bbaa91208880912784e357fc7f832b1f6dd92484974c",
+    "fep_004.inp": "99c9ef8545fd34e9a5125744249fad9dc16186a4feed99c12d9e2612f06636a9",
+    "fep_056.inp": "803ff0da8471c3c80ef0397c54e590a3c9bb08f708d8dfe7ba942389454f6f0b",
+    "1.dyn_min_wat_noshake.inp": "f68b234057b1b652a7fb393f962967eb1772edba4848958774f15efb853efde8",
+    "fep_090.inp": "e4fed737b7d447f7bdcb865553af937b1e2c6a6434437b4f36e2eaca2cbda105",
+    "fep_024.inp": "526550cb98a1116b6777b1395e6d4e3b2029cf6370e3ddbc838c327dbfeefc09",
+    "fep_040.inp": "2773abc78719393494890f0904beb96a6b1030243407abb1bb8aa7f98a86602c",
+    "fep_066.inp": "76d6589a21dfb79160bee6c963f644aa9fc9a6d249d02f3a64107521e610c556",
+    "fep_038.inp": "7aa454f489a705172a5e3af6dc4985c9068fa26c6954e2b86dc33311f89a92ca",
+    "7.dyn_warm_150k.inp": "8fe859d46c06bf81c00ace52e84eca7fb79d604c0908c5e06abddbf303a528f8",
+    "fep_026.inp": "5789c450421693c5ab82d713073aba1e1b0e4d08279d6635894fc0bacfa8e392",
+    "9.dyn_eq300k_1.inp": "52e917ef0b19f8ad7f01d43d42d8bd41b39863d38bdd12dbdedc121dd5c10ad6",
+    "fep_014.inp": "072bcfaca4dced72192c0700a3092f973d1f71dc39230d3487ae6bbd20932423",
+    "fep_046.inp": "13920b89c72aa3a72cabb679cc591bfcd408d8e98c8362765cd6ade70e643e30",
+    "2.dyn_min_wat.inp": "7cce5e85b5c4c1a8c34ad0b14e6d438969ece92a93ebb7f2dc1a7926f044b63e",
+    "fep_052.inp": "587cb5abd6669e2a1513572217f0d867386f294355f22db825cf4edbcd34be3e",
+    "11.dyn_eq300k_3.inp": "4aa97d37370597f1aa1be097f2db9f00d8ba47414ede217238582508efbc5d13",
+    "fep_012.inp": "4b22ef0dc07f20a2534e08cb47e72768f3c4f6e7a701a1dc073267a4e812d8f1",
+    "10.dyn_eq300k_2.inp": "52796de7eaa347a9d84afddc405611cae6a46b55964758378d809b231cd86005",
+    "fep_082.inp": "e3a0e12c926de472c26ce59175fd2e532165ebd0c709e1eac66c373a9d868f2a",
+    "5.dyn_min.inp": "6b213f661d44650454a1b304b0239011004567048b57523a386fd89d4a50befe",
+    "fep_028.inp": "fd9bf0ea235ab7089b46e3062de7379a16b51b06ffb40059a91c402e6cad11db",
+    "fep_078.inp": "fd7d24ef631dd6979bc952922b3c805d31488d71937d6b8474a2bd19cb88f391",
+    "fep_034.inp": "ec6884de5c2d2fe2b76e171046c7fc958bf7be3a5589253d4686ec471a829dbb",
+    "3.dyn_min_wat_eq.inp": "6549d643d7d9ff03b790fafe92e1769e45631d0d91f16c29369ac53f9862023c",
+    "13.dyn_eq300k_5.inp": "9979d67e4f29bfab312608aeca3c746f7afcdae22a0f1106a92f19e361f414ca",
+    "fep_006.inp": "2ca5e7e667ac9602ce95316caec5725da413de86ac4e0e09db76d740798cebd8",
+    "Des27_7_IN.top": "0ba6ce65ae147491ba3d047630c0bfc6af27ac26a62a8256217cb886b5f650dc",
+    "fep_048.inp": "fe74f899edf44c0cb2047626b818c579e6a5932b59f58203f960732567f5db3c"
+  },
+  "physical_barrier_available": false
+}
