@@ -1,7 +1,14 @@
 # Kemp EVB workshop
 
-This public repository contains a short hands-on about the Kemp reaction. Start at the [workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/) or open [`kemp_evb/index.html`](kemp_evb/index.html) locally. The saved browser activities need no installation.
+A beginner-friendly hands-on about the Kemp reaction and empirical valence bond (EVB). Open the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/) or open `kemp_evb/index.html` from a clone.
 
-The workshop explains the full Kemp calculation sequence: prepare mapped reactant and product states, understand relaxation, then sample and analyze the FEP profile. The saved activities teach EVB concepts and profile reading; they are not live runs of that full sequence.
+## Start here
 
-The website includes the full EVB Hamiltonian explanation, parameter-calibration history with paper/SI/archive citations, and an explicit Q6/OpenMM reproduction status. The simulation backend and native reconstruction driver are maintained in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). This repository publishes the standalone teaching site; its launchers open saved examples.
+1. Read the short reaction and EVB explanations on the website.
+2. Use the saved browser exercises to explore the mechanism and energy profiles.
+3. To run a live calculation, follow [`kemp_evb/calculation/README.md`](kemp_evb/calculation/README.md). It includes the complete reduced-demo inputs and Slurm job file.
+4. For cluster setup and the separate full-enzyme workflow, follow [`kemp_evb/guides/CLUSTER_QUICKSTART.md`](kemp_evb/guides/CLUSTER_QUICKSTART.md).
+
+The 2 × 2 EVB matrix is a score table for two bonding descriptions of the same atoms. Its diagonal entries are the reactant and product energies; α shifts the product energy; H₁₂ controls how strongly the descriptions mix. The lower mixed energy is the EVB energy at that geometry. The website keeps the equation and calculator in an optional section.
+
+The short live demo runs an 81-position, reduced five-atom path with OpenMM and checks energies against a pinned EVBOpenMM library. It is designed to show the software working; it is not molecular dynamics, an optimized pathway, a free-energy barrier, or a reproduction of the full enzyme calculation. The separate backend repository contains the full-enzyme workflow.

@@ -63,7 +63,7 @@ def begin(c, number, kicker, title):
     c.setFont(FONT, 10)
     c.setFillColor(MUTED)
     c.drawString(68, 35, "Kemp EVB workshop | Kemp reaction hands-on")
-    c.drawRightString(PAGE_W - 68, 35, f"{number} / 10")
+    c.drawRightString(PAGE_W - 68, 35, f"{number} / 11")
     return y - 18
 
 
@@ -117,14 +117,27 @@ def build():
     para(c, "EVB uses both descriptions to model the bond changes.", 68, 145, PAGE_W - 136, LEAD)
     c.showPage()
 
-    # 4: EVB terms
-    y = begin(c, 4, "3 · EVB in one minute", "What do the settings mean?")
-    gap, box_y, box_h = 14, 155, 220
-    box_w = (PAGE_W - 136 - 2 * gap) / 3
-    card(c, 68, box_y, box_w, box_h, "Two states", "Reactant and product", "Each has its own bond and charge description for the same atoms.")
-    card(c, 68 + box_w + gap, box_y, box_w, box_h, "α", "Energy offset", "Moves the product-state energy up or down relative to the reactant.")
-    card(c, 68 + 2 * (box_w + gap), box_y, box_w, box_h, "H12", "Coupling", "Controls how strongly the reactant and product descriptions mix.")
-    para(c, "Neither α nor H12 is the reaction barrier. Both affect the profile, so real calculations need evidence to choose them.", 68, 127, PAGE_W - 136, SMALL)
+    # 4: EVB matrix in plain language
+    y = begin(c, 4, "3 · EVB in one table", "How does the small matrix work?")
+    para(c, "Think of the matrix as a 2 × 2 score table. It compares the reactant and product bond descriptions for the same atoms.", 68, y, PAGE_W - 136, LEAD)
+    table_x, table_y, cell_w, cell_h = 92, 193, 196, 62
+    c.setFillColor(MUTED); c.setFont(BOLD, 12)
+    c.drawCentredString(table_x + cell_w / 2, table_y + cell_h * 2 + 15, "Reactant description")
+    c.drawCentredString(table_x + cell_w * 1.5, table_y + cell_h * 2 + 15, "Product description")
+    c.drawRightString(table_x - 10, table_y + cell_h * 1.5 - 4, "Reactant")
+    c.drawRightString(table_x - 10, table_y + cell_h * .5 - 4, "Product")
+    labels = [["Reactant energy", "H12: mixing"], ["H12: mixing", "Product energy + alpha"]]
+    for row in range(2):
+        for col in range(2):
+            x = table_x + col * cell_w
+            yy = table_y + (1 - row) * cell_h
+            c.setFillColor(SOFT if row == col else colors.white)
+            c.setStrokeColor(LINE); c.rect(x, yy, cell_w, cell_h, fill=1, stroke=1)
+            c.setFillColor(INK); c.setFont(BOLD, 14)
+            c.drawCentredString(x + cell_w / 2, yy + cell_h / 2 - 5, labels[row][col])
+    para(c, "The diagonal boxes are the two state energies. Alpha shifts the product energy up or down. H12 in the other boxes controls how strongly the two descriptions mix.", 535, 354, 340, BODY)
+    para(c, "At each geometry, the calculation combines the two energies and uses the lower mixed value. The table is a calculation tool, not two molecules. Alpha and H12 are not the reaction barrier.", 535, 244, 340, BODY)
+    para(c, "Real values need suitable reference data and a validated model. The demonstration settings are not a fit.", 535, 165, 340, SMALL)
     c.showPage()
 
     # 5: Q6 and OpenMM
@@ -150,7 +163,7 @@ def build():
     card(c, 68, box_y, box_w, box_h, "Prepare", "Build R and P", "Use the same atoms and atom order. Assign bonds, charges, force-field terms, and EVB settings. Check mapping, total charge, proton position, solvent, and ions.")
     card(c, 68 + box_w + gap, box_y, box_w, box_h, "Relax", "Settle both endpoints", "Minimize and equilibrate R and P separately. Check geometry and stability. This prepares the states; it does not calculate the barrier.")
     card(c, 68 + 2 * (box_w + gap), box_y, box_w, box_h, "FEP/profile", "Sample lambda windows", "Sample the path between R and P. Check window overlap and convergence, compare replicas, then analyze the profile, barrier, and reaction free energy.")
-    para(c, "This workshop includes saved Kemp data for learning the analysis, not the full live scripts for these three simulation stages.", 68, 125, PAGE_W - 136, SMALL)
+    para(c, "A reduced five-atom live demo is included with its mapped inputs and Slurm job. The separate full-enzyme backend contains the longer preparation-to-profile workflow.", 68, 125, PAGE_W - 136, SMALL)
     c.showPage()
 
     # 7: Core example
@@ -162,7 +175,7 @@ def build():
     c.setFont(BOLD, 16)
     c.drawString(88, 233, "Open the EVB example")
     c.linkURL("https://nd7996.github.io/Kemp-EVB-Workshop/viewers/evb_core.html", (68, 214, 378, 266), relative=0)
-    para(c, "The small example teaches the controls; it is not the full enzyme calculation.", 68, 184, 700, SMALL)
+    para(c, "The saved viewer needs no installation. A reduced five-atom live calculation is also included; see the cluster guide. It is not the full enzyme calculation.", 68, 184, 700, SMALL)
     c.showPage()
 
     # 8: The labeled profile
@@ -198,6 +211,15 @@ def build():
         para(c, item, 102, yy + 8, 710, BODY)
     para(c, "Listov et al., Nature (2025). DOI: 10.1038/s41586-025-09136-2", 68, 140, 720, SMALL)
     c.linkURL("https://doi.org/10.1038/s41586-025-09136-2", (68, 48, 760, 70), relative=0)
+    # 11: Cluster commands
+    y = begin(c, 11, "10 · Run the live demo", "Submit a short calculation on Slurm")
+    para(c, "Create the environment and verify the bundled inputs on the login node, from the workshop repository root:", 68, y, 800, BODY)
+    command_style = ParagraphStyle("Command", parent=BODY, fontName="Courier", fontSize=13, leading=19, backColor=SOFT, borderPadding=10)
+    para(c, "conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check", 68, 345, 820, command_style)
+    para(c, "Submit the calculation from the same repository root. Replace the example Conda path with the path on your cluster:", 68, 240, 820, BODY)
+    para(c, 'CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/short_evb_demo.slurm', 68, 173, 820, command_style)
+    para(c, "This bundled run evaluates a reduced five-atom path. For full-enzyme short and longer production commands, scheduler settings, and resume instructions, see the online cluster guide.", 68, 98, 820, SMALL)
+    c.linkURL("https://github.com/ND7996/Kemp-EVB-Workshop/blob/main/kemp_evb/guides/CLUSTER_QUICKSTART.md", (68, 48, 850, 70), relative=0)
     c.save()
     from add_slide_notes import patch as add_slide_notes
     add_slide_notes(OUTPUT)

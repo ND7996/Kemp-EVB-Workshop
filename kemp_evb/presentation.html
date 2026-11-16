@@ -7,7 +7,7 @@
   <style>
     :root{--ink:#1f2e36;--muted:#52626c;--accent:#176b73;--line:#d7e0e3;--paper:#f7f8f6;--soft:#eaf2f1}
     *{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--paper);color:var(--ink);font:20px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-    .deck{height:100%;display:flex;align-items:center;justify-content:center;padding:34px 28px 90px}.slide{display:none;width:min(1050px,100%);max-height:100%;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:clamp(24px,5vw,62px)}.slide.active{display:block}.kicker{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}h1{font-size:clamp(36px,7vw,68px);letter-spacing:-.035em;line-height:1.06;margin:10px 0 22px;max-width:800px}h2{font-size:clamp(30px,5vw,48px);line-height:1.12;letter-spacing:-.025em;margin:8px 0 22px}h3{font-size:22px;margin:4px 0 8px}p{max-width:760px;margin:12px 0 20px}.lead{font-size:24px;max-width:800px;color:#344952}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:20px;border:1px solid var(--line);border-radius:6px}.card p{font-size:18px;margin:8px 0 0}.reactant{border-top:4px solid #39769a}.product{border-top:4px solid #4c8768}.state{font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase}.reaction-img{width:min(100%,850px);height:auto;display:block;margin:22px auto 8px}.caption{font-size:14px;color:var(--muted);text-align:center}.action{display:inline-block;color:#fff;background:var(--accent);padding:12px 18px;border-radius:5px;text-decoration:none;font-weight:700;margin-top:10px}.plain-link{color:var(--accent);font-weight:700}.sequence{font-size:25px;font-weight:650;line-height:1.6;padding:18px;background:var(--soft);border-radius:6px}.note{font-size:16px;color:var(--muted)}
+    .deck{height:100%;display:flex;align-items:center;justify-content:center;padding:34px 28px 90px}.slide{display:none;width:min(1050px,100%);max-height:100%;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;padding:clamp(24px,5vw,62px)}.slide.active{display:block}.kicker{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}h1{font-size:clamp(36px,7vw,68px);letter-spacing:-.035em;line-height:1.06;margin:10px 0 22px;max-width:800px}h2{font-size:clamp(30px,5vw,48px);line-height:1.12;letter-spacing:-.025em;margin:8px 0 22px}h3{font-size:22px;margin:4px 0 8px}p{max-width:760px;margin:12px 0 20px}.lead{font-size:24px;max-width:800px;color:#344952}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:20px;border:1px solid var(--line);border-radius:6px}.card p{font-size:18px;margin:8px 0 0}.reactant{border-top:4px solid #39769a}.product{border-top:4px solid #4c8768}.state{font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase}.reaction-img{width:min(100%,850px);height:auto;display:block;margin:22px auto 8px}.caption{font-size:14px;color:var(--muted);text-align:center}.action{display:inline-block;color:#fff;background:var(--accent);padding:12px 18px;border-radius:5px;text-decoration:none;font-weight:700;margin-top:10px}.plain-link{color:var(--accent);font-weight:700}.sequence{font-size:25px;font-weight:650;line-height:1.6;padding:18px;background:var(--soft);border-radius:6px}.note{font-size:16px;color:var(--muted)}.matrix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px;margin:18px 0}.matrix-grid div{padding:16px;border:1px solid var(--line);font-size:18px;background:#fff}.matrix-grid div:nth-child(1),.matrix-grid div:nth-child(4){background:var(--soft);font-weight:700}.command{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4f3;border:1px solid var(--line);border-radius:6px;padding:14px;font:16px/1.45 ui-monospace,Consolas,monospace;max-width:820px}
     .controls{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);height:68px;display:flex;align-items:center;justify-content:center;gap:14px}.controls button{font:inherit;font-size:16px;border:1px solid #aab8be;border-radius:5px;background:#fff;color:var(--ink);padding:8px 14px;cursor:pointer}.controls button:hover{background:var(--soft)}#count{font-size:15px;color:var(--muted);min-width:74px;text-align:center}.progress{position:fixed;left:0;bottom:67px;height:3px;background:var(--accent);width:0;transition:width .2s ease}.source{font-size:15px;color:var(--muted);margin-top:28px}
     @media(max-width:700px){body{font-size:18px}.grid,.grid.three{grid-template-columns:1fr}.deck{padding:16px 12px 86px}.slide{padding:24px 18px}.lead{font-size:21px}}
     @page{size:13.333in 7.5in;margin:0}
@@ -45,13 +45,13 @@
 
     <section class="slide">
       <div class="kicker">3 · EVB basics</div>
-      <h2>What do the settings mean?</h2>
+      <h2>How does the small EVB table work?</h2>
       <div class="grid three">
         <article class="card"><div class="state">Two states</div><h3>Reactant and product</h3><p>Each has its own bond and charge description for the same atoms.</p></article>
         <article class="card"><div class="state">α</div><h3>Energy offset</h3><p>Moves the product-state energy up or down relative to the reactant.</p></article>
         <article class="card"><div class="state">H₁₂</div><h3>Coupling</h3><p>Controls how strongly the reactant and product descriptions mix.</p></article>
       </div>
-      <p class="note">Neither α nor H₁₂ is the reaction barrier. Both affect the profile, so they need evidence-based choices in real calculations.</p>
+      <div class="grid"><div><p><b>Read the 2 × 2 table:</b> it compares two bond descriptions for the same atoms. The diagonal boxes are the state energies. α shifts the product energy. H₁₂ in the other boxes controls how much the descriptions mix. The computer uses the lower combined energy.</p><p class="note">A matrix is a compact table of numbers. It is not two molecules. Neither α nor H₁₂ is the reaction barrier.</p></div><div class="matrix-grid" role="img" aria-label="Two by two EVB table: reactant energy and product energy plus alpha on the diagonal, H12 in both off-diagonal cells"><div>Reactant energy</div><div>H₁₂<br><small>mixing</small></div><div>H₁₂<br><small>mixing</small></div><div>Product energy + α</div></div></div>
     </section>
 
     <section class="slide">
@@ -73,7 +73,7 @@
         <article class="card"><div class="state">Relax</div><h3>Settle both endpoints</h3><p>Minimize and equilibrate R and P separately. Check geometry and stability. Relaxation prepares the states; it does not give the reaction barrier.</p></article>
         <article class="card"><div class="state">FEP/profile</div><h3>Sample lambda windows</h3><p>Sample the path between R and P. Check window overlap and convergence, compare replicas, then analyze the profile, barrier, and reaction free energy.</p></article>
       </div>
-      <p class="note">This workshop has saved Kemp data for learning the analysis. It does not include the full live scripts for these three simulation stages.</p>
+      <p class="note">The browser activities use saved results. A reduced five-atom live demo is included in this repository; the separate full-enzyme backend has the longer preparation-to-profile workflow.</p>
     </section>
 
     <section class="slide">
@@ -81,7 +81,18 @@
       <h2>Try changing the settings</h2>
       <p>Open the small EVB example. Move one control at a time. Watch how the curve changes when you change the energy offset, then when you change the coupling.</p>
       <a class="action" href="viewers/evb_core.html">Open the EVB example</a>
-      <p class="source">The small example teaches the controls; it is not the full enzyme calculation.</p>
+      <p class="source">The saved viewer is useful without installation. The live reduced demo is in calculation/; it is not the full enzyme calculation.</p>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">6 · Run it on a cluster</div>
+      <h2>Submit the short live calculation</h2>
+      <p>Create the environment and check the bundled inputs on a login node. Then submit the Slurm job from the workshop repository root.</p>
+      <div class="command">conda env create -f kemp_evb/calculation/environment.yml
+conda activate kemp-short
+python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
+CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/short_evb_demo.slurm</div>
+      <p class="note">This evaluates an 81-position, reduced five-atom model. For the full-enzyme short workflow, longer production, and scheduler setup, use the <a class="plain-link" href="https://github.com/ND7996/Kemp-EVB-Workshop/blob/main/kemp_evb/guides/CLUSTER_QUICKSTART.md" target="_blank" rel="noopener">cluster guide</a>.</p>
     </section>
 
     <section class="slide">

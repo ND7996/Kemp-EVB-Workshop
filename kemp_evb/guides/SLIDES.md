@@ -1,49 +1,29 @@
-# Slide notes for the hands-on
+# Slide notes for the Kemp hands-on
 
-Keep the workshop page open so participants can open each saved Kemp viewer. No package installation or simulation run is needed.
+Open `index.html` and `presentation.html`. Saved examples run in a browser. The separate cluster guide explains how to submit the bundled live calculation and the longer full-enzyme route.
 
-## 1. Welcome
+## 1. The reaction
 
-Say: “We will use one reaction to see what EVB does. You do not need to know the equations or the software beforehand.” Point out that the examples use saved data.
+Asp162 accepts a proton from the substrate. The C–H bond breaks as the ring opens. C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen; Asp162 OD1 is the accepting enzyme oxygen.
 
-## 2. The reaction
+## 2. Reactant and product
 
-Asp162 accepts a proton from the substrate. The C–H bond breaks as the ring opens. Explain the labels: C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen; Asp162 OD1 is the accepting enzyme oxygen. Use the figure to distinguish the reactant and product descriptions; these labels identify atoms, not EVB settings.
+The two states are different bond and charge descriptions of the same atoms. They are not two independent molecules or separate simulation paths.
 
-## 3. The two states
+## 3. The EVB table
 
-Explain that the reactant and product states describe the same atoms with different bonding and charge patterns. They are not two separate molecules moving through the simulation.
+Call the matrix a small 2 × 2 score table. The diagonal cells contain reactant and product energies. α shifts the product energy; H₁₂ in the other two cells controls how strongly the descriptions mix. The program combines the values and takes the lower mixed energy for that geometry. That energy is not itself a free-energy barrier. Only show the equation if the group wants more detail.
 
-## 4. EVB settings
+## 4. Q6 and OpenMM
 
-The energy offset α shifts the product description relative to the reactant. H₁₂ controls how strongly the two descriptions mix. Neither setting is the reaction barrier. Keep the explanation at this level unless the group asks for the equation.
+Paper Figure 3e reports Q6 barrier estimates; the saved OpenMM profile is a different calculation with different model boundaries, electrostatics, Morse energy reference and sampling. Do not compare them as a direct engine benchmark.
 
-## 5. Q6 and OpenMM
+## 5. Try the examples
 
-Paper Figure 3e shows activation-barrier estimates, not a free-energy profile. The workshop's OpenMM viewer shows a short profile from 21 windows and 50 records per window. The paper uses Q6 with OPLS-AA, TIP3P, SCAAS solvent, and a local reaction field. Boundary treatment, electrostatics, Morse energy reference, and sampling differ, so these are not direct profile-to-profile results. Link to the complete paper figure and OpenMM profile viewer from the slide.
+Use the saved browser activities to explore the mechanism, profiles and parameter sensitivity. A change that makes a curve resemble a target does not validate the parameters.
 
-Explain the outputs: the paper's Q6 workflow reports calculated EVB activation-barrier estimates for its enzyme variants. A complete, adequately sampled OpenMM EVB run should provide a free-energy profile, activation free energy, and reaction free energy. The saved OpenMM profile is a short, unvalidated example only.
+## 6. Run on the cluster
 
-## 6. The full calculation sequence
+The workshop repository bundles a live five-atom calculation, its mapped inputs and Slurm file. Point out that it checks software and EVB energy mixing along an imposed geometry path; it is not MD or a physical enzyme barrier. The cluster guide also gives commands for the separate full-enzyme short workflow and longer production configuration.
 
-Explain that a live Kemp calculation has three jobs: prepare matching R and P states, relax each endpoint, then sample λ windows and analyze the FEP profile. The workshop describes these stages but does not include the live run scripts.
-
-## 7. Try the core example
-
-Ask participants to change one control at a time. Have them say what changed in the curve. The small example introduces the controls; it is not the full enzyme free-energy calculation.
-
-## 8. Read a profile
-
-The horizontal energy-gap axis is not a distance or time. The vertical axis is free energy relative to the reactant. The peak estimates a barrier; the product level gives the reaction free energy. A binned maximum is not itself a transition-state structure.
-
-## 9. Compare settings
-
-Invite participants to find two parameter pairs with similar peak heights, then compare their product energies. The point is that one barrier does not determine all model parameters.
-
-## 10. Close
-
-Repeat the take-home: EVB connects reactant and product bonding descriptions. Real predictions also need suitable reference data and adequate sampling. The short OpenMM example is a teaching result, not a reproduction of the paper’s Q6 calculation.
-
-## Optional technical appendix (slides11–16)
-
-The browser presentation and PDF retain the original10 introductory slides, followed by six optional detail slides: the EVB matrix; native Q6 stages; EVBOpenMM stages; actual reproduction status; parameter/calibration history; and the paper-reference and computed-curve interpretation. The website contains the interactive calculator and full linked bibliography.
+The full-enzyme path has stages for preparing matched states, relaxing, heating/equilibration, mapping-window production and profile analysis. Its current finite-droplet model is not an exact Q6 reproduction.

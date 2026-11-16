@@ -31,7 +31,7 @@ p=base('Two bonding descriptions, one reaction','Understanding EVB')
 boxes=[fitz.Rect(62,132,340,322),fitz.Rect(354,132,632,322),fitz.Rect(646,132,924,322)]
 card(p,boxes[0],'Reactant state (R)','Before','The substrate still has its C-H bond and closed N-O-containing ring. Asp162 is a carboxylate ready to accept the proton.',BLUE)
 card(p,boxes[1],'Product state (P)','After','Asp162 has accepted the proton. The N-O bond is broken, the nitrile has formed, and the ring-opened phenoxide product remains.',GREEN)
-card(p,boxes[2],'EVB','How the states mix','EVB combines energy descriptions for R and P. The energy offset shifts one state relative to the other; coupling controls how strongly they mix.',ACCENT)
+card(p,boxes[2],'EVB','How the states mix','EVB uses a 2 × 2 table to combine the reactant and product energy descriptions for the same atoms. The diagonal boxes hold the energies; alpha shifts the product energy; H12 controls mixing in the other two boxes.',ACCENT)
 p.insert_text((62,365),'Explore the saved examples in this order',fontsize=18,fontname='hebo',color=INK)
 activities=[('1','EVB fundamentals','Change coupling and offset one at a time.'),('2','Saved reaction profile','Find the reactant, high-energy region, and product.'),('3','Parameter comparison','Compare parameter pairs and their product energies.')]
 for i,(n,t,b) in enumerate(activities):
@@ -46,7 +46,7 @@ card(p,boxes[1],'2 · Relax','Follow the protocol','Q6 uses restrained low-tempe
 card(p,boxes[2],'3 · FEP/profile','Sample the lambda path','Sample a set of lambda windows between the state descriptions. Check neighboring-window overlap and convergence, compare independent replicas, then analyze the barrier and reaction free energy.',GREEN)
 p.draw_rect(fitz.Rect(62,382,924,470),color=LINE,fill=PALE,width=1)
 p.insert_text((80,409),'What this workshop contains',fontsize=15,fontname='hebo',color=INK)
-p.insert_textbox(fitz.Rect(80,418,905,462),'This standalone browser pack includes saved results. The linked EVB_MHETase repository includes runnable native Q6 and EVBOpenMM preparation, relaxation, window-sampling and analysis scripts. The short runs demonstrate execution; they do not establish convergence.',fontsize=12,fontname='helv',color=INK,lineheight=1.25)
+p.insert_textbox(fitz.Rect(80,418,905,462),'This repository includes a reduced five-atom live run, its inputs, and a Slurm job. Full-enzyme scripts are in the linked backend. The demo checks execution; it is not a physical barrier result.',fontsize=12,fontname='helv',color=INK,lineheight=1.25)
 
 # Page 4: actual calculations and uncertainty
 p=base('Compare runs and explain uncertainty','Native Q6 and EVBOpenMM')

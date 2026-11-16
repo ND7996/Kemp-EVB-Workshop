@@ -1,36 +1,17 @@
 # Instructor guide
 
-## Before the session
+Start with `index.html`, then use `presentation.html`. The saved activities open without installing software. For a live cluster run, point participants to [`CLUSTER_QUICKSTART.md`](CLUSTER_QUICKSTART.md).
 
-Open `index.html` and `presentation.html`. Check that the three links to the saved exercises work. The browser-only workshop needs no installation and does not run a simulation.
+## Explain the matrix simply
 
-## Suggested session flow
+A matrix is a small table. EVB compares reactant and product bond descriptions for the same atoms. Their energies go on the diagonal; α moves the product energy; H₁₂ controls mixing in the two other cells. The calculation combines those values and uses the lower mixed energy. The matrix is a way to calculate energy, not a picture of two molecules and not a reaction barrier.
 
-1. Welcome participants and explain that the saved examples need no prior EVB experience.
-2. Use the reaction figure to show the proton transfer and ring opening.
-3. Explain how EVB connects two bonding descriptions of the same atoms. Define the offset and coupling in plain language.
-4. Open the EVB viewer and invite participants to change one control at a time.
-5. Read the saved profile together. Identify the axes, barrier estimate, and product-versus-reactant energy.
-6. Compare parameter pairs with similar peak heights.
-7. Recap what the examples show and what they cannot establish.
+## Explain the calculations
 
-## Keep these points clear
+The included live run is a reduced five-atom Kemp model. It uses the published mapped inputs, selected reactive terms, and an imposed 81-position geometry path. OpenMM evaluates the energies; EVBOpenMM is used to cross-check the lower two-state energy. Protein, solvent, most force-field terms, dynamics, path optimization and free-energy sampling are omitted. The demonstration settings are illustrative, not calibrated.
 
-- A state is a force-field description of the reactant or product, not a different molecule.
-- The energy offset shifts one state relative to the other; coupling controls how strongly they mix.
-- Neither parameter is the reaction barrier.
-- The plotted horizontal axis is an energy-gap coordinate, not an atom distance or elapsed time.
-- The short OpenMM example is for learning the workflow and reading a profile. It does not reproduce the paper's longer Q6 calculation or validate a physical barrier.
+The full-enzyme files are kept in the separate `EVB_MHETase/Kemp_EVB` repository. Its workflow includes preparation, relaxation, heating/equilibration, mapping-window production and profile analysis. The current model uses a changed finite-droplet boundary, so do not describe it as an exact reproduction of the Q6 paper calculation. Longer sampling alone does not establish convergence or calibration.
 
-## If someone wants to run calculations
+## If participants ask about the paper plots
 
-The session uses saved browser examples. The added workflow slide explains the three stages of a full Kemp calculation: prepare matching R/P states, relax both endpoints, then sample and analyze the FEP profile. Those stages are not run during the hands-on, and the live R/P and FEP scripts are not included in this workshop package. See [`SETUP.md`](SETUP.md) for the current scope and dependencies.
-
-## Matrix and reproduction explanations
-
-The website now contains a worked EVB matrix calculator, detailed Q6/OpenMM stages, actual native atom labels and a cited parameter-history review. The grey horizontal line and band are the published Q6 mean barrier13.2±0.6 kcal/mol (replica SD), not a full paper curve. Blue is the selected computed OpenMM profile; optional amber is archived parameters evaluated on the same OpenMM samples. Native Q6 completed two reconstructed shortened 51-window mapping runs and QFEP analyses: 9.82 and 8.10 kcal/mol; mean 8.96, sample SD 1.216, SEM 0.860 (n=2), not full-protocol reproduction; EVBOpenMM full-system checks and saved-data reconstruction ran in the scientific repository. The standalone workshop remains browser-only.
-
-Full scripts and native-Q6 commands are maintained in [EVB_MHETase/Kemp_EVB](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB). See the inline website reproduction status and bundled JSON audits for the limits of the9.57 versus13.2 comparison.
-
-
-Two completed shortened native Q6 replicas: 9.82, 8.10; mean 8.96, sample SD 1.216, SEM 0.860 kcal/mol. This SEM describes a shortened-protocol mean at n=2, not accuracy relative to the published barrier. Use the saved replica viewer for the last5minutes.
+The paper's Figure 3e reports Q6 activation-barrier estimates, not a full free-energy curve. The saved OpenMM profiles use a different boundary and sampling. Treat them as separate examples of what each calculation reports, not as a direct engine comparison.

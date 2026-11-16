@@ -1,2 +1,4 @@
 __pycache__/
 *.py[cod]
+
+kemp_evb/calculation/runs/
