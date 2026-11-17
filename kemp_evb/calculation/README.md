@@ -13,7 +13,8 @@ The run command creates a new folder under `kemp_evb/calculation/runs/` with `te
 - scripts/run_short_evb_demo.py: input check and run command.
 - scripts/evb_teaching.py and scripts/kemp_inputs.py: reduced model and source reader.
 - the mapped Q6 coordinates, topology, and reaction file.
-- environment.yml: Python, OpenMM, NumPy, and pinned EVBOpenMM.
+- environment.yml: Python, OpenMM, NumPy and installation tools from Conda.
+- requirements-evb.txt: pinned Martin-Floor EVBOpenMM source package, installed separately with pip.
 
 ## Install and run on Linux
 
@@ -24,10 +25,15 @@ git clone https://github.com/ND7996/Kemp-EVB-Workshop.git
 cd Kemp-EVB-Workshop
 conda env create -f kemp_evb/calculation/environment.yml
 conda activate kemp-short
+python -m pip install --no-deps -r kemp_evb/calculation/requirements-evb.txt
 python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
 python kemp_evb/calculation/scripts/run_short_evb_demo.py
 ~~~
 
+No personal checkout path or `EVBOPENMM_SRC` setting is needed. Run these commands from the repository root. The pip step uses the active environment’s Python, downloads the pinned EVBOpenMM source, and keeps Conda’s OpenMM/NumPy packages (`--no-deps`). Git is supplied by the Conda environment.
+
+If the Conda step succeeds but the pip step fails, the environment remains usable: fix the reported GitHub/proxy/SSL issue and retry only the pip command. If `kemp-short` already exists, update it with `conda env update -f kemp_evb/calculation/environment.yml`, then activate it and run the pip step.
+
 The final command saves teaching_evb.html and teaching_summary.json in a new folder under kemp_evb/calculation/runs/. Open the HTML file in a browser. A CPU is enough; no GPU is needed. To explore a different teaching setting, add --coupling 12 --offset 2 to the final command. These values are not fitted parameters.
 
-The full-enzyme preparation, relaxation, FEP sampling, and analysis workflow is maintained in the [Kemp backend](https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB).
+The historical full-enzyme backend is available in a [fixed repository snapshot](https://github.com/ND7996/EVB_MHETase/tree/e933495/Kemp_EVB). The live workshop example here remains a reduced teaching calculation.

@@ -7,5 +7,6 @@ dependencies:
   - openmm=8.6.1
   - numpy
   - pip
-  - pip:
-      - git+https://github.com/Martin-Floor/EVBOpenMM.git@dedf301eb9b0021a4be200327cea53f5b7f034c6
+  - git
+  - setuptools>=61
+  - wheel

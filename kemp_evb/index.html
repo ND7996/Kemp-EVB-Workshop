@@ -83,6 +83,7 @@
 cd Kemp-EVB-Workshop
 conda env create -f kemp_evb/calculation/environment.yml
 conda activate kemp-short
+python -m pip install --no-deps -r kemp_evb/calculation/requirements-evb.txt
 python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
 python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
 <p>The run uses a CPU and saves a browser plot plus JSON summary under kemp_evb/calculation/runs/. Open the HTML file in a browser.</p>

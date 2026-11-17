@@ -22,7 +22,7 @@ def library_energy():
     try:
         from evbopenmm.analysis.energetics import evb_ground_state_energy_kj_mol
     except ImportError as e:
-        raise ImportError('Install your EVBOpenMM checkout with python -m pip install -e /path/to/EVBOpenMM') from e
+        raise ImportError('Install the workshop dependency in the active environment: python -m pip install --no-deps -r ' + str(ROOT / 'requirements-evb.txt')) from e
     return evb_ground_state_energy_kj_mol
 
 
