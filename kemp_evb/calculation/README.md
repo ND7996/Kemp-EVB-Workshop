@@ -25,14 +25,14 @@ git clone https://github.com/ND7996/Kemp-EVB-Workshop.git
 cd Kemp-EVB-Workshop
 conda env create -f kemp_evb/calculation/environment.yml
 conda activate kemp-short
-python -m pip install --no-deps --no-build-isolation -r kemp_evb/calculation/requirements-evb.txt
+python -m pip install --no-deps --no-build-isolation ./EVBOpenMM
 python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
 python kemp_evb/calculation/scripts/run_short_evb_demo.py
 ~~~
 
 No personal checkout path or `EVBOPENMM_SRC` setting is needed. Run these commands from the repository root. The pip step uses the active environment’s Python, installs the bundled EVBOpenMM source, and keeps Conda’s OpenMM/NumPy packages (`--no-deps`). No GitHub credentials are needed for the local package installation.
 
-If the Conda step succeeds but the pip step fails, the environment remains usable: check that the vendor folder is present, return to the repository root and retry only the pip command. If `kemp-short` already exists, update it with `conda env update -f kemp_evb/calculation/environment.yml`, then activate it and run the pip step.
+If the Conda step succeeds but the pip step fails, the environment remains usable: check that the top-level EVBOpenMM folder is present, return to the repository root and retry only the pip command. If `kemp-short` already exists, update it with `conda env update -f kemp_evb/calculation/environment.yml`, then activate it and run the pip step.
 
 The final command saves teaching_evb.html and teaching_summary.json in a new folder under kemp_evb/calculation/runs/. Open the HTML file in a browser. A CPU is enough; no GPU is needed. To explore a different teaching setting, add --coupling 12 --offset 2 to the final command. These values are not fitted parameters.
 

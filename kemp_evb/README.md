@@ -1,6 +1,6 @@
 # Kemp EVB workshop
 
-Open the [live workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/?v=portable-setup-9060d6f), or open [`index.html`](index.html) locally. It explains EVB and spherical boundaries, shows the Kemp reaction scheme, then shows a clearly labeled Q6 vs OpenMM comparison and its input/output files before the α/H₁₂ examples.
+Open the [live workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/?v=standalone-evbopenmm), or open [`index.html`](index.html) locally. It explains EVB and spherical boundaries, shows the Kemp reaction scheme, then shows a clearly labeled Q6 vs OpenMM comparison and its input/output files before the α/H₁₂ examples.
 
 ## Q6 inputs and outputs
 
@@ -16,4 +16,4 @@ Open the [live workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/?v=p
 
 ## Installation
 
-Use the [portable setup instructions](calculation/README.md): create the Conda environment, activate `kemp-short`, then install `calculation/requirements-evb.txt` with that environment’s Python. No personal source path is needed.
+Use the [portable setup instructions](calculation/README.md): create the Conda environment, activate `kemp-short`, then install the included top-level `EVBOpenMM` folder with that environment’s Python. No personal source path is needed.

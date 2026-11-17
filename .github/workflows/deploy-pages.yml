@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - "kemp_evb/**"
+      - "EVBOpenMM/**"
+      - "README.md"
       - ".github/workflows/**"
   workflow_dispatch:
 

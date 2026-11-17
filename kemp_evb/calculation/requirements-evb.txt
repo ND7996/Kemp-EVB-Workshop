@@ -1,2 +1,2 @@
-# Bundled EVBOpenMM snapshot; install from the workshop repository root.
-./kemp_evb/calculation/vendor/EVBOpenMM
+# Compatibility install list; run from the workshop repository root.
+./EVBOpenMM
