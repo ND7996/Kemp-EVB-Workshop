@@ -1,5 +1,5 @@
 # Kemp EVB workshop
 
-Start with the [workshop page](https://nd7996.github.io/Kemp-EVB-Workshop/). It introduces EVB and spherical boundaries, then shows the Kemp reaction scheme, followed by the α and H₁₂ examples. The reaction comes before the parameter scan.
+Start with the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). The page introduces EVB and spherical boundaries, shows the Kemp reaction scheme, then explains the Q6 and OpenMM examples and their input/output files before the α/H₁₂ scan.
 
-The page compares the paper’s Q6 result with a short OpenMM teaching example and explains which input files each uses. For more detail, open [`kemp_evb/README.md`](kemp_evb/README.md).
+See [`kemp_evb/README.md`](kemp_evb/README.md) for the Q6 and OpenMM file lists.
