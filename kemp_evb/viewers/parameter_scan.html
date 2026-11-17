@@ -102,7 +102,7 @@ function draw(){
    }else s+=`<circle id="archived-ts" data-raw-gap="${p.raw_gap_kcal_mol}" data-displayed-gap="${displayGap}" cx="${cx}" cy="${cy}" r="6" fill="white" stroke="#b07a22" stroke-width="2"><title>Archived baseline profile maximum; barrier ${num(r.barrier_kcal_mol)}</title></circle>`;
   }
  });
- const label='Reactant − product energy gap (kcal/mol)';
+ const label='Energy gap (kcal/mol)';
  s+=`<text id="axis-label" x="550" y="551" text-anchor="middle">${label}</text>`;
  s+='<text transform="translate(23 300) rotate(-90)" text-anchor="middle">Free energy relative to reactant (kcal/mol)</text>';
  s+=`<text x="550" y="583" text-anchor="middle" font-size="13">The peak is a bin-based estimate. Equal state energies do not have to occur at the peak.</text></g>`;

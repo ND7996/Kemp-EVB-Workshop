@@ -11,13 +11,13 @@
     "profile.html": "1351db3ca997e9d86706bd4f66ed58fc70fb2185e6d3da3630e5c7bfdff0c1f4"
   },
   "files": {
-    "profile.svg": "09983282b9c8fc4b351563434220af302b52612973483cdc7db0002b5da50310",
+    "profile.svg": "2fbb0b7cc05572f15f75d89aa427ef783d8d49f19bea76baeccec81841b4431c",
     "profile.pdf": "9e2c1d7c1d5482d7b4f18a5931c0b335745e8c80ed14e75cf6455c38b06ca8fe",
     "profile.png": "1df30e539d20d0eb6367fabc0f4656d1510f3938c8b9886ae4c518318d29d535",
     "summary.json": "cd7cc2155e4eb9a6d00037cbf4789100324b3eb650c2f83956cd25cbe9d11d7f",
     "profile.csv": "995b22ffbb79ecf16bbe1b32fbb8fc49375d019ff18eb7fda7531f79a6e4e051",
     "README.md": "c504fb830ab46ced2766de23d742920842b046a169fe4a619e970eedde9128b0",
-    "profile.html": "c96711a0055607a772974c80ff45a4a2e8ee7d336c4c3e1f3228182eed6e592d",
+    "profile.html": "4605d7f5f21ed4bbbdf3c3d2b791ec7aead0d5e29a7c6c9cf513b2f9f276ce54",
     "replica_101_raw.json": "99946c99cd0d8769044d70a611146f4a5438001e728cbd0e4e05a833401978a1"
   },
   "restoration_note": "Raw data and archived figures preserved; README installation/analysis commands updated for the standalone repository."

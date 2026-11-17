@@ -56,15 +56,16 @@
     "scripts/kemp_profile.py",
     "demo_results/source_parameter_comparison/README.md",
     "demo_results/source_parameter_comparison/manifest.json",
-    "demo_results/source_parameter_comparison/profile.html"
+    "demo_results/source_parameter_comparison/profile.html",
+    "demo_results/source_parameter_comparison/profile.svg"
   ],
   "current_sha256": {
     "scripts/full_enzyme.py": "fe76a8b937a58583ec183a5e1fe8969b3783e96005488bd5bfb87f689a25720d",
     "scripts/full_workflow.py": "a0238db07508a0fccbf5195b7ced0dc9122410c60dd8a0f459a4467742d4824a",
     "scripts/q_topology.py": "8f6c31b00f2514158eeebba0cf00fc0e31b23be233ec5973e051ea79530dbfa2",
     "scripts/kemp_inputs.py": "71ba1923422392eae5d640ce58f9f0be4cb1a395af783c5c375f9f6233c1b51a",
-    "scripts/source_profile.py": "4de46d2dcc19543a3ae9c1620ce0da91baa049b92db3c3e8f59e52be1f619975",
-    "scripts/kemp_profile.py": "0d52c7504cdeecdd779bd0be2a9d66a6abc28f4650f8e6a9505a24910a6353ea",
+    "scripts/source_profile.py": "4d69c1e7d7bb52806feed3e7491b06d35ae43e088c220a61bee318176c56a47e",
+    "scripts/kemp_profile.py": "ae69eee931a09a1da3389dc2676b02344f56149781ba24ced93d97e506b32ae1",
     "scripts/workshop_scan.py": "1e4b2e3241881058bfa334fab6c0a0bedd66853975019db80874bbe1d271145f",
     "scripts/workshop_viewer.html": "59635e3ffc24cc043cf940d3bc05d8dda06cedaea3bd43d09e987b831352f94b",
     "tests/test_full_enzyme.py": "bc4368846c6157b5bd0ffaff6c0ab8f957aa090188776b383acfb37ec9191d03",
@@ -97,12 +98,12 @@
     "demo_results/full_enzyme_engineering/replica_101_raw.json": "259683eab3352fcdc3c5758e173294b58d2ed4aa657cf5d659178593838eac33",
     "demo_results/full_enzyme_engineering/model.json": "8c9def0df5b856e0898de7b6d27f85121a87839f7b9e1eb7ec1e02367594fd79",
     "demo_results/source_parameter_comparison/README.md": "c504fb830ab46ced2766de23d742920842b046a169fe4a619e970eedde9128b0",
-    "demo_results/source_parameter_comparison/manifest.json": "4bb861bf3730a771e33f5d4bccc6fcf7054111b5b3e8b09604fe26dd8f9532bb",
+    "demo_results/source_parameter_comparison/manifest.json": "7799c960411dc6da1259bea9f4ed18d59ea2806ca2de3bb06b2922ee457e904f",
     "demo_results/source_parameter_comparison/profile.csv": "995b22ffbb79ecf16bbe1b32fbb8fc49375d019ff18eb7fda7531f79a6e4e051",
-    "demo_results/source_parameter_comparison/profile.html": "c96711a0055607a772974c80ff45a4a2e8ee7d336c4c3e1f3228182eed6e592d",
+    "demo_results/source_parameter_comparison/profile.html": "4605d7f5f21ed4bbbdf3c3d2b791ec7aead0d5e29a7c6c9cf513b2f9f276ce54",
     "demo_results/source_parameter_comparison/profile.pdf": "9e2c1d7c1d5482d7b4f18a5931c0b335745e8c80ed14e75cf6455c38b06ca8fe",
     "demo_results/source_parameter_comparison/profile.png": "1df30e539d20d0eb6367fabc0f4656d1510f3938c8b9886ae4c518318d29d535",
-    "demo_results/source_parameter_comparison/profile.svg": "09983282b9c8fc4b351563434220af302b52612973483cdc7db0002b5da50310",
+    "demo_results/source_parameter_comparison/profile.svg": "2fbb0b7cc05572f15f75d89aa427ef783d8d49f19bea76baeccec81841b4431c",
     "demo_results/source_parameter_comparison/summary.json": "cd7cc2155e4eb9a6d00037cbf4789100324b3eb650c2f83956cd25cbe9d11d7f"
   },
   "additional_input_sources": {

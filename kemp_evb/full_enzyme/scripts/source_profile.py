@@ -116,7 +116,7 @@ def reconstruct_source(raw,bins=40,min_points=20,skip_samples=0,parameters=None)
         'coupling_kcal_mol':coupling,'extra_product_offset_kcal_mol':alpha,'morse_convention_correction_kcal_mol':correction,'total_product_offset_kcal_mol':offset,
         'conditional_barrier_estimate_kcal_mol':barrier,'conditional_reaction_free_energy_kcal_mol':dg,'resolved_bins':len(valid),'internal_missing_bins':missing,
         'reference':'reactant' if thermo['reactant'] is not None else 'minimum','plot_title':'Kemp EVB — ARCHIVED PARAMETERS; TRANSFER NOT VALIDATED',
-        'gap_axis_label':'Offset-adjusted energy-gap coordinate (kcal/mol)','gap_csv_column':'offset_adjusted_energy_gap_kcal_mol',
+        'gap_axis_label':'Energy gap (kcal/mol)','gap_csv_column':'offset_adjusted_energy_gap_kcal_mol',
         'sampling_complete':raw['cursor']['phase']=='complete','sample_count':sum(len(w.samples) for w in windows),'sampled_windows':len(windows),
         'bins':bins,'min_points_per_window_bin':min_points,'actual_extra_skip_samples_per_window':skip_samples,'raw_bin_counts':[int(v) for v in raw_counts],
         'accepted_bin_counts':[int(v) for v in accepted],'temperature_kelvin':temperature,'native_qfep':params,'thermochemistry':thermo,

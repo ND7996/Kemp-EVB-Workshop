@@ -31,7 +31,7 @@ def svg():
             continue
         points.append(f'{x(gx):.3f},{y(gy):.3f}');s+=f'<circle cx="{x(gx):.3f}" cy="{y(gy):.3f}" r="3" fill="#1769aa"/>'
     if points:s+='<polyline points="'+' '.join(points)+'" fill="none" stroke="#1769aa" stroke-width="2"/>'
-    s+='<text x="460" y="480" text-anchor="middle">Offset-adjusted EVB energy gap (kcal/mol)</text><text transform="translate(22 270) rotate(-90)" text-anchor="middle">Free energy relative to reactant (kcal/mol)</text><text x="460" y="510" text-anchor="middle" font-size="13">Paper: Listov et al., Nature2025, Supplementary Table3. Different Hamiltonians and sampling.</text></g></svg>'
+    s+='<text x="460" y="480" text-anchor="middle">Energy gap (kcal/mol)</text><text transform="translate(22 270) rotate(-90)" text-anchor="middle">Free energy relative to reactant (kcal/mol)</text><text x="460" y="510" text-anchor="middle" font-size="13">Paper: Listov et al., Nature2025, Supplementary Table3. Different Hamiltonians and sampling.</text></g></svg>'
     return s
 
 

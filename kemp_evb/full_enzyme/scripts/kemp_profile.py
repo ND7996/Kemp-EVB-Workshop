@@ -86,7 +86,7 @@ def write_outputs(analysis,summary,out):
     if 'target_barrier_kcal_mol' in summary:
         value=summary['conditional_barrier_estimate_kcal_mol']
         elements.append(f'<path d="M90 {py(value):.2f}H850" stroke="#b33" stroke-dasharray="5 5"/><text x="500" y="{py(value)-8:.2f}" fill="#a22">Fitted forward barrier = {value:.4f} kcal/mol</text>')
-    elements.extend([f'<text x="460" y="480" text-anchor="middle">{html.escape(summary.get("gap_axis_label","Raw energy-gap coordinate (kcal/mol)"))}</text>',
+    elements.extend([f'<text x="460" y="480" text-anchor="middle">{html.escape(summary.get("gap_axis_label","Energy gap (kcal/mol)"))}</text>',
         f'<text transform="translate(22 250) rotate(-90)" text-anchor="middle">Trial free energy relative to {reference} (kcal/mol)</text>',
         f'<text x="460" y="510" text-anchor="middle">H12={summary["coupling_kcal_mol"]:g}; extra offset={summary["extra_product_offset_kcal_mol"]:g} kcal/mol. Gaps are not interpolated.</text>',
         '</g></svg>'])
