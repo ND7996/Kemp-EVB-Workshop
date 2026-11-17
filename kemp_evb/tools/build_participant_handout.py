@@ -40,7 +40,7 @@ page(c,2,"Follow the chemistry","The Kemp reaction",[
 ])
 page(c,3,"Optional local run","Run the short example on Linux",[
  Paragraph("Install Git and Conda or Miniforge, then run from a terminal:",body),
- Paragraph("git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br/>cd Kemp-EVB-Workshop<br/>conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python -m pip install --no-deps -r kemp_evb/calculation/requirements-evb.txt<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py",small),
+ Paragraph("git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br/>cd Kemp-EVB-Workshop<br/>conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python -m pip install --no-deps --no-build-isolation -r kemp_evb/calculation/requirements-evb.txt<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py",small),
  Paragraph("The short run uses a CPU, five mapped atoms, and a prescribed geometry path. It writes an HTML plot and JSON summary. It is a software check, not molecular dynamics or a free-energy calculation.",body),
  Paragraph("Paper: Listov et al., Nature (2025), doi:10.1038/s41586-025-09136-2. Published simulation inputs: Zenodo 10.5281/zenodo.14563437.",small)
 ])

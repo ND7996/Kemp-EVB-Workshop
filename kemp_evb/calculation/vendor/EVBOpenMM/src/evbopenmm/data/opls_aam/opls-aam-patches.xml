@@ -1,0 +1,140 @@
+<ForceField>
+ <Residues>
+  <Residue name="ACE">
+   <Atom name="CH3" type="4"/>
+   <Atom name="C" type="8"/>
+   <Atom name="O" type="9"/>
+   <Atom name="H1" type="3"/>
+   <Atom name="H2" type="3"/>
+   <Atom name="H3" type="3"/>
+   <Bond atomName1="CH3" atomName2="C"/>
+   <Bond atomName1="C" atomName2="O"/>
+   <Bond atomName1="CH3" atomName2="H1"/>
+   <Bond atomName1="CH3" atomName2="H2"/>
+   <Bond atomName1="CH3" atomName2="H3"/>
+   <ExternalBond atomName="C"/>
+  </Residue>
+  <Residue name="NME">
+   <Atom name="N" type="0"/>
+   <Atom name="C" type="406"/>
+   <Atom name="H" type="1"/>
+   <Atom name="H1" type="3"/>
+   <Atom name="H2" type="3"/>
+   <Atom name="H3" type="3"/>
+   <Bond atomName1="N" atomName2="C"/>
+   <Bond atomName1="N" atomName2="H"/>
+   <Bond atomName1="C" atomName2="H1"/>
+   <Bond atomName1="C" atomName2="H2"/>
+   <Bond atomName1="C" atomName2="H3"/>
+   <ExternalBond atomName="N"/>
+  </Residue>
+  <Residue name="GLUP">
+   <Atom name="N" type="88"/>
+   <Atom name="HN" type="89"/>
+   <Atom name="CA" type="90"/>
+   <Atom name="HA" type="91"/>
+   <Atom name="CB" type="92"/>
+   <Atom name="HB1" type="93"/>
+   <Atom name="HB2" type="94"/>
+   <Atom name="CG" type="14"/>
+   <Atom name="HG1" type="3"/>
+   <Atom name="HG2" type="3"/>
+   <Atom name="CD" type="395"/>
+   <Atom name="OE1" type="396"/>
+   <Atom name="OE2" type="397"/>
+   <Atom name="HE2" type="398"/>
+   <Atom name="C" type="101"/>
+   <Atom name="O" type="102"/>
+   <Bond atomName1="N" atomName2="HN"/>
+   <Bond atomName1="N" atomName2="CA"/>
+   <Bond atomName1="CA" atomName2="HA"/>
+   <Bond atomName1="CA" atomName2="CB"/>
+   <Bond atomName1="CB" atomName2="HB1"/>
+   <Bond atomName1="CB" atomName2="HB2"/>
+   <Bond atomName1="CB" atomName2="CG"/>
+   <Bond atomName1="CG" atomName2="HG1"/>
+   <Bond atomName1="CG" atomName2="HG2"/>
+   <Bond atomName1="CG" atomName2="CD"/>
+   <Bond atomName1="CD" atomName2="OE1"/>
+   <Bond atomName1="CD" atomName2="OE2"/>
+   <Bond atomName1="OE2" atomName2="HE2"/>
+   <Bond atomName1="CA" atomName2="C"/>
+   <Bond atomName1="C" atomName2="O"/>
+   <ExternalBond atomName="N"/>
+   <ExternalBond atomName="C"/>
+  </Residue>
+  <!-- GLH is the SAME protonated glutamate as GLUP above, under the three-character name that
+       survives a PDB round-trip. A four-character residue name has no entry in OpenMM's
+       residues.xml, so its residue is read with NO bonds at all, and the library's own on-disk
+       name restore reads a three-character field and rewrites "GLUP" back to "GLU", silently
+       colliding the protonated residue with every deprotonated glutamate in the chain. "GLH" is
+       already an OpenMM alternate name for GLU (pdbNames.xml), so the reader applies the full
+       GLU bond set (which includes the OE2 to HE2 bond), and it is the name the library's own
+       protonation_variant_name() produces for a protonated glutamate. Per-state proton transfer
+       to a glutamate (EVB acid/base chemistry) needs this name to be templatable. -->
+  <Residue name="GLH">
+   <Atom name="N" type="88"/>
+   <Atom name="HN" type="89"/>
+   <Atom name="CA" type="90"/>
+   <Atom name="HA" type="91"/>
+   <Atom name="CB" type="92"/>
+   <Atom name="HB1" type="93"/>
+   <Atom name="HB2" type="94"/>
+   <Atom name="CG" type="14"/>
+   <Atom name="HG1" type="3"/>
+   <Atom name="HG2" type="3"/>
+   <Atom name="CD" type="395"/>
+   <Atom name="OE1" type="396"/>
+   <Atom name="OE2" type="397"/>
+   <Atom name="HE2" type="398"/>
+   <Atom name="C" type="101"/>
+   <Atom name="O" type="102"/>
+   <Bond atomName1="N" atomName2="HN"/>
+   <Bond atomName1="N" atomName2="CA"/>
+   <Bond atomName1="CA" atomName2="HA"/>
+   <Bond atomName1="CA" atomName2="CB"/>
+   <Bond atomName1="CB" atomName2="HB1"/>
+   <Bond atomName1="CB" atomName2="HB2"/>
+   <Bond atomName1="CB" atomName2="CG"/>
+   <Bond atomName1="CG" atomName2="HG1"/>
+   <Bond atomName1="CG" atomName2="HG2"/>
+   <Bond atomName1="CG" atomName2="CD"/>
+   <Bond atomName1="CD" atomName2="OE1"/>
+   <Bond atomName1="CD" atomName2="OE2"/>
+   <Bond atomName1="OE2" atomName2="HE2"/>
+   <Bond atomName1="CA" atomName2="C"/>
+   <Bond atomName1="C" atomName2="O"/>
+   <ExternalBond atomName="N"/>
+   <ExternalBond atomName="C"/>
+  </Residue>
+  <Residue name="CYX">
+   <Atom name="N" type="60"/>
+   <Atom name="HN" type="61"/>
+   <Atom name="CA" type="62"/>
+   <Atom name="HA" type="63"/>
+   <Atom name="CB" type="432"/>
+   <Atom name="HB1" type="65"/>
+   <Atom name="HB2" type="66"/>
+   <Atom name="SG" type="433"/>
+   <Atom name="C" type="69"/>
+   <Atom name="O" type="70"/>
+   <Bond atomName1="N" atomName2="HN"/>
+   <Bond atomName1="N" atomName2="CA"/>
+   <Bond atomName1="CA" atomName2="HA"/>
+   <Bond atomName1="CA" atomName2="CB"/>
+   <Bond atomName1="CB" atomName2="HB1"/>
+   <Bond atomName1="CB" atomName2="HB2"/>
+   <Bond atomName1="CB" atomName2="SG"/>
+   <Bond atomName1="CA" atomName2="C"/>
+   <Bond atomName1="C" atomName2="O"/>
+   <ExternalBond atomName="N"/>
+   <ExternalBond atomName="C"/>
+   <ExternalBond atomName="SG"/>
+  </Residue>
+  <!-- Kex2 catalytic Ca2+ (3 structural ions, resname CA).  Type 900 = CHARMM CAL LJ,
+       charge +2; LJ assigned via the opls-aam.xml Script EXTRA_LJ side-dict. -->
+  <Residue name="CA">
+   <Atom name="CA" type="900"/>
+  </Residue>
+ </Residues>
+</ForceField>

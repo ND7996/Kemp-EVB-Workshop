@@ -7,6 +7,5 @@ dependencies:
   - openmm=8.6.1
   - numpy
   - pip
-  - git
   - setuptools>=61
   - wheel

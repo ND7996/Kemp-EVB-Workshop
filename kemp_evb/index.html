@@ -81,7 +81,7 @@
     <section id="linux">
       <div class="eyebrow">Optional live run · portable setup</div>
       <h2>Install and run the short OpenMM example</h2>
-      <p>These instructions work from any checkout location. No personal paths, separate EVBOpenMM checkout or <code>EVBOPENMM_SRC</code> setting are required. Install Conda or Miniforge first; the environment supplies Git and the other installation tools. A CPU is sufficient.</p>
+      <p>These instructions work from any checkout location. No personal paths, separate EVBOpenMM checkout or <code>EVBOPENMM_SRC</code> setting are required. Install Conda or Miniforge first; the environment supplies the Python installation tools. A CPU is sufficient.</p>
       <h3>1. Get the workshop</h3>
 <pre>git clone https://github.com/ND7996/Kemp-EVB-Workshop.git
 cd Kemp-EVB-Workshop</pre>
@@ -93,8 +93,8 @@ conda activate kemp-short</pre>
 <pre>conda env update -f kemp_evb/calculation/environment.yml
 conda activate kemp-short</pre>
       <h3>3. Install the pinned EVBOpenMM package</h3>
-<pre>python -m pip install --no-deps -r kemp_evb/calculation/requirements-evb.txt</pre>
-      <p>This downloads the workshop-tested revision of Martin-Floor’s EVBOpenMM. Using the active environment’s <code>python -m pip</code> installs it into <code>kemp-short</code>; <code>--no-deps</code> keeps the OpenMM and NumPy packages installed by Conda.</p>
+<pre>python -m pip install --no-deps --no-build-isolation -r kemp_evb/calculation/requirements-evb.txt</pre>
+      <p>This installs the bundled workshop-tested snapshot of Martin-Floor’s EVBOpenMM from this repository. No GitHub login or separate source checkout is needed. Using the active environment’s <code>python -m pip</code> installs it into <code>kemp-short</code>; <code>--no-deps</code> keeps Conda’s OpenMM and NumPy packages; <code>--no-build-isolation</code> uses the build tools already in the environment.</p>
       <h3>4. Check the inputs and run</h3>
 <pre>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
 python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
@@ -105,7 +105,7 @@ python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
       <h3>If installation stops</h3>
       <div class="two">
         <article class="card"><h3>Conda cannot create the environment</h3><p>Check the last error lines. If the environment already exists, use the update commands above. If the file cannot be found, make sure your terminal is in the repository root and that you ran <code>git pull</code>.</p></article>
-        <article class="card"><h3>The EVBOpenMM download fails</h3><p>The Conda environment can remain installed. Check the GitHub connection, proxy or certificate error, then retry only step 3. Do not recreate the whole environment. For <code>No module named evbopenmm</code>, activate <code>kemp-short</code> and repeat step 3 using <code>python -m pip</code>.</p></article>
+        <article class="card"><h3>The bundled EVBOpenMM installation fails</h3><p>The Conda environment can remain installed. Check that the <code>kemp_evb/calculation/vendor/EVBOpenMM</code> folder is present and that you are in the repository root, then retry only step 3. Do not recreate the whole environment. For <code>No module named evbopenmm</code>, activate <code>kemp-short</code> and repeat step 3 using <code>python -m pip</code>.</p></article>
       </div>
       <p class="small">This optional local calculation is separate from the browser parameter scan, which reuses saved energies and starts no new simulation.</p>
     </section>
