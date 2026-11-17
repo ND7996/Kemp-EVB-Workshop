@@ -1,0 +1,33 @@
+<ForceField>
+ <!-- SPC/E water for the OPLS-AA/M preset. Mirrors this directory's tip3p.xml
+      (same OW/HW classes, same coulomb14scale=0.5 so it merges with the opls-aam.xml
+      NonbondedForce without tripping OpenMM's "multiple 1-4 scales" guard) but with
+      SPC/E charges (O = 0.8476 negative), LJ (sigma 0.316572 nm, epsilon 0.649775
+      kJ/mol) and rigid geometry (O_H 0.1 nm, H_O_H 109.47 deg). LJ is moved into the
+      geometric CustomNonbondedForce by the opls-aam.xml Script (water types fall
+      through its typeToClass table and keep these per-atom sigma/epsilon), so SPC/E
+      water combines geometrically with the solute, matching GROMACS OPLS comb-rule 3. -->
+ <AtomTypes>
+  <Type name="spce-O" class="OW" element="O" mass="15.99943"/>
+  <Type name="spce-H" class="HW" element="H" mass="1.007947"/>
+ </AtomTypes>
+ <Residues>
+  <Residue name="HOH">
+   <Atom name="O" type="spce-O"/>
+   <Atom name="H1" type="spce-H"/>
+   <Atom name="H2" type="spce-H"/>
+   <Bond from="0" to="1"/>
+   <Bond from="0" to="2"/>
+  </Residue>
+ </Residues>
+ <HarmonicBondForce>
+  <Bond class1="OW" class2="HW" length="0.1" k="462750.4"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+  <Angle class1="HW" class2="OW" class3="HW" angle="1.91061193216" k="836.8"/>
+ </HarmonicAngleForce>
+ <NonbondedForce coulomb14scale="0.5" lj14scale="0.5">
+  <Atom type="spce-O" charge="-0.8476" sigma="0.31657195050398818" epsilon="0.6497752"/>
+  <Atom type="spce-H" charge="0.4238" sigma="1" epsilon="0"/>
+ </NonbondedForce>
+</ForceField>

@@ -2,3 +2,7 @@ __pycache__/
 *.py[cod]
 
 kemp_evb/calculation/runs/
+
+# Local build products from installing the bundled runtime.
+kemp_evb/calculation/vendor/EVBOpenMM/build/
+kemp_evb/calculation/vendor/EVBOpenMM/src/*.egg-info/

@@ -1,2 +1,2 @@
-# Martin-Floor EVBOpenMM: workshop-tested source revision.
-evbopenmm @ git+https://github.com/Martin-Floor/EVBOpenMM.git@dedf301eb9b0021a4be200327cea53f5b7f034c6
+# Bundled EVBOpenMM snapshot; install from the workshop repository root.
+./kemp_evb/calculation/vendor/EVBOpenMM
