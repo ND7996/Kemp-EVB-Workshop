@@ -91,8 +91,11 @@ def write_outputs(analysis,summary,out):
         f'<text x="460" y="510" text-anchor="middle">H12={summary["coupling_kcal_mol"]:g}; extra offset={summary["extra_product_offset_kcal_mol"]:g} kcal/mol. Gaps are not interpolated.</text>',
         '</g></svg>'])
     svg=''.join(elements);(out/'profile.svg').write_text(svg)
-    heading='Archived QFEP parameters; transfer and convergence unvalidated' if summary.get('author_parameters_recovered') else 'Trial parameters, not a physical barrier'
-    page='<html><meta charset="utf-8"><title>Uncalibrated Kemp profile</title><body>'+svg+'<h2>'+heading+'</h2><pre>'+html.escape(json.dumps(summary,indent=2))+'</pre></body></html>'
+    page=('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+          '<meta name="viewport" content="width=device-width, initial-scale=1">'
+          '<title>Kemp EVB profile</title><style>body{margin:0;padding:20px;background:#f7f8f6}'
+          'svg{display:block;width:100%;height:auto;max-width:1100px;margin:auto;background:white}'
+          '</style></head><body>'+svg+'</body></html>')
     (out/'profile.html').write_text(page)
 
 

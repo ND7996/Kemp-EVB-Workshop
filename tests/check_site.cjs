@@ -25,7 +25,8 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   assert.notEqual(await scan.locator('[data-role=selected-curve]').first().getAttribute('points'),before);
   assert.equal(await scan.locator('#paper-barrier-line').getAttribute('data-value'),'13.2');
   const full=await browser.newPage();await full.setContent(fs.readFileSync(path.join(root,'viewers/full_enzyme_recorded_profile.html'),'utf8'));
-  assert.match(await full.locator('body').textContent(),/9\.572629/);
+  assert.equal(await full.locator('pre').count(),0,'Profile must not expose the raw metadata block');
+  assert.equal(await full.locator('h2').count(),0,'Profile metadata heading removed');
   assert.match(await full.locator('svg').textContent(),/Grey: published Q6 barrier/);
   assert.deepEqual(errors,[]);
   console.log('Passed: full-enzyme commands, Q6/OpenMM comparison, mobile layout, archived full profile and parameter controls.');
