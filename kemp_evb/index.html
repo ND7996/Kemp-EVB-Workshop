@@ -128,8 +128,5 @@ python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
     </section>
   </main>
   <footer>Kemp EVB workshop · Saved browser activities and a reduced live calculation are included. The optional live example runs locally on Linux.</footer>
-<script>
-(()=>{const ids=['r','p','alpha','h'],el=Object.fromEntries(ids.map(k=>[k,document.getElementById('matrix-'+k)]));function update(){const [r,p,a,h]=ids.map(k=>Number(el[k].value)),out=document.getElementById('matrix-result');if(![r,p,a,h].every(Number.isFinite)||ids.some(k=>el[k].value.trim()==='')||h<0){out.textContent='Enter finite energies and nonnegative coupling.';return;}const d=r-p-a,split=Math.hypot(d,2*h),mid=(r+p+a)/2;out.textContent=`H = [[${r.toFixed(3)}, ${h.toFixed(3)}], [${h.toFixed(3)}, ${(p+a).toFixed(3)}]] kcal/mol. E− = ${(mid-split/2).toFixed(3)}; E+ = ${(mid+split/2).toFixed(3)}; splitting = ${split.toFixed(3)} kcal/mol. `+(split?`Ground-state R weight = ${(0.5*(1-d/split)).toFixed(3)}, P weight = ${(0.5*(1+d/split)).toFixed(3)}.`:'Degenerate uncoupled states: mixing weights are not unique.');}ids.forEach(k=>el[k].addEventListener('input',update));update();})();
-</script>
 </body>
 </html>
