@@ -1,6 +1,6 @@
 # Kemp EVB workshop
 
-Open [`index.html`](index.html) to start. It explains EVB and spherical boundaries, shows the Kemp reaction scheme, then compares the paper’s Q6 result with the short OpenMM example before the α/H₁₂ parameter examples.
+Open [`index.html`](index.html) to start. It explains EVB and spherical boundaries, shows the Kemp reaction scheme, then shows a clearly labeled Q6 vs OpenMM comparison and its input/output files before the α/H₁₂ examples.
 
 ## Q6 inputs and outputs
 
