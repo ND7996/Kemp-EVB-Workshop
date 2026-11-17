@@ -11,10 +11,10 @@
 
 ## Included result provenance
 
-- The five-atom viewer contains an executed OpenMM imposed-geometry potential exercise with illustrative parameters. It is not an activation-free-energy profile.
+- The browser parameter scan compares saved OpenMM energy data under different coupling and product-offset settings; it is a sensitivity exercise and does not launch new trajectories.
 - ../data/short_run/replica_101_raw.json is the user-supplied completed short OpenMM adaptation, 21 windows × 50 records, 6,330 particles. It is not an authors' native .en dataset. The source hash is verified against the recorded comparison; original metadata are preserved in the file and ../data/PROVENANCE.json.
 - The source profile applies recovered archived parameters to that short dataset, with 18 coarse bins and minimum 20 per window/bin. It does not establish physical transfer or convergence.
-- The parameter viewer includes 25 grid pairs and five refined matches to an imposed 13.2 target. Target matches are workshop illustrations, not independent predictions or recovered author parameter values.
+- The parameter viewer includes 25 parameter combinations (24 grid pairs plus the archived baseline) and five examples adjusted to the 13.2 kcal/mol barrier reference. Target matches are workshop illustrations, not independent predictions or recovered author parameter values.
 - The optional saved full-enzyme DCD is a separate 480-step engineering run, not a reaction movie or equilibrated production.
 
 Workshop diagrams, comparison charts and viewers are newly authored teaching material. Complete unaltered source pages are reproduced separately in ../assets/paper/ for noncommercial teaching, with attribution, license link and page/source hashes. The Nature article has a CC BY-NC-ND notice; the workshop uses attributed numerical facts and original illustrations. Original parameter-input bytes are retained with provenance. See the project manifests for the complete input and result hashes.
@@ -25,6 +25,6 @@ Hong et al., *The evolution of multiple active site configurations in a designed
 
 Risso et al., Chemical Science11,6134–6148(2020), [doi:10.1039/D0SC01935F](https://doi.org/10.1039/D0SC01935F), [accessible full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC7407621/): Methods explicitly reuse Hong2018 calibration and Q5.10. The later JACS/Q6 archive updates reactive terms and supplies100.4/−110; these model versions must not be mixed.
 
-See the website’s parameter-history section and `Kemp_EVB/docs/KEMP_LITERATURE_REVIEW.md` for every paper used, review limitations, reference-naming discrepancy and current versus historical calibration status.
+See the website’s parameter-examples section and `Kemp_EVB/docs/KEMP_LITERATURE_REVIEW.md` for every paper used, review limitations, reference-naming discrepancy and current versus historical calibration status.
 
 Full review: [Kemp literature review](https://github.com/ND7996/EVB_MHETase/blob/main/Kemp_EVB/docs/KEMP_LITERATURE_REVIEW.md). Native run commands: [Q6 reconstruction](https://github.com/ND7996/EVB_MHETase/blob/main/Kemp_EVB/docs/NATIVE_Q6_REPRODUCTION.md).

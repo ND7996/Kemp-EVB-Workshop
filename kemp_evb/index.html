@@ -49,7 +49,7 @@
         <article class="card"><h3>What H₁₂ changes</h3><p>H₁₂ sets the strength of mixing. Stronger coupling widens the energy separation around the crossing and changes the shape of the lower EVB surface. The resulting barrier depends on both energy curves and the sampling.</p></article>
       </div>
       <p class="plain">α and H₁₂ are model parameters, not barrier values. In the EVB approach, the reaction model is calibrated against known reference data, then used to study how the surrounding solution or enzyme changes the reaction free energy. The activation barrier is obtained from the sampled free-energy profile. This follows Åqvist and Warshel’s description of EVB.</p>
-      <article id="parameter-demo" class="card" style="margin-top:16px"><h3>Compare many α and H₁₂ examples</h3><p>The workshop scan shows 25 parameter combinations and five examples adjusted to give a barrier near the paper’s reported value. Compare their plotted profiles and reaction free energies. Several parameter pairs can give a similar barrier but very different product energies, showing why one barrier alone cannot determine both parameters.</p><p>The scan reuses saved OpenMM energy samples while changing α and H₁₂; it does not run a new simulation for every choice.</p><p><a class="button" href="viewers/parameter_scan.html">Open the parameter examples →</a></p></article>
+      <article id="parameter-demo" class="card" style="margin-top:16px"><h3>Compare many α and H₁₂ examples</h3><p>The workshop scan shows 25 parameter combinations, including the archived baseline, plus five barrier-matched examples to give a barrier near the paper’s reported value. Compare their plotted profiles and reaction free energies. Several parameter pairs can give a similar barrier but very different product energies, showing why one barrier alone cannot determine both parameters.</p><p>The scan reuses saved OpenMM energy samples while changing α and H₁₂; it does not run a new simulation for every choice.</p><p><a class="button" href="viewers/parameter_scan.html">Open the parameter examples →</a></p></article>
       <p class="small">Background: <a href="https://doi.org/10.1021/cr00023a010">Åqvist and Warshel (1993), EVB review</a>; <a href="https://doi.org/10.1039/B907354J">Kamerlin and Warshel (2010)</a>.</p>
     </section>
 
@@ -95,7 +95,7 @@ conda activate kemp-short
 python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
 python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
 <p>The run uses a CPU and saves a browser plot plus JSON summary under kemp_evb/calculation/runs/. Open the HTML file in a browser.</p>
-<p class="small">This five-atom example follows a prescribed geometry path. It checks the OpenMM/EVBOpenMM software connection; it is not MD or a free-energy calculation. Its settings are for teaching, not fitted parameters.</p></section>
+<p class="small">This optional Linux calculation is separate from the browser parameter scan. The scan uses saved energies; this command runs the calculation described in the Linux guide.</p></section>
 
     <section id="workflow">
       <div class="tag">For a full Kemp calculation</div>

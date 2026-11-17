@@ -1,9 +1,7 @@
 # Instructor notes
 
-Start with the methods: classical MD moves atoms but usually keeps bonds fixed; QM/MM treats reacting atoms quantum mechanically and the surroundings classically; EVB couples reactant and product force-field states. The paper uses Q6 for EVB. The short workshop example uses OpenMM with EVBOpenMM.
+Begin with the distinction between classical MD, QM/MM and EVB. Explain that EVB evaluates reactant and product bonding descriptions for the same atoms and couples their energies. α shifts the product-state energy; H₁₂ controls the mixing. The plotted barrier is an outcome of the model and sampling, not either parameter by itself.
 
-Then follow the Kemp reaction and explain the 2 × 2 table once: the diagonal entries are state energies, α shifts the product energy, and H₁₂ controls mixing. Neither setting is the barrier.
+Use the Kemp reaction scheme to identify the proton transfer and ring opening. Then open the parameter scan. Participants can select 25 parameter combinations, including the archived baseline, plus five barrier-matched examples. Compare each profile with its reaction free energy. Emphasize that these choices reuse saved energies and do not start new simulations.
 
-The paper reports Q6 activation-barrier estimates. The workshop profile is a short OpenMM example using a different setup and sampling, so the results are not a direct software comparison.
-
-The optional five-atom Linux example checks software behavior along a prescribed path. It is not a molecular-dynamics or free-energy calculation.
+For the optional Linux calculation, use [`../calculation/README.md`](../calculation/README.md).

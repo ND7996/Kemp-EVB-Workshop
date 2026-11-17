@@ -1,7 +1,7 @@
 # Hands-on guide
 
-Open ../index.html. Begin with the difference between classical MD, QM/MM MD, and EVB. Follow the atom labels through the reaction, then use the saved viewers to change the EVB offset and coupling.
+1. Open [`../index.html`](../index.html). Read the short explanation of classical MD, QM/MM and EVB, then follow the Kemp reaction scheme.
+2. Open the parameter examples from the EVB section. Choose several α/H₁₂ combinations and compare the plotted activation barrier with the reaction free energy.
+3. Compare the five barrier-matched examples. Similar barriers can accompany different reaction free energies, so one barrier does not determine both EVB settings.
 
-The EVB matrix is a 2 × 2 score table for two bonding descriptions of the same atoms. The diagonal boxes hold state energies; α shifts the product energy; H₁₂ controls mixing. The computer combines these values into an EVB energy at that geometry. A free-energy barrier requires sampling.
-
-For the optional Linux calculation, follow ../calculation/README.md. It is a five-atom software demonstration along a prescribed path.
+The browser scan reuses saved OpenMM energy samples. It does not run a new simulation when you change the selected example. The separate optional Linux calculation is described in [`../calculation/README.md`](../calculation/README.md).
