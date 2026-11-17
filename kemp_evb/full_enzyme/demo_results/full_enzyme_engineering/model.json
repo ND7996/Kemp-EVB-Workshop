@@ -1,0 +1,19 @@
+{
+  "case": "Des27_7_IN",
+  "particles": 6330,
+  "reactive_atoms": 22,
+  "reactive_pairs": 3,
+  "boundary": "finite nonperiodic droplet; direct Coulomb within 9.9 nm; harmonic water-O wall; native outer protein frozen",
+  "native_q6_reproduction": false,
+  "calibrated": false,
+  "morse_P_minus_R_correction_kcal_mol": 44.5,
+  "limitations": [
+    "No LRF/SCAAS equivalence.",
+    "No validated coupling or physical state offset.",
+    "No converged free-energy barrier.",
+    "State exception conversion requires separate numerical validation."
+  ],
+  "fingerprint": "2943916ab014020ffa7b9c38275f24e9fe5c47567a98c3a8212076f5440f8e79",
+  "openmm_version": "8.6.1.dev-b399af4",
+  "config_file": "Kemp_EVB/configs/full_enzyme_smoke.json"
+}

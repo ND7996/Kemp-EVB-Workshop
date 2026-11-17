@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A short, beginner-friendly hands-on introduction to Empirical Valence Bond modelling using the Kemp reaction.">
+  <meta name="description" content="Understand EVB, compare native Q6 with a full-enzyme OpenMM adaptation, and run the Kemp calculation with bundled source.">
   <title>Try EVB: a Kemp reaction workshop</title>
   <style>
     :root{--ink:#1f2e36;--muted:#52626c;--accent:#176b73;--line:#d7e0e3;--paper:#f7f8f6;--white:#fff;--soft:#eaf2f1}
@@ -12,15 +12,17 @@
     nav{position:sticky;top:0;z-index:5;background:#ffffffed;border-bottom:1px solid var(--line);padding:12px max(6vw,22px);display:flex;gap:22px;flex-wrap:wrap}nav a{color:var(--ink);font-size:15px;text-decoration:none}nav a:hover{text-decoration:underline}main{padding:10px 22px 60px}section{padding:40px 0;border-bottom:1px solid var(--line)}.small{color:var(--muted);font-size:15px}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--white);border:1px solid var(--line);border-radius:7px;padding:20px}.card p:last-child{margin-bottom:0}.number{font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.06em}.state-r{border-top:4px solid #39769a}.state-p{border-top:4px solid #4c8768}.plain{max-width:760px}.figure{margin:24px 0 8px;background:white;border:1px solid var(--line);padding:12px}.figure img{display:block;width:100%;height:auto}.caption{font-size:14px;color:var(--muted)}.steps{counter-reset:step;display:grid;gap:12px}.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;background:white;border:1px solid var(--line);border-radius:7px;padding:16px}.step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--accent);font-weight:750}.step p{margin:2px 0 0}.step h3{margin:0 0 5px}.plain-link{color:var(--accent);font-weight:650}.takeaway{background:var(--soft);padding:20px;border-radius:7px}.tag{font-size:14px;color:var(--accent);font-weight:700}footer{padding:24px 22px 40px;color:var(--muted);font-size:14px}
     @media(max-width:700px){.two,.three{grid-template-columns:1fr}header{padding-top:36px}nav{gap:12px}body{font-size:16px}}
 
-    body{overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.formula{font:19px/1.7 ui-monospace,monospace;text-align:center;background:var(--soft);padding:22px;border-radius:7px;overflow:auto}.table-wrap{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;background:white;font-size:15px}th,td{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}th{background:var(--soft)}details{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:7px;background:white}summary{cursor:pointer;font-weight:650;color:var(--accent)}.note{padding:18px;background:#fff3dc;border-left:4px solid #b07b22;border-radius:6px}.eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;color:var(--accent)}code{overflow-wrap:anywhere}output{display:block;margin:20px 0;padding:14px;background:var(--soft)}li{margin:9px 0}.panel{padding:20px;border:1px solid var(--line);background:white}.reference-link{font-size:15px}section img{max-width:100%;height:auto}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;background:#142c34;color:#edf6f5;padding:18px;border-radius:8px;font:14px/1.65 ui-monospace,monospace}details pre{margin-bottom:0}.status{border-left:4px solid var(--accent);background:var(--soft);padding:18px;border-radius:7px;margin:20px 0}    body{overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px}.formula{font:19px/1.7 ui-monospace,monospace;text-align:center;background:var(--soft);padding:22px;border-radius:7px;overflow:auto}.table-wrap{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;background:white;font-size:15px}th,td{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}th{background:var(--soft)}details{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:7px;background:white}summary{cursor:pointer;font-weight:650;color:var(--accent)}.note{padding:18px;background:#fff3dc;border-left:4px solid #b07b22;border-radius:6px}.eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;color:var(--accent)}code{overflow-wrap:anywhere}output{display:block;margin:20px 0;padding:14px;background:var(--soft)}li{margin:9px 0}.panel{padding:20px;border:1px solid var(--line);background:white}.reference-link{font-size:15px}section img{max-width:100%;height:auto}
   </style>
 </head>
 <body>
   <header>
     <div class="kicker">A hands-on introduction</div>
-    <h1>Try EVB with the Kemp reaction</h1>
+    <h1>Run EVB for the Kemp enzyme</h1>
+    <p>Learn the method, run the full enzyme in OpenMM, and understand how the result differs from Q6.</p>
     <div class="actions">
-      <a class="button" href="#parameter-demo">Start the hands-on</a>
+      <a class="button" href="#linux">Run the full enzyme</a>
+      <a class="button secondary" href="viewers/full_enzyme_recorded_profile.html">View the saved full-enzyme profile</a>
     </div>
   </header>
 
@@ -28,7 +30,8 @@
     <a href="#evb">What is EVB?</a>
     <a href="#kemp">What has Kemp shown?</a>
     <a href="#results">Q6 vs OpenMM</a>
-    <a href="#parameter-demo">Change α and H₁₂</a>
+    <a href="#linux">Install and run</a>
+    <a href="#parameter-demo">Explore α and H₁₂</a>
   </nav>
 
   <main>
@@ -62,52 +65,55 @@
       <p class="small">This workshop treats proton transfer and ring opening as linked changes between the reactant and product descriptions. The exercise does not add a separately simulated intermediate.</p>
     </section>
 
-    <section id="results"><div class="eyebrow">Q6 vs OpenMM</div><h2>How the paper calculation and workshop example differ</h2>
-<div class="two"><article class="card"><h3>EVB results in the paper</h3><p>The paper reports an activation free-energy barrier for the Kemp reaction. The Q6 estimate highlighted here is 13.2 ± 0.6 kcal/mol (the spread is the standard deviation across replicas). This is a barrier estimate, not a complete free-energy curve.</p><a class="plain-link" href="https://doi.org/10.1038/s41586-025-09136-2">Read the paper and supporting information</a></article>
-<article class="card"><h3>The saved OpenMM profile</h3><p>This is a short, 21-window OpenMM example. Its plotted peak is about 9.6 kcal/mol. The curve is included to show how a sampled EVB profile is displayed.</p><a class="plain-link" href="viewers/source_profile.html">Open the saved profile</a></article></div>
-<h3 style="margin-top:24px">Inputs and outputs</h3><div class="two"><article class="card"><h3>Q6 workflow</h3><p><strong>Inputs:</strong> starting coordinates (<code>.pdb.gz</code>), molecular topology and force-field terms (<code>.top.gz</code>), and the two-state reaction definition with atom mapping and changing terms (<code>.fep</code>). To run the dynamics and free-energy analysis, Qdyn also needs stage/window control files (<code>.inp</code>); QFEP needs its analysis control file.</p><p><strong>Outputs:</strong> Qdyn writes trajectory/restart data and state energies for each mapping window, commonly files such as <code>fep_100.en</code>. QFEP reads the window energy files and analysis settings, then writes <code>qfep.out</code> and the free-energy profile. The browser workshop includes the coordinate, topology and reaction-definition source files; it does not provide a complete production Q6 run.</p></article><article class="card"><h3>Short OpenMM example</h3><p><strong>Inputs:</strong> the bundled Q6 coordinate, topology and FEP files are checked for a consistent atom map. The reduced calculation uses five mapped atom positions and selected reactive terms from the FEP definition, plus <code>--coupling</code> and <code>--offset</code> settings. The scripts are <code>run_short_evb_demo.py</code>, <code>kemp_inputs.py</code> and <code>evb_teaching.py</code>; <code>environment.yml</code> lists the dependencies.</p><p><strong>Outputs:</strong> a new run folder containing <code>teaching_evb.html</code> (interactive potential-energy illustration) and <code>teaching_summary.json</code>. This short, fixed-path example does not create Qdyn trajectories, QFEP <code>.en</code> files or a sampled free-energy profile. The α/H₁₂ scan above uses saved energies and starts no new run.</p></article></div></section>
+    <section id="results">
+      <div class="tag">Same EVB idea, different implementation</div>
+      <h2>Q6 and OpenMM: what is actually different?</h2>
+      <p>Both evaluate reactant and product energy descriptions and mix them with the same two-state EVB matrix: <code>H = [[E<sub>R</sub>, H₁₂], [H₁₂, E<sub>P</sub> + α]]</code>. The lower eigenvalue defines the EVB surface. Sharing this equation does not make two force fields or simulations equivalent.</p>
+      <div class="table-wrap"><table><thead><tr><th>Step</th><th>Native Q6 route</th><th>This full-enzyme OpenMM route</th></tr></thead><tbody>
+        <tr><td><strong>Prepare</strong></td><td>Q topology (<code>.top</code>), two-state reaction definition (<code>.fep</code>) and stage controls (<code>.inp</code>).</td><td>Reads the deposited Q topology and reaction terms; builds both states and an EVBOpenMM scaffold. Full default system: 6,330 atoms and 771 waters, with 22 mapped reactive atoms.</td></tr>
+        <tr><td><strong>Relax and equilibrate</strong></td><td>Uses the native stage sequence and its restraints/temperature controls. A file named “min” may specify restrained dynamics, not an optimizer.</td><td>Bounded descent followed by L-BFGS minimization, then reactant-endpoint heating and equilibration with a Langevin thermostat. This sequence is an adaptation, not an exact replay.</td></tr>
+        <tr><td><strong>Boundary and electrostatics</strong></td><td>The native setup uses a spherical environment, local reaction-field electrostatics (<code>lrf on</code>) and Q surface/boundary treatment. The shown production template uses 10 Å ordinary cutoffs and a 99 Å Q-atom cutoff.</td><td>A nonperiodic droplet with direct interactions within 9.9 nm, a harmonic wall on water oxygens, and frozen outer protein. Native LRF/SCAAS and all native sequence restraints are not reproduced.</td></tr>
+        <tr><td><strong>Dynamics and windows</strong></td><td>The archived production template uses 1 fs steps, solvent SHAKE and 200 ps/window. A 51-window reconstruction totals about 10.2 ns production/replica.</td><td>The short preset uses 0.25 fs steps, rigid-water distance constraints, and 21 windows × 0.25 ps = 5.25 ps total production. These are short test settings, not an OpenMM limit; longer configurations are included.</td></tr>
+        <tr><td><strong>Collect and analyse</strong></td><td>Qdyn writes native window energy files (<code>.en</code>); QFEP reconstructs the profile using its controls.</td><td>Saves both diabatic energies to JSON/CSV and restart data to SQLite; Python performs QFEP-style per-frame EVB mixing and bin reweighting. The output is not native <code>qfep.out</code> and numerical equivalence is unvalidated.</td></tr>
+        <tr><td><strong>Parameters and interpretation</strong></td><td>The paper’s reference for Des27.7-IN is a computed Q6 barrier of 13.2 ± 0.6 kcal/mol, a replica mean ± SD.</td><td>The saved full-enzyme comparison gives about 9.57 kcal/mol with transferred reference settings. Its boundary, sampling and parameter transfer remain unvalidated. It is not a reproduced paper barrier.</td></tr>
+      </tbody></table></div>
+      <p class="status"><strong>The key difference is the Hamiltonian and protocol chosen here, not that OpenMM cannot run EVB.</strong> Implementing and validating matching boundary forces, restraints, parameters and sampling is required for a reproduction claim. Longer simulation alone cannot remove a model difference.</p>
+      <p class="small">The saved shortened native-Q6 exercise has two replica barriers, 9.82 and 8.10 kcal/mol (mean 8.96; sample SD 1.216; SEM 0.860). These are also not the paper’s full protocol, and are not directly matched to the OpenMM run. <a href="viewers/native_q6_replicas.html">Inspect the recorded Q6 replica comparison</a>.</p>
+      <details><summary>Which coupling and offset does the default comparison use?</summary><p>The archived QFEP reference provides H₁₂ = 100.4 and α = −110 kcal/mol. It comes from the separate GNCA4-WT reference archive, not a verified Des27.7-IN QFEP setup. A +44.5 kcal/mol product-state correction converts the Morse energy-zero convention, giving a total offset of −65.5. This transfer is not a validated Des27.7-IN calibration and is not fitted to force a 13.2 barrier.</p></details>
+      <p class="small">Sources: <a href="https://doi.org/10.1038/s41586-025-09136-2">Listov et al. and supporting information</a> · <a href="https://doi.org/10.5281/zenodo.14563437">deposited Kemp inputs</a> · <a href="https://doi.org/10.5281/zenodo.12666978">separate QFEP parameter reference</a> · <a href="https://github.com/qusers/Q6/blob/master/documentation/manuals/qman.tex">Q6 manual</a>.</p>
+    </section>
 
     <section id="parameter-demo"><div class="tag">Try the settings</div><h2>Compare many α and H₁₂ examples</h2><p class="plain">The scan shows 25 parameter combinations, including the archived baseline, plus five examples chosen to give a barrier near the value reported in the paper. Compare their profiles and reaction free energies: similar barriers can come with very different product energies, so one barrier alone does not determine both parameters.</p><p class="plain">The scan reuses saved OpenMM energy samples while changing α and H₁₂. It does not run a new simulation for every choice.</p><p><a class="button" href="viewers/parameter_scan.html">Open the parameter examples →</a></p></section>
 
     <section id="profile">
-      <div class="tag">Saved OpenMM example</div>
-      <h2>The reaction profile</h2>
-      <figure class="figure">
-        <img src="assets/source_profile.svg" alt="Saved Kemp free-energy profile. Horizontal axis: offset-adjusted EVB energy gap in kilocalories per mole. Vertical axis: free energy relative to reactant in kilocalories per mole.">
-        <figcaption class="caption">Saved short-run profile. <a class="plain-link" href="viewers/source_profile.html">View the profile and archived data →</a></figcaption>
-      </figure>
+      <div class="tag">A saved full-enzyme result</div><h2>What the Kemp profile looks like</h2>
+      <p>This curve is reconstructed from an archived 21-window, 6,330-atom OpenMM run—not the five-atom illustration. Its raw-record checksum matches the original plot record.</p>
+      <figure class="figure"><img src="assets/full_enzyme_recorded_profile.svg" alt="Archived full-enzyme Kemp OpenMM profile in blue, with a grey published Q6 barrier reference."><figcaption class="caption"><strong>Blue:</strong> computed OpenMM profile, conditional barrier ≈9.57 kcal/mol. <strong>Grey line/band:</strong> published Q6 barrier 13.2 ± 0.6 kcal/mol, not a complete reference curve. The conditional reaction free energy is about −44.45 kcal/mol. Neither the short sampling, reaction thermochemistry nor parameter transfer is validated.</figcaption></figure>
+      <p><a class="button secondary" href="viewers/full_enzyme_recorded_profile.html">Open the saved result and details</a></p>
     </section>
 
     <section id="linux">
-      <div class="eyebrow">Optional live run · portable setup</div>
-      <h2>Install and run the short OpenMM example</h2>
-      <p>These instructions work from any checkout location. No personal paths, separate EVBOpenMM checkout or <code>EVBOPENMM_SRC</code> setting are required. Install Conda or Miniforge first; the environment supplies the Python installation tools. A CPU is sufficient.</p>
-      <h3>1. Get the workshop</h3>
+      <div class="eyebrow">Do this on your computer</div><h2>Run the full enzyme in three steps</h2>
+      <p>The default system is Des27.7-IN: <strong>6,330 atoms, 771 waters and three reactive Morse pairs</strong>. A CPU is enough to start; runtime depends on your hardware. Install Conda or Miniforge first.</p>
+      <h3>1. Install once</h3>
 <pre>git clone https://github.com/ND7996/Kemp-EVB-Workshop.git
-cd Kemp-EVB-Workshop</pre>
-      <p>Already cloned it? Open a terminal in <code>Kemp-EVB-Workshop</code> and run <code>git pull</code> instead. Run all commands below from that repository root.</p>
-      <h3>2. Create and activate the environment</h3>
-<pre>conda env create -f kemp_evb/calculation/environment.yml
-conda activate kemp-short</pre>
-      <p><strong>If the environment already exists:</strong> update and activate it with these commands instead of creating it again:</p>
-<pre>conda env update -f kemp_evb/calculation/environment.yml
-conda activate kemp-short</pre>
-      <h3>3. Install the pinned EVBOpenMM package</h3>
-<pre>python -m pip install --no-deps --no-build-isolation ./EVBOpenMM</pre>
-      <p>This installs the bundled workshop-tested snapshot of Martin-Floor’s EVBOpenMM from this repository. The source is the ordinary top-level <code>EVBOpenMM/</code> folder, not a submodule. No GitHub login or separate source checkout is needed. Using the active environment’s <code>python -m pip</code> installs it into <code>kemp-short</code>; <code>--no-deps</code> keeps Conda’s OpenMM and NumPy packages; <code>--no-build-isolation</code> uses the build tools already in the environment.</p>
-      <h3>4. Check the inputs and run</h3>
-<pre>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
-python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
-      <p>The first command checks the bundled Q6 input mapping. The second evaluates the reduced five-atom teaching model and prints its new output directory under <code>kemp_evb/calculation/runs/</code>. Open <code>teaching_evb.html</code> from that directory in your browser; <code>teaching_summary.json</code> records the settings.</p>
-      <h3>Try different teaching parameters</h3>
-<pre>python kemp_evb/calculation/scripts/run_short_evb_demo.py --coupling 12 --offset 2</pre>
-      <p>The coupling and offset are illustrative controls. This fixed-path potential-energy scan is not molecular dynamics, a full-enzyme calculation or a sampled activation free-energy barrier.</p>
-      <h3>If installation stops</h3>
-      <div class="two">
-        <article class="card"><h3>Conda cannot create the environment</h3><p>Check the last error lines. If the environment already exists, use the update commands above. If the file cannot be found, make sure your terminal is in the repository root and that you ran <code>git pull</code>.</p></article>
-        <article class="card"><h3>The bundled EVBOpenMM installation fails</h3><p>The Conda environment can remain installed. Check that the <code>EVBOpenMM</code> folder is present and that you are in the repository root, then retry only step 3. Do not recreate the whole environment. For <code>No module named evbopenmm</code>, activate <code>kemp-short</code> and repeat step 3 using <code>python -m pip</code>.</p></article>
-      </div>
-      <p class="small">This optional local calculation is separate from the browser parameter scan, which reuses saved energies and starts no new simulation.</p>
+cd Kemp-EVB-Workshop
+conda env create -f kemp_evb/calculation/environment.yml
+conda activate kemp-short
+python -m pip install --no-deps --no-build-isolation ./EVBOpenMM</pre>
+      <p>Already cloned it? Run <code>git pull --no-rebase</code> from its root instead of cloning again. Already have <code>kemp-short</code>? Use <code>conda env update -f kemp_evb/calculation/environment.yml</code> instead of creation, then activate it. EVBOpenMM is included as ordinary source files: no private GitHub access or personal paths.</p>
+      <h3>2. Run preparation, relaxation and FEP sampling</h3>
+<pre>python kemp_evb/calculation/scripts/run_kemp_evb.py</pre>
+      <p>This one command builds both states, minimizes, heats and equilibrates the endpoint, then collects mapping-window energies. It writes the PDB, DCD trajectories, energy traces and restart database under <code>kemp_evb/full_enzyme/runs/full_enzyme_short/</code>.</p>
+      <h3>3. View your full-enzyme profile</h3>
+<pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode profile --bins 18 --open</pre>
+      <p>This reads your sampled energies and opens <code>profile.html</code>. It does not draw a prescribed five-atom path. Gaps indicate insufficiently resolved sampling; coarser bins do not create new information.</p>
+      <p class="status"><strong>A complete short workflow is not a converged scientific result.</strong> The preset collects only 5.25 ps total production. Before interpreting a barrier, inspect the diagnostics, sampling and model-transfer limitations.</p>
+      <details><summary>Inspect sampling or resume an interrupted run</summary><pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode diagnose
+python kemp_evb/calculation/scripts/run_kemp_evb.py --resume</pre><p>Resume requires unchanged config, code, inputs, OpenMM and platform. Keep <code>run.sqlite</code>; it commits the state and sampled records together.</p></details>
+      <details><summary>Rebuild the saved full-enzyme plot without waiting for new dynamics</summary><pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode profile --records kemp_evb/full_enzyme/demo_results/source_parameter_comparison/replica_101_raw.json --output-dir kemp_evb/full_enzyme/runs/recorded_comparison --bins 18 --open</pre><p>This reconstructs the archived result shown above; it is not new sampling.</p></details>
+      <details><summary>Run longer, change parameters or get installation help</summary><p>Copy <code>kemp_evb/full_enzyme/configs/full_enzyme_short.json</code>, change the step counts, seed and window schedule, and select it with <code>--config</code>. Always choose a new output directory for changed settings. Use the <a href="https://github.com/ND7996/Kemp-EVB-Workshop/blob/main/kemp_evb/full_enzyme/README.md">full run guide</a> for exact stage, duration and restart commands.</p><p>For an installation error, activate <code>kemp-short</code> and repeat the local pip command in step 1. It should not contact Martin’s private repository.</p></details>
+      <details><summary>The separate five-atom illustration</summary><p>It remains available for learning the energy matrix, but it is not the enzyme workflow:</p><pre>python kemp_evb/calculation/scripts/run_five_atom_example.py --coupling 12 --offset 2</pre></details>
     </section>
 
     <section id="workflow">
@@ -119,7 +125,7 @@ python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
         <article class="card"><div class="number">2 · Relax</div><h3>Settle the starting state</h3><p>Minimize the reactant mapping state, then heat and equilibrate it. Check the geometry, energy and temperature before starting the window calculations. In this OpenMM workflow, relaxation and heating are performed at the reactant endpoint.</p></article>
         <article class="card"><div class="number">3 · FEP/profile</div><h3>Sample across lambda windows</h3><p>Map between the R and P energy descriptions through lambda windows. Sample every window, check overlap and convergence, and compare independent replicas. Analyze the energies to estimate the profile, activation barrier, and reaction free energy.</p></article>
       </div>
-      <p class="small">The files in this workshop include a saved short Kemp dataset for learning the analysis. They do not include the complete live R/P preparation, endpoint-relaxation, and FEP run scripts. The viewers therefore do not launch those three simulation stages.</p></section>
+      <p class="small">The full-enzyme scripts now implement these stages locally. Browser viewers analyse saved data; the terminal run command starts the dynamics. This is an OpenMM adaptation, not a validated replacement for the native Q6 protocol.</p></section>
 
     <section id="sources">
       <div class="tag">For later reading</div>
@@ -127,6 +133,6 @@ python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
       <p class="small">Paper: Listov et al., “Complete computational design of high-efficiency Kemp elimination enzymes,” <em>Nature</em> (2025). <a href="https://doi.org/10.1038/s41586-025-09136-2" target="_blank" rel="noopener">Open the paper</a> · <a href="https://doi.org/10.5281/zenodo.14563437" target="_blank" rel="noopener">Deposited simulation inputs</a>.</p>
     </section>
   </main>
-  <footer>Kemp EVB workshop · Saved browser activities and a reduced live calculation are included. The optional live example runs locally on Linux.</footer>
+  <footer>Kemp EVB workshop · Full-enzyme OpenMM workflow, saved results and parameter exercises. Changed boundaries and short sampling are labelled explicitly.</footer>
 </body>
 </html>

@@ -1,16 +1,33 @@
-// Developer check; saved workshop pages themselves need only a browser.
+// Check the actual full-enzyme workshop page and the saved-data interaction.
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 (async()=>{
- const root=path.join(__dirname,'../kemp_evb');const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+ const root=path.join(__dirname,'../kemp_evb');
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
  try{
- const page=await browser.newPage({viewport:{width:1280,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.setContent(fs.readFileSync(path.join(root,'index.html'),'utf8'));
- assert.match(await page.locator('#matrix-result').textContent(),/E− = -10.000; E\+ = 10.000/);
- await page.locator('#matrix-h').fill('0');assert.match(await page.locator('#matrix-result').textContent(),/Degenerate/);
- await page.locator('#matrix-p').fill('20');assert.match(await page.locator('#matrix-result').textContent(),/R weight = 1.000, P weight = 0.000/);
- await page.locator('#matrix-alpha').fill('-30');assert.match(await page.locator('#matrix-result').textContent(),/R weight = 0.000, P weight = 1.000/);
- await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Mobile overflow');
- const scan=await browser.newPage();scan.on('pageerror',e=>errors.push(e.message));await scan.setContent(fs.readFileSync(path.join(root,'viewers/parameter_scan.html'),'utf8'));assert.match(await scan.locator('#baseline-label').textContent(),/not Q6/);assert.equal(await scan.locator('#paper-barrier-line').getAttribute('data-value'),'13.2');assert.equal(await scan.locator('#paper-barrier-sd').getAttribute('data-sd'),'0.6');const before=await scan.locator('[data-role=selected-curve]').first().getAttribute('points');const values=await scan.locator('#choice option').evaluateAll(nodes=>nodes.map(n=>n.value));await scan.locator('#choice').selectOption(values[1]);assert.notEqual(await scan.locator('[data-role=selected-curve]').first().getAttribute('points'),before);assert.equal(await scan.locator('#paper-barrier-line').getAttribute('data-value'),'13.2');await scan.locator('#archive').check();assert.equal(await scan.locator('[data-role=archived-curve]').count(),1);
- const stats=JSON.parse(fs.readFileSync(path.join(root,'data/native_q6_replicas/replica_statistics.json'),'utf8'));assert.equal(stats.n,2);const mean=stats.barriers_kcal_mol.reduce((a,b)=>a+b,0)/stats.n;const sd=Math.sqrt(stats.barriers_kcal_mol.reduce((a,b)=>a+(b-mean)**2,0)/(stats.n-1));assert.ok(Math.abs(stats.mean_barrier_kcal_mol-mean)<1e-12);assert.ok(Math.abs(stats.sem_kcal_mol-sd/Math.sqrt(stats.n))<1e-12);const replicas=await browser.newPage();await replicas.setContent(fs.readFileSync(path.join(root,'viewers/native_q6_replicas.html'),'utf8'));assert.equal(await replicas.locator('svg circle').count(),2);assert.match(await replicas.locator('body').textContent(),/13.2.*0.6/);assert.match(await replicas.locator('body').textContent(),/SEM=0.860/);
- assert.deepEqual(errors,[]);console.log('Matrix eigenvalues/weights, mobile layout,fixed published reference and changing computed curve passed.');
+  const page=await browser.newPage({viewport:{width:1280,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.setContent(fs.readFileSync(path.join(root,'index.html'),'utf8'));
+  assert.match(await page.locator('h1').textContent(),/Run EVB for the Kemp enzyme/);
+  assert.equal(await page.locator('header .button').first().getAttribute('href'),'#linux');
+  const install=await page.locator('#linux').textContent();
+  assert.match(install,/run_kemp_evb\.py/);assert.match(install,/--mode profile --bins 18 --open/);assert.match(install,/\.\/EVBOpenMM/);
+  assert.match(await page.locator('#results').textContent(),/LRF\/SCAAS/);
+  assert.match(await page.locator('#results').textContent(),/5\.25 ps/);
+  assert.equal(await page.locator('#results tbody tr').count(),6);
+  assert.match(await page.locator('#profile').textContent(),/9\.57/);assert.match(await page.locator('#profile').textContent(),/13\.2/);
+  await page.setViewportSize({width:390,height:844});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Mobile horizontal overflow');
+  const scan=await browser.newPage();scan.on('pageerror',e=>errors.push(e.message));
+  await scan.setContent(fs.readFileSync(path.join(root,'viewers/parameter_scan.html'),'utf8'));
+  assert.equal(await scan.locator('#paper-barrier-line').getAttribute('data-value'),'13.2');
+  const before=await scan.locator('[data-role=selected-curve]').first().getAttribute('points');
+  const values=await scan.locator('#choice option').evaluateAll(nodes=>nodes.map(n=>n.value));
+  await scan.locator('#choice').selectOption(values[1]);
+  assert.notEqual(await scan.locator('[data-role=selected-curve]').first().getAttribute('points'),before);
+  assert.equal(await scan.locator('#paper-barrier-line').getAttribute('data-value'),'13.2');
+  const full=await browser.newPage();await full.setContent(fs.readFileSync(path.join(root,'viewers/full_enzyme_recorded_profile.html'),'utf8'));
+  assert.match(await full.locator('body').textContent(),/9\.572629/);
+  assert.match(await full.locator('svg').textContent(),/Grey: published Q6 barrier/);
+  assert.deepEqual(errors,[]);
+  console.log('Passed: full-enzyme commands, Q6/OpenMM comparison, mobile layout, archived full profile and parameter controls.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

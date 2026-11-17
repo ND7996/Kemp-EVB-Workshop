@@ -1,0 +1,120 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Kemp workshop parameter scan</title>
+<style>
+body{font:16px sans-serif;max-width:1200px;margin:24px auto;padding:0 16px;color:#234}
+svg{width:100%;border:1px solid #ccd;background:white}select{max-width:100%;font-size:16px;padding:6px}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd;padding:6px;text-align:right}
+tr{cursor:pointer}tr:hover{background:#eef5ff}.warning{background:#fff0d6;padding:12px}
+#stats,#ts-status{padding:12px;background:#eef5ff}.controls{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0}
+</style>
+<h1>Kemp workshop: coupling/offset combinations</h1>
+<p class="warning"><b>WORKSHOP SENSITIVITY / TARGET MATCHING — NOT A PREDICTION.</b>
+Curves reuse the saved energies. Matching one barrier does not identify both parameters or establish convergence. Reaction free energies are shown too.</p>
+<label>Candidate: <select id="choice"></select></label>
+<div class="controls">
+<label><input id="archive" type="checkbox"><span id="baseline-label">Show optional archived-parameter OpenMM curve (amber)</span></label>
+<label><input id="center-ts" type="checkbox">Centre selected profile maximum at x = 0 (display only)</label>
+</div>
+<p id="stats"></p>
+<p id="ts-status" aria-live="polite"></p>
+<svg id="plot" viewBox="0 0 1100 620" role="img" aria-label="Workshop profile comparison with legend and estimated maximum"></svg>
+<p><b>Reading the plot:</b> <strong>grey horizontal line/band = published Q6 barrier mean ± replica SD (not the full paper profile)</strong>; blue = our selected computed profile. The optional amber curve uses archived parameters on our OpenMM samples.
+Both curves reuse the same saved OpenMM energies; their coupling/offset parameters differ. The marked profile maximum is a <b>binned TS estimate</b>, not a validated molecular transition state.
+Raw gap zero means equal unshifted state energies; offset-corrected gap zero means equal offset-corrected state energies.
+Neither equality guarantees a free-energy maximum. The peak need not lie at zero on either physical coordinate.</p>
+<p id="axis-note">Coordinates and energies are unchanged. Missing bins remain gaps.</p>
+<p>Each curve uses its reactant minimum as zero where resolved; otherwise its global minimum is used and no barrier is assigned.
+The centring option subtracts the selected peak's original raw gap from <b>both</b> curves. It changes only the displayed origin;
+it does not move atoms, fit energies, change barriers or prove that a molecular TS has zero energy gap.</p>
+<p>Paper reference: <a href="https://doi.org/10.1038/s41586-025-09136-2" target="_blank" rel="noopener">Listov et al., Nature2025, SI Table3</a>. The grey band shows replica standard deviation, not a confidence interval. Short sampling, changed electrostatics/boundaries and unvalidated transfer can all affect blue. Longer sampling alone does not guarantee agreement.</p><h2>Grid and target-matched examples</h2>
+<p>Click a row to select its curve. Energies, offsets and gaps are in kcal/mol.</p>
+<table><thead><tr><th>Type</th><th>H12</th><th>α (Q convention)</th><th>Total P offset</th><th>Forward barrier</th><th>Reaction ΔG</th><th>Target error</th><th>Peak raw gap</th></tr></thead><tbody id="rows"></tbody></table>
+<script id="data" type="application/json">__SCAN_DATA__</script>
+<script>
+const d=JSON.parse(document.getElementById('data').textContent),candidates=d.displayed_candidates;
+const $=id=>document.getElementById(id),num=(v,n=4)=>v===null||v===undefined?'unresolved':Number(v).toFixed(n);
+const paper=d.published_reference||null;
+const sorted=[...candidates].sort((a,b)=>(a.target_error_kcal_mol??Infinity)-(b.target_error_kcal_mol??Infinity));
+$('baseline-label').textContent=`Optional amber OpenMM baseline (archived H12=${num(d.baseline.coupling_kcal_mol,1)}, α=${num(d.baseline.native_alpha_kcal_mol,1)}; not Q6)`;
+for(const r of sorted){
+ const o=document.createElement('option');o.value=r.id;
+ o.textContent=`${r.kind}: H12=${num(r.coupling_kcal_mol)}, α=${num(r.native_alpha_kcal_mol)}, barrier=${num(r.barrier_kcal_mol)}`;
+ $('choice').appendChild(o);
+ const tr=document.createElement('tr');
+ const values=[r.kind,...['coupling_kcal_mol','native_alpha_kcal_mol','total_product_offset_kcal_mol','barrier_kcal_mol','reaction_dg_kcal_mol','target_error_kcal_mol'].map(k=>num(r[k])),num(r.profile_peak?.raw_gap_kcal_mol)];
+ for(const v of values){const td=document.createElement('td');td.textContent=v;tr.appendChild(td)}
+ tr.onclick=()=>{$('choice').value=r.id;draw()};$('rows').appendChild(tr);
+}
+$('choice').value=d.baseline.id;
+function draw(){
+ const selected=candidates.find(r=>r.id===$('choice').value),peak=selected.profile_peak;
+ $('center-ts').disabled=!peak;
+ if(!peak)$('center-ts').checked=false;
+ const centered=$('center-ts').checked&&!!peak,shift=centered?peak.raw_gap_kcal_mol:0;
+ const curves=$('archive').checked?[d.baseline,selected]:[selected];
+ $('stats').textContent=`Selected ${selected.kind}: H12=${num(selected.coupling_kcal_mol)}, α (Q convention)=${num(selected.native_alpha_kcal_mol)}, total P offset=${num(selected.total_product_offset_kcal_mol)}; forward barrier=${num(selected.barrier_kcal_mol)}, reaction ΔG=${num(selected.reaction_dg_kcal_mol)}. Target=${num(d.target_barrier_kcal_mol)}; energy reference=${selected.reference}. No calibration claim.`;
+ $('ts-status').textContent=peak?
+  `Binned profile maximum: original raw gap=${num(peak.raw_gap_kcal_mol)}; offset-corrected gap=${num(peak.offset_adjusted_gap_kcal_mol)}. Raw peak bin=[${num(peak.raw_bin_lower_kcal_mol)}, ${num(peak.raw_bin_upper_kcal_mol)}], width=${num(peak.bin_width_kcal_mol)}. Does that raw peak bin contain zero? ${peak.raw_peak_bin_contains_zero?'Yes; its exact position is unresolved within the bin.':'No.'} Does the offset-corrected peak bin contain zero? ${peak.offset_adjusted_peak_bin_contains_zero?'Yes.':'No.'} Displayed peak coordinate=${num(peak.raw_gap_kcal_mol-shift)}. This is a coarse free-energy maximum, not a validated molecular TS.`:
+  'No resolved profile maximum/barrier is available for this candidate; no TS marker or TS-centred view is assigned.';
+ $('axis-note').textContent=centered?
+  `DISPLAY SHIFT ONLY: x_display = raw gap − (${num(shift)} kcal/mol), applied identically to selected and archived curves. The selected estimated maximum is at0 by definition of this display origin; the archived maximum need not be. Original coordinates remain stored in the report.`:
+  'RAW COORDINATE: x = E_R − E_P before offsets. The zero line is marked explicitly. Neither the selected maximum nor the archived maximum is forced to zero. Missing bins remain gaps.';
+ const xs=curves.flatMap(r=>r.x.map(v=>v-shift)),ys=curves.flatMap(r=>r.y.filter(v=>v!==null));
+ ys.push(0,d.target_barrier_kcal_mol);
+ if(paper)ys.push(paper.barrier_kcal_mol-paper.replica_sd_kcal_mol,paper.barrier_kcal_mol+paper.replica_sd_kcal_mol);
+ let xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys),span=Math.max(ymax-ymin,1);
+ ymin-=span*.05;ymax+=span*.16;
+ const x=v=>90+950*(v-xmin)/Math.max(xmax-xmin,1e-12),y=v=>485-350*(v-ymin)/(ymax-ymin);
+ let s='<rect width="1100" height="620" fill="white"/><g font-family="sans-serif" fill="#234"><text x="550" y="28" text-anchor="middle" font-size="20">WORKSHOP COMPARISON — TARGET MATCHES ARE NOT PREDICTIONS</text>';
+ // Legend is inside the exported SVG, not only in surrounding webpage prose.
+ if($('archive').checked){
+  s+='<path d="M95 55H130" stroke="#b07a22" stroke-width="2" stroke-dasharray="7 4"/>';
+  s+=`<text id="legend-archived" x="140" y="60" font-size="13">Amber: archived OpenMM H12=${num(d.baseline.coupling_kcal_mol,1)}, α=${num(d.baseline.native_alpha_kcal_mol,1)}, barrier=${num(d.baseline.barrier_kcal_mol,2)}</text>`;
+ }
+ s+=`<path d="M605 55H640" stroke="#1769aa" stroke-width="2"/><text id="legend-selected" x="650" y="60" font-size="13">Blue: selected H12=${num(selected.coupling_kcal_mol,2)}, α=${num(selected.native_alpha_kcal_mol,1)}</text>`;
+ s+='<path d="M104 72L110 78L104 84L98 78Z" fill="#1769aa"/><text x="140" y="83" font-size="13">Diamond: selected binned profile maximum (TS estimate)</text>';
+ if(paper)s+=`<path d="M605 78H640" stroke="#777" stroke-width="2" stroke-dasharray="5 5"/><text id="legend-paper" x="650" y="83" font-size="13">Grey: published ${num(paper.barrier_kcal_mol,1)} ± ${num(paper.replica_sd_kcal_mol,1)} (SD)</text>`;
+ s+='<text x="140" y="104" font-size="13">Grey is the paper barrier height, not a paper curve. Blue changes with the selected H12/α.</text>';
+ s+='<path d="M90 115V485H1040" fill="none" stroke="#345"/>';
+ const ticks=[],yticks=[];
+ for(let i=0;i<6;i++){
+  const xv=xmin+(xmax-xmin)*i/5,yv=ymin+(ymax-ymin)*i/5;
+  if(!(xmin<=0&&xmax>=0&&Math.abs(x(xv)-x(0))<48))ticks.push(xv);
+  if(Math.abs(y(yv)-y(0))>=22)yticks.push(yv);
+ }
+ yticks.push(0);
+ for(const tick of yticks.sort((a,b)=>a-b))s+=`<text x="80" y="${y(tick)+5}" text-anchor="end" font-weight="${tick===0?'bold':'normal'}">${tick===0?'0':num(tick,1)}</text>`;
+ s+=`<path id="reactant-zero-line" d="M90 ${y(0)}H1040" stroke="#ccd" stroke-dasharray="3 5"/>`;
+ if(xmin<=0&&xmax>=0){
+  ticks.push(0);
+  s+=`<path id="zero-line" data-coordinate="0" d="M${x(0)} 115V485" stroke="#555" stroke-dasharray="3 5"/>`;
+ }
+ for(const tick of ticks.sort((a,b)=>a-b))s+=`<text class="x-tick" data-value="${tick}" x="${x(tick)}" y="510" text-anchor="middle" font-weight="${tick===0?'bold':'normal'}">${tick===0?'0':num(tick,1)}</text>`;
+ if(paper&&selected.reference==='reactant'){const hi=y(paper.barrier_kcal_mol+paper.replica_sd_kcal_mol),lo=y(paper.barrier_kcal_mol-paper.replica_sd_kcal_mol);s+=`<rect id="paper-barrier-sd" data-sd="${paper.replica_sd_kcal_mol}" x="90" y="${hi}" width="950" height="${lo-hi}" fill="#888" opacity="0.16"/><path id="paper-barrier-line" data-value="${paper.barrier_kcal_mol}" d="M90 ${y(paper.barrier_kcal_mol)}H1040" stroke="#777" stroke-width="2" stroke-dasharray="5 5"/>`;}
+ if(!paper||Math.abs(d.target_barrier_kcal_mol-paper.barrier_kcal_mol)>1e-8)s+=`<path d="M90 ${y(d.target_barrier_kcal_mol)}H1040" stroke="#b44" stroke-dasharray="5 5"/>`;
+ curves.forEach((r,j)=>{
+  const selectedCurve=j===curves.length-1,color=selectedCurve?'#1769aa':'#b07a22';let points=[];
+  const flush=()=>{if(points.length)s+=`<polyline data-role="${selectedCurve?'selected-curve':'archived-curve'}" points="${points.join(' ')}" fill="none" stroke="${color}" stroke-width="2" ${selectedCurve?'':'stroke-dasharray="7 4"'}/>`;points=[]};
+  r.x.forEach((v,i)=>{
+   if(r.y[i]===null){flush();return}
+   points.push(`${x(v-shift)},${y(r.y[i])}`);
+   s+=`<circle cx="${x(v-shift)}" cy="${y(r.y[i])}" r="3" fill="${color}"/>`;
+  });flush();
+  if(r.profile_peak){
+   const p=r.profile_peak,displayGap=p.raw_gap_kcal_mol-shift,cx=x(displayGap),cy=y(p.free_energy_relative_reactant_kcal_mol);
+   if(selectedCurve){
+    s+=`<path d="M${cx} ${cy}V485" stroke="#1769aa" stroke-dasharray="2 4"/>`;
+    s+=`<g id="selected-ts" data-raw-gap="${p.raw_gap_kcal_mol}" data-displayed-gap="${displayGap}" data-cx="${cx}"><path d="M${cx} ${cy-7}L${cx+7} ${cy}L${cx} ${cy+7}L${cx-7} ${cy}Z" fill="#1769aa" stroke="white"/><title>Selected profile maximum: raw gap ${num(p.raw_gap_kcal_mol)}, displayed ${num(displayGap)}; barrier ${num(r.barrier_kcal_mol)}</title></g>`;
+    s+=`<text x="${Math.min(910,Math.max(120,cx+12))}" y="${cy-12}" fill="#1769aa" font-size="13">Profile peak: x=${num(displayGap,2)}, ΔG‡=${num(r.barrier_kcal_mol,2)}</text>`;
+   }else s+=`<circle id="archived-ts" data-raw-gap="${p.raw_gap_kcal_mol}" data-displayed-gap="${displayGap}" cx="${cx}" cy="${cy}" r="6" fill="white" stroke="#b07a22" stroke-width="2"><title>Archived baseline profile maximum; barrier ${num(r.barrier_kcal_mol)}</title></circle>`;
+  }
+ });
+ const label=centered?'Raw gap − selected profile-maximum raw gap (kcal/mol; display shift only)':'Common raw energy-gap coordinate: E_R − E_P (kcal/mol)';
+ s+=`<text id="axis-label" x="550" y="551" text-anchor="middle">${label}</text>`;
+ s+='<text transform="translate(23 300) rotate(-90)" text-anchor="middle">Free energy relative to reactant (kcal/mol)</text>';
+ s+=`<text x="550" y="583" text-anchor="middle" font-size="13">${centered?'Selected profile peak is at0 by a common display shift; original gaps are preserved.':'Raw gap zero is not a required free-energy maximum. Bin centres are coarse estimates.'}</text></g>`;
+ $('plot').innerHTML=s;
+}
+$('choice').onchange=draw;$('archive').onchange=draw;$('center-ts').onchange=draw;draw();
+</script>

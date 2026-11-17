@@ -1,0 +1,37 @@
+{
+  "production_complete": true,
+  "sample_counts": [
+    5,
+    5,
+    5
+  ],
+  "edges": [
+    {
+      "left_window": 0,
+      "right_window": 1,
+      "sample_counts": [
+        5,
+        5
+      ],
+      "gap_histogram_overlap": 0.0,
+      "forward_deltaG_kj_mol": 757.7073412901202,
+      "reverse_deltaG_kj_mol": 449.84779783188003,
+      "hysteresis_kj_mol": 307.8595434582402
+    },
+    {
+      "left_window": 1,
+      "right_window": 2,
+      "sample_counts": [
+        5,
+        5
+      ],
+      "gap_histogram_overlap": 0.0,
+      "forward_deltaG_kj_mol": -140.3124084060285,
+      "reverse_deltaG_kj_mol": -966.466468117415,
+      "hysteresis_kj_mol": 826.1540597113865
+    }
+  ],
+  "calibrated": false,
+  "convergence_established": false,
+  "note": "Histogram overlap and forward/reverse FEP are necessary checks, not proof of convergence. Samples may be correlated; no independent-replica uncertainty is inferred."
+}

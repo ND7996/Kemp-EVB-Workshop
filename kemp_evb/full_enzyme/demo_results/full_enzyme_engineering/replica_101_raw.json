@@ -1,0 +1,159 @@
+{
+  "schema": "kemp_full_mapping_records_v1",
+  "metadata": {
+    "case": "Des27_7_IN",
+    "particles": 6330,
+    "reactive_atoms": 22,
+    "reactive_pairs": 3,
+    "boundary": "finite nonperiodic droplet; direct Coulomb within 9.9 nm; harmonic water-O wall; native outer protein frozen",
+    "native_q6_reproduction": false,
+    "calibrated": false,
+    "morse_P_minus_R_correction_kcal_mol": 44.5,
+    "limitations": [
+      "No LRF/SCAAS equivalence.",
+      "No validated coupling or physical state offset.",
+      "No converged free-energy barrier.",
+      "State exception conversion requires separate numerical validation."
+    ],
+    "fingerprint": "2943916ab014020ffa7b9c38275f24e9fe5c47567a98c3a8212076f5440f8e79",
+    "openmm_version": "8.6.1.dev-b399af4",
+    "config_file": "Kemp_EVB/configs/full_enzyme_smoke.json"
+  },
+  "config": {
+    "case": "Des27_7_IN",
+    "platform": "CPU",
+    "cpu_threads": 2,
+    "seed": 101,
+    "temperature_kelvin": 300.0,
+    "max_temperature_kelvin": 1500.0,
+    "timestep_fs": 0.25,
+    "friction_per_ps": 1.0,
+    "relaxation_steps": 40,
+    "relaxation_lbfgs_iterations": 100,
+    "relaxation_max_displacement_nm": 0.0005,
+    "relaxation_force_tolerance_kj_mol_nm": 250.0,
+    "heating_temperatures_kelvin": [
+      50.0,
+      150.0,
+      300.0
+    ],
+    "heating_steps_per_temperature": 20,
+    "equilibration_steps": 60,
+    "lambda_schedule": [
+      1.0,
+      0.5,
+      0.0
+    ],
+    "window_equilibration_steps": 20,
+    "production_steps_per_window": 100,
+    "sample_interval": 20,
+    "trajectory_interval": 20,
+    "checkpoint_interval": 20,
+    "schema": "kemp_full_mapping_v1",
+    "note": "CI/integration smoke only; finite full-system relaxation to production, no convergence or physical-barrier claim."
+  },
+  "cursor": {
+    "phase": "complete",
+    "windows_completed": 3,
+    "step": 480
+  },
+  "morse_energy_convention": "EVBOpenMM zero-minimum; add +44.5 kcal/mol to P relative to R for the native convention only",
+  "calibrated": false,
+  "physical_barrier_available": false,
+  "sample_count": 15,
+  "windows": [
+    {
+      "index": 0,
+      "lambda_R": 1.0,
+      "samples": [
+        {
+          "step": 160,
+          "E_R_kj_mol": -65136.96449303557,
+          "E_P_kj_mol": -63562.677905225966
+        },
+        {
+          "step": 180,
+          "E_R_kj_mol": -65357.44190463435,
+          "E_P_kj_mol": -63793.229818916974
+        },
+        {
+          "step": 200,
+          "E_R_kj_mol": -65641.46689194297,
+          "E_P_kj_mol": -64086.005060349795
+        },
+        {
+          "step": 220,
+          "E_R_kj_mol": -65746.15731946008,
+          "E_P_kj_mol": -64179.10401956022
+        },
+        {
+          "step": 240,
+          "E_R_kj_mol": -65942.61317713418,
+          "E_P_kj_mol": -64367.22650225478
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "lambda_R": 0.5,
+      "samples": [
+        {
+          "step": 280,
+          "E_R_kj_mol": -65765.51732434299,
+          "E_P_kj_mol": -64769.551243695874
+        },
+        {
+          "step": 300,
+          "E_R_kj_mol": -65752.9218831265,
+          "E_P_kj_mol": -64963.385601128146
+        },
+        {
+          "step": 320,
+          "E_R_kj_mol": -65782.4267858638,
+          "E_P_kj_mol": -65141.42359325286
+        },
+        {
+          "step": 340,
+          "E_R_kj_mol": -65805.59403201476,
+          "E_P_kj_mol": -65369.382698715664
+        },
+        {
+          "step": 360,
+          "E_R_kj_mol": -65757.76848694692,
+          "E_P_kj_mol": -65514.76982814677
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "lambda_R": 0.0,
+      "samples": [
+        {
+          "step": 400,
+          "E_R_kj_mol": -64893.098832327,
+          "E_P_kj_mol": -66482.88537547889
+        },
+        {
+          "step": 420,
+          "E_R_kj_mol": -63293.26229673909,
+          "E_P_kj_mol": -66131.85865857941
+        },
+        {
+          "step": 440,
+          "E_R_kj_mol": -64441.72051764611,
+          "E_P_kj_mol": -66094.3032298124
+        },
+        {
+          "step": 460,
+          "E_R_kj_mol": -64333.5808715137,
+          "E_P_kj_mol": -65984.49542063639
+        },
+        {
+          "step": 480,
+          "E_R_kj_mol": -64318.238278152116,
+          "E_P_kj_mol": -66227.33912001419
+        }
+      ]
+    }
+  ]
+}

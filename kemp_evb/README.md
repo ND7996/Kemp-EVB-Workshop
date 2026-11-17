@@ -1,19 +1,9 @@
 # Kemp EVB workshop
 
-Open the [live workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/?v=standalone-evbopenmm), or open [`index.html`](index.html) locally. It explains EVB and spherical boundaries, shows the Kemp reaction scheme, then shows a clearly labeled Q6 vs OpenMM comparison and its input/output files before the α/H₁₂ examples.
+Use the **[public workshop page](https://nd7996.github.io/Kemp-EVB-Workshop/?v=full-enzyme-restored)** for the introduction, chemistry, actual Q6/OpenMM comparison and full-enzyme run commands.
 
-## Q6 inputs and outputs
+The main live calculation is now the [full 6,330-atom enzyme workflow](full_enzyme/README.md), using the included top-level EVBOpenMM package. It prepares matching states, relaxes/heats/equilibrates, collects mapping energies and reconstructs a profile. PDB, DCD, CSV/JSON and transactional restart outputs remain local.
 
-- Inputs: starting coordinates (`.pdb.gz`), topology and force-field terms (`.top.gz`), and the two-state reaction definition and atom map (`.fep`). A full dynamics/analysis run also needs Qdyn stage/window control files (`.inp`) and a QFEP analysis control file.
-- Outputs: Qdyn produces trajectory/restart data and energies for each mapping window (for example, `fep_100.en`). QFEP reads those window energies and its analysis settings, then writes `qfep.out` and the free-energy profile.
-- The workshop’s bundled Q6 inputs are the coordinates, topology and reaction definition; they are not a complete production Q6 run setup.
+The [saved full-system profile](viewers/full_enzyme_recorded_profile.html) is reconstructed from a checksum-verified historical raw record. Blue is the computed OpenMM curve; grey is the published Q6 barrier reference, not a complete paper curve. The changed boundary/parameter transfer and short sampling remain unvalidated.
 
-## Short OpenMM example inputs and outputs
-
-- Inputs: the example checks the bundled Q6 coordinate, topology and FEP files for a consistent atom map. It uses five mapped atom positions and selected reactive terms, plus the `--coupling` and `--offset` settings. The scripts are `run_short_evb_demo.py`, `kemp_inputs.py` and `evb_teaching.py`; `environment.yml` lists the dependencies.
-- Outputs: a new run folder with `teaching_evb.html` (interactive potential-energy illustration) and `teaching_summary.json`. This fixed-path teaching example does not produce Qdyn trajectories, QFEP `.en` files or a sampled free-energy profile.
-- The α/H₁₂ parameter scan on the page reuses saved energies and does not start another run.
-
-## Installation
-
-Use the [portable setup instructions](calculation/README.md): create the Conda environment, activate `kemp-short`, then install the included top-level `EVBOpenMM` folder with that environment’s Python. No personal source path is needed.
+The browser α/H12 scan reuses saved energies; it starts no new MD. The five-atom fixed-path illustration remains separately available as `calculation/scripts/run_five_atom_example.py` and is not the main enzyme calculation.

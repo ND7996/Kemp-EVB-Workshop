@@ -1,5 +1,9 @@
 # Kemp EVB workshop
 
-Open the **[updated public workshop website](https://nd7996.github.io/Kemp-EVB-Workshop/?v=standalone-evbopenmm)** for the EVB introduction, Kemp mechanism and interactive exercises.
+Open the **[updated public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/?v=full-enzyme-restored)** to learn EVB, compare the actual Q6 and OpenMM protocols, and run the full-enzyme calculation.
 
-The complete **[installation and running instructions](https://nd7996.github.io/Kemp-EVB-Workshop/?v=standalone-evbopenmm#linux)** are on the public page. They install the included top-level [`EVBOpenMM/`](EVBOpenMM/) source folder locally—no private repository, submodule or GitHub login is needed for that installation.
+The **[installation and run section](https://nd7996.github.io/Kemp-EVB-Workshop/?v=full-enzyme-restored#linux)** now runs the complete 6,330-atom OpenMM system, from relaxation through mapping production and profile analysis. The five-atom illustration is a separate optional example.
+
+[Full-enzyme guide](kemp_evb/full_enzyme/README.md) · [Bundled EVBOpenMM source](EVBOpenMM/) · [Saved full-enzyme profile](https://nd7996.github.io/Kemp-EVB-Workshop/viewers/full_enzyme_recorded_profile.html)
+
+The current model is an adaptation with changed droplet electrostatics, not validated native-Q6 or published-barrier reproduction. The archived 9.57 kcal/mol estimate is parameter-conditional; the paper's 13.2 ± 0.6 kcal/mol Q6 reference is shown separately.

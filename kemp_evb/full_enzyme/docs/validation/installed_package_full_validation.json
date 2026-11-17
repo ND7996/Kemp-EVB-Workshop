@@ -1,0 +1,49 @@
+{
+  "case": "Des27_7_IN",
+  "particles": 6330,
+  "reactive_atoms": 22,
+  "reactive_pairs": 3,
+  "boundary": "finite nonperiodic droplet; direct Coulomb within 9.9 nm; harmonic water-O wall; native outer protein frozen",
+  "native_q6_reproduction": false,
+  "calibrated": false,
+  "morse_P_minus_R_correction_kcal_mol": 44.5,
+  "limitations": [
+    "No LRF/SCAAS equivalence.",
+    "No validated coupling or physical state offset.",
+    "No converged free-energy barrier.",
+    "State exception conversion requires separate numerical validation."
+  ],
+  "force_finite_difference_check": {
+    "particle_zero_based": 4001,
+    "component": "x",
+    "analytic_kj_mol_nm": 1993.6423126711397,
+    "numerical_kj_mol_nm": 1993.6721163321636,
+    "absolute_error_kj_mol_nm": 0.029803661023834138,
+    "scope": "one coordinate; not independent native Hamiltonian parity"
+  },
+  "input_sha256": {
+    "inputs/q6/Des27_7_IN/Des27_7_IN.fep": "01e51c25c3434747b29c418ce3579fd63d538b42bfac9056ca3000f02212e8ae",
+    "inputs/q6/Des27_7_IN/Des27_7_IN.pdb.gz": "db4ae6a082e7010e2299b103a149ba3ea2701bba69f0c1e948db20c02886f91c",
+    "inputs/q6/Des27_7_IN/Des27_7_IN.top.gz": "4099e3dfe16e06b81f269abe4767d0e9b2b910b64cc728e8cdfbacac96648f9f"
+  },
+  "driver_sha256": "fe76a8b937a58583ec183a5e1fe8969b3783e96005488bd5bfb87f689a25720d",
+  "checks": [
+    {
+      "lambda_R": 1.0,
+      "potential_energy_kj_mol": 11207.31047417455,
+      "max_force_kj_mol_nm": 558532.9842626659
+    },
+    {
+      "lambda_R": 0.5,
+      "potential_energy_kj_mol": 11986.373273644866,
+      "max_force_kj_mol_nm": 558532.698435157
+    },
+    {
+      "lambda_R": 0.0,
+      "potential_energy_kj_mol": 12765.436073115183,
+      "max_force_kj_mol_nm": 558532.1002904242
+    }
+  ],
+  "mapping_linearity_residual_kj_mol": 0.0,
+  "status": "finite construction check; independent Hamiltonian parity and calibration still required"
+}

@@ -1,0 +1,12 @@
+{
+  "algorithm": "displacement-limited constrained descent followed by L-BFGS",
+  "stop_reason": "bounded_lbfgs_completed",
+  "converged_force_tolerance": false,
+  "initial_energy_kj_mol": 11216.27763568211,
+  "final_energy_kj_mol": -54726.650726810796,
+  "descent_iterations": 40,
+  "lbfgs_iteration_limit": 100,
+  "lbfgs_report_calls": 436,
+  "final_max_mobile_force_kj_mol_nm": 5559.685352675882,
+  "force_note": "Includes constraint-normal forces; bounded relaxation is not proof of a stationary unconstrained minimum."
+}

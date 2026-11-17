@@ -6,3 +6,6 @@ kemp_evb/calculation/runs/
 # Local build products from installing the bundled runtime.
 EVBOpenMM/build/
 EVBOpenMM/src/*.egg-info/
+
+# Full-enzyme trajectories, restart database and generated profiles.
+kemp_evb/full_enzyme/runs/

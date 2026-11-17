@@ -30,7 +30,7 @@ page(c,1,"Start here","Three ways to model a reaction",[
  Paragraph("<b>Molecular dynamics (MD).</b> Moves atoms through time. In ordinary classical MD, bonds usually stay fixed.",body),
  Paragraph("<b>QM/MM MD.</b> Quantum mechanics describes the reacting atoms; a classical model describes the enzyme and solvent. It can represent bond changes, but costs more to run.",body),
  Paragraph("<b>EVB.</b> Couples classical force-field descriptions of reactant and product. With sampling, it can follow bond changes efficiently; parameters need suitable reference data.",body),
- Paragraph("The paper uses Q6 for EVB. This workshop uses OpenMM with EVBOpenMM for a short example. Both run EVB, with different setup and sampling.",small)
+ Paragraph("The paper uses Q6 for EVB. This workshop restores a full-enzyme OpenMM/EVBOpenMM adaptation. Both use EVB, but the current OpenMM droplet does not reproduce native Q6 LRF/SCAAS or all restraints.",small)
 ])
 page(c,2,"Follow the chemistry","The Kemp reaction",[
  Paragraph("Asp162 in the enzyme accepts Ht from the substrate as the small ring opens.",body),
@@ -38,10 +38,10 @@ page(c,2,"Follow the chemistry","The Kemp reaction",[
  Paragraph("Reactant and product are two bonding descriptions of the same atoms. In the 2 × 2 EVB table, the diagonal boxes hold the two state energies. α shifts the product energy; H₁₂ controls mixing in the other boxes. Neither is the reaction barrier.",body),
  Paragraph("A full calculation prepares matched states, relaxes them, samples FEP windows, then checks and analyzes the resulting profile.",body)
 ])
-page(c,3,"Optional local run","Run the short example on Linux",[
+page(c,3,"Optional local run","Run the full Kemp enzyme",[
  Paragraph("Install Git and Conda or Miniforge, then run from a terminal:",body),
- Paragraph("git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br/>cd Kemp-EVB-Workshop<br/>conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python -m pip install --no-deps --no-build-isolation ./EVBOpenMM<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py",small),
- Paragraph("The short run uses a CPU, five mapped atoms, and a prescribed geometry path. It writes an HTML plot and JSON summary. It is a software check, not molecular dynamics or a free-energy calculation.",body),
+ Paragraph("git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br/>cd Kemp-EVB-Workshop<br/>conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python -m pip install --no-deps --no-build-isolation ./EVBOpenMM<br/>python kemp_evb/calculation/scripts/run_kemp_evb.py<br/>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode profile --bins 18 --open",small),
+ Paragraph("The full workflow uses 6,330 atoms, including 771 waters. It relaxes, heats and samples mapping windows, then reconstructs a profile. The short preset is a workflow test; changed droplet electrostatics and unvalidated sampling prevent an exact Q6 reproduction claim.",body),
  Paragraph("Paper: Listov et al., Nature (2025), doi:10.1038/s41586-025-09136-2. Published simulation inputs: Zenodo 10.5281/zenodo.14563437.",small)
 ])
 c.save()

@@ -1,0 +1,41 @@
+{
+  "source_archive": "Kemp_variants.zip",
+  "source_archive_sha256": "66ac949eb918fdda08407d495a4185a040213107533af76e654313bd6f290d73",
+  "source_archive_md5": "a1b26a6571dc0efda2e2e25d64123a16",
+  "source_dataset_doi": "10.5281/zenodo.12666978",
+  "stored_files": {
+    "qfep.inp": "14cdc987bc9aacedee0a959529f0210c34f4e1518ae4dade755d1d7b0299d601",
+    "GNCA4-WT.fep": "5e4a5f79a6a64874f494f318e41b295ca0d63613b0c95495ba3a6c615067cf4a",
+    "README.source.txt": "e326e5dfe4c4cf18d711dd972a63c74a528aa8fea6433ce5c46c888aa483a3d6",
+    "1.dyn_min_wat_noshake_template": "79c01adedb163e04401f98e979225c1c5018a3432281aa5ae87ce42f0d0dd49f"
+  },
+  "qfep_archive_member": "Kemp_variants/EVB_Simulations/Inputs_EVB/qfep.inp",
+  "reference_fep_archive_member": "Kemp_variants/EVB_Simulations/Inputs_structures/GNCA4-WT/GNCA4-WT.fep",
+  "reactive_model_comparisons": [
+    {
+      "case": "Des27_7_IN",
+      "parameter_sections_and_q_index_normalized_changes_match": true,
+      "different_sections": []
+    },
+    {
+      "case": "Des27_7_OUT",
+      "parameter_sections_and_q_index_normalized_changes_match": true,
+      "different_sections": []
+    },
+    {
+      "case": "Des27_WT_IN",
+      "parameter_sections_and_q_index_normalized_changes_match": true,
+      "different_sections": []
+    },
+    {
+      "case": "Des27_WT_OUT",
+      "parameter_sections_and_q_index_normalized_changes_match": true,
+      "different_sections": []
+    }
+  ],
+  "limits": "Parameter equality in supplied FEP sections does not establish host topology, boundary, sampling or reference calibration equivalence.",
+  "recovered_first_stage": {
+    "archive_member": "Kemp_variants/EVB_Simulations/Inputs_EVB/1.dyn_min_wat_noshake_template",
+    "use": "Related-GNCA first-stage recovery for a labelled Des27 native run attempt; not proof of exact original Des27 stage."
+  }
+}

@@ -1,0 +1,54 @@
+test_complete_native_payloads (test_full_enzyme.FullInputTests.test_complete_native_payloads) ... ok
+test_imported_lj_matches_native_pair_coefficients (test_full_enzyme.FullInputTests.test_imported_lj_matches_native_pair_coefficients) ... ok
+test_state_charge_and_reactive_morse_convention (test_full_enzyme.FullInputTests.test_state_charge_and_reactive_morse_convention) ... ok
+test_bounded_minimization_reduces_energy_keeps_frozen_atom (test_full_workflow.WorkflowTests.test_bounded_minimization_reduces_energy_keeps_frozen_atom) ... Relax 0/30: E=5.000 kJ/mol, max mobile force=100.00
+Relax 20/30: E=4.050 kJ/mol, max mobile force=90.00
+ok
+test_fep_diagnostics_constant_gap_does_not_certify_convergence (test_full_workflow.WorkflowTests.test_fep_diagnostics_constant_gap_does_not_certify_convergence) ... ok
+test_presets_are_valid_and_long_template_has_documented_duration (test_full_workflow.WorkflowTests.test_presets_are_valid_and_long_template_has_documented_duration) ... ok
+test_rejects_bad_sampling_settings (test_full_workflow.WorkflowTests.test_rejects_bad_sampling_settings) ... ok
+test_samples_and_restart_cursor_are_atomic (test_full_workflow.WorkflowTests.test_samples_and_restart_cursor_are_atomic) ... ok
+test_diagnostics_and_nonfinite_parameters_are_rejected (test_kemp_profile.ProfileTests.test_diagnostics_and_nonfinite_parameters_are_rejected) ... ok
+test_recorded_mapping_profile_keeps_calibration_and_coverage_limits (test_kemp_profile.ProfileTests.test_recorded_mapping_profile_keeps_calibration_and_coverage_limits) ... /workspace/Kemp-EVB-Workshop/EVBOpenMM/src/evbopenmm/analysis/profile.py:814: RuntimeWarning: Product basin at the high-gap edge of the resolved range (bin 4/5); 1 higher-gap bin(s) dropped for <1 pts. dG0 may be over-estimated (truncated product well) -- sample the product side more densely/longer.
+  ground = analyze_evb_ground(
+ok
+test_target_fit_matches_declared_target_without_certifying_model (test_kemp_profile.ProfileTests.test_target_fit_matches_declared_target_without_certifying_model) ... ok
+test_explicit_parameters_use_the_same_framewise_reconstruction (test_portable_entrypoint.PortableEntryPoint.test_explicit_parameters_use_the_same_framewise_reconstruction) ... ok
+test_legacy_command_now_advertises_the_full_workflow (test_portable_entrypoint.PortableEntryPoint.test_legacy_command_now_advertises_the_full_workflow) ... ok
+test_saved_full_system_record_reconstructs_original_comparison (test_portable_entrypoint.PortableEntryPoint.test_saved_full_system_record_reconstructs_original_comparison) ... ok
+test_author_input_and_explicit_morse_conversion (test_source_profile.SourceProfileTests.test_author_input_and_explicit_morse_conversion) ... ok
+test_common_per_frame_energy_changes_leave_profile_unchanged (test_source_profile.SourceProfileTests.test_common_per_frame_energy_changes_leave_profile_unchanged) ... ok
+test_frame_bin_exponential_average_and_gauge_invariance (test_source_profile.SourceProfileTests.test_frame_bin_exponential_average_and_gauge_invariance) ... ok
+test_frame_mixing_and_fep_normalization_match_independent_eigenvalues (test_source_profile.SourceProfileTests.test_frame_mixing_and_fep_normalization_match_independent_eigenvalues) ... ok
+test_semantic_fep_match_survives_different_pdb_indices (test_source_profile.SourceProfileTests.test_semantic_fep_match_survives_different_pdb_indices) ... ok
+test_invalid_and_unresolved_inputs_do_not_create_a_barrier (test_workshop_scan.WorkshopScanTests.test_invalid_and_unresolved_inputs_do_not_create_a_barrier) ... ok
+test_multiple_target_matches_are_not_unique_calibration (test_workshop_scan.WorkshopScanTests.test_multiple_target_matches_are_not_unique_calibration) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 8.644s
+
+OK
+{
+  "production_complete": true,
+  "sample_counts": [
+    2,
+    2
+  ],
+  "edges": [
+    {
+      "left_window": 0,
+      "right_window": 1,
+      "sample_counts": [
+        2,
+        2
+      ],
+      "gap_histogram_overlap": 1.0,
+      "forward_deltaG_kj_mol": 4.0,
+      "reverse_deltaG_kj_mol": 4.0,
+      "hysteresis_kj_mol": 0.0
+    }
+  ],
+  "calibrated": false,
+  "convergence_established": false,
+  "note": "Histogram overlap and forward/reverse FEP are necessary checks, not proof of convergence. Samples may be correlated; no independent-replica uncertainty is inferred."
+}

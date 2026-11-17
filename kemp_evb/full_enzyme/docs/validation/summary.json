@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-17",
+  "new_full_enzyme_smoke": {
+    "case": "Des27_7_IN",
+    "particles": 6330,
+    "MD_steps": 480,
+    "production_windows": 3,
+    "samples_per_window": [
+      5,
+      5,
+      5
+    ],
+    "CPU_threads": 2,
+    "timestep_fs": 0.25,
+    "equilibration_or_convergence_established": false
+  },
+  "python_tests_passed": 21,
+  "browser_tests": "Passed full-system commands, comparison content, mobile layout, saved full profile and scan controls.",
+  "installed_package_full_validation": "Finite endpoint/mixed-state energies and forces; one-coordinate finite difference; zero mapping-linearity residual. Not native Q6 parity.",
+  "historical_21_window_record": {
+    "sha256": "99946c99cd0d8769044d70a611146f4a5438001e728cbd0e4e05a833401978a1",
+    "reconstructed_conditional_barrier_kcal_mol": 9.572629012215984,
+    "new_dynamics": false
+  },
+  "native_Q6_reproduced": false,
+  "calibrated": false
+}
