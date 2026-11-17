@@ -1,5 +1,5 @@
 # Kemp reaction hands-on
 
-Open index.html or visit the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). Start with the comparison of classical MD, QM/MM MD, and EVB. Then follow the reaction, use the saved viewers, and read the four stages of a full calculation.
+Open `index.html` or visit the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). The page starts with the difference between MD, QM/MM MD and EVB, then follows the reaction and the calculation stages.
 
-The optional short example runs on Linux. Installation and run commands are in calculation/README.md.
+The optional Linux example and its commands are in [calculation/README.md](calculation/README.md).

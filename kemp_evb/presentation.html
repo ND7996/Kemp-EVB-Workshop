@@ -49,7 +49,7 @@
         <article class="card"><div class="state">This workshop · OpenMM</div><h3>Short-run free-energy profile</h3><p>The viewer plots the saved 21-window adaptation (50 records per window, 18 bins). Its 9.57 kcal/mol peak estimate is unvalidated; convergence has not been established.</p><a class="plain-link" href="viewers/source_profile.html">Open the OpenMM profile →</a></article>
       </div>
       <p class="note">These plots report different quantities. The Q6 paper uses OPLS-AA, TIP3P, SCAAS solvent and a local reaction field; this OpenMM adaptation differs in boundary treatment, electrostatics, Morse energy reference, and sampling. It is not a direct reproduction or engine-to-engine comparison.</p>
-      <p class="note"><b>End result:</b> The paper's Q6 analysis reports calculated activation-barrier estimates that can be compared with experiment. A complete, converged OpenMM EVB run would yield a free-energy profile, activation free energy and reaction free energy. This workshop's saved OpenMM profile is only a short, unvalidated example.</p>
+      <p class="note"><b>End result:</b> The paper's Q6 analysis reports activation-barrier estimates. A complete OpenMM EVB calculation would give a free-energy profile, activation free energy and reaction free energy.</p>
     </section>
 
     <section class="slide">
@@ -71,18 +71,17 @@
       <p class="source">The saved viewer is useful without installation. The live reduced demo is in calculation/; it is not the full enzyme calculation.</p>
     </section>
 
-    <section class="slide"><div class="kicker">Optional live run</div><h2>Run the short example on Linux</h2><p>Install Git and Conda or Miniforge. From the repository root:</p><div class="command">git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br>cd Kemp-EVB-Workshop<br>conda env create -f kemp_evb/calculation/environment.yml<br>conda activate kemp-short<br>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br>python kemp_evb/calculation/scripts/run_short_evb_demo.py</div><p class="note">The run uses a CPU and saves a browser plot with a JSON summary. It follows a five-atom imposed path, not a molecular-dynamics trajectory or physical free-energy calculation.</p></section>
+    <section class="slide"><div class="kicker">6 · Optional Linux run</div><h2>Try the short example</h2><p>This optional software exercise runs on a Linux machine with a CPU. Installation and commands are in the <a href="index.html#linux">Linux setup section</a>.</p></section>
 
     <section class="slide">
       <div class="kicker">7 · Saved profile</div>
       <h2>The saved reaction profile</h2>
       <img class="reaction-img" src="assets/source_profile_slide.svg" alt="Free-energy profile with energy-gap and free-energy axes labeled in kilocalories per mole">
-      <p class="note">This saved short-run profile is not validated.</p>
       <a class="plain-link" href="viewers/source_profile.html">Open the saved enzyme profile →</a>
     </section>
 
     <section class="slide">
-      <div class="kicker">7 · Compare settings</div>
+      <div class="kicker">8 · Compare settings</div>
       <h2>One barrier does not choose one model</h2>
       <p>Try the parameter comparison. You will find different offset/coupling pairs that give similar peak heights, while their product-versus-reactant energies can differ.</p>
       <a class="action" href="viewers/parameter_scan.html">Open the settings comparison</a>
@@ -90,7 +89,7 @@
     </section>
 
     <section class="slide">
-      <div class="kicker">8 · The point of the exercise</div>
+      <div class="kicker">9 · The point of the exercise</div>
       <h2>What should you take away?</h2>
       <ul>
         <li>EVB connects reactant and product bonding descriptions.</li>
