@@ -28,7 +28,7 @@ def main():
     output = args.output or HERE.parent / 'runs' / f'evb-demo-{stamp}'
     output = output if output.is_absolute() else (Path.cwd() / output).resolve()
     rows, summary = run(args.case, output, args.coupling, args.offset)
-    print(f"Wrote {len(rows)} points to {output}")
+    print(f"Saved {len(rows)} points in {output}")
     print(f"Open {output / 'teaching_evb.html'}")
     print('This is a reduced teaching scan, not an enzyme free-energy profile.')
 

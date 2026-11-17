@@ -3,7 +3,6 @@
 Uses three published Q6 Morse terms and state-specific C-N harmonic terms.
 Coupling and extra state offset are illustrative controls, not fitted parameters.
 """
-import csv
 import json
 import math
 import os
@@ -77,8 +76,6 @@ def run(case,output,coupling=10.,offset=0.):
         gap=vp+offset*4.184-vr;p_product=.5*(1-gap/math.sqrt(gap*gap+4*(coupling*4.184)**2))
         rows.append({'path_progress':t,'VR_kcal_mol':vr/4.184,'VP_unshifted_kcal_mol':vp/4.184,
                      'Eminus_kcal_mol':e/4.184,'product_state_weight':p_product})
-    with (output/'teaching_evb.csv').open('w',newline='') as h:
-        writer=csv.DictWriter(h,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
     summary={'status':'reduced_openmm_evb_teaching_scan_completed','case':case,'atoms':5,'path_points':len(rows),
        'coupling_kcal_mol':coupling,'extra_state_offset_kcal_mol':offset,'coupling_and_offset_are_illustrative':True,
        'included_terms':'Published three Morse and two alternative C-N harmonic terms; full two-state lower eigenvalue evaluated by OpenMM.',

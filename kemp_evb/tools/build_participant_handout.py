@@ -1,68 +1,48 @@
 from pathlib import Path
-import json, math
-import pymupdf as fitz
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import landscape
+from reportlab.pdfgen import canvas
+from reportlab.platypus import Paragraph, Frame
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.colors import HexColor
+
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'PARTICIPANT_HANDOUT.pdf'
-FIG=ROOT/'assets/kemp_states.png'
-W,H=960,540
-INK=(.12,.18,.21); MUTED=(.32,.39,.42); ACCENT=(.09,.42,.45); BLUE=(.13,.39,.68); GREEN=(.17,.48,.34); LINE=(.84,.88,.87); PALE=(.96,.975,.97); WHITE=(1,1,1)
-doc=fitz.open()
-def base(title,section):
- p=doc.new_page(width=W,height=H); p.draw_rect(p.rect,color=None,fill=PALE); p.draw_rect(fitz.Rect(30,25,W-30,H-25),color=LINE,fill=WHITE,width=1)
- p.insert_text((62,58),section.upper(),fontsize=10,fontname='hebo',color=ACCENT); p.insert_text((62,98),title,fontsize=29,fontname='hebo',color=INK)
- p.draw_line(fitz.Point(62,500),fitz.Point(W-62,500),color=LINE,width=.8)
- p.insert_text((62,519),'Kemp EVB workshop | Participant guide',fontsize=9,fontname='helv',color=MUTED)
- p.insert_text((W-92,519),f'{len(doc)}',fontsize=9,fontname='helv',color=MUTED)
- return p
-def card(p,box,label,title,body,color=ACCENT):
- p.draw_rect(box,color=LINE,fill=WHITE,width=1); p.draw_rect(fitz.Rect(box.x0+9,box.y0+5,box.x1-9,box.y0+9),color=color,fill=color)
- p.insert_text((box.x0+17,box.y0+33),label.upper(),fontsize=10,fontname='hebo',color=color)
- p.insert_textbox(fitz.Rect(box.x0+17,box.y0+45,box.x1-17,box.y0+78),title,fontsize=16,fontname='hebo',color=INK)
- p.insert_textbox(fitz.Rect(box.x0+17,box.y0+88,box.x1-17,box.y1-13),body,fontsize=12,fontname='helv',color=INK,lineheight=1.25)
-
-# Page 1: reaction
-p=base('Kemp elimination: what changes?','Reaction at a glance')
-p.insert_textbox(fitz.Rect(62,115,W-124,155),'Asp162 accepts a proton from 5-nitrobenzisoxazole as the substrate ring opens to form the cyanophenoxide product.',fontsize=14,fontname='helv',color=INK)
-p.insert_image(fitz.Rect(90,155,W-90,425),filename=str(FIG),keep_proportion=True)
-p.insert_textbox(fitz.Rect(62,432,924,488),'Atom labels: C3 is the substrate carbon that loses Ht; Ht is the transferred hydrogen; O1 and N2 are the ring oxygen and nitrogen. Asp162 is enzyme aspartate residue 162; OD1 is one of its side-chain oxygens and accepts Ht.',fontsize=11,fontname='helv',color=INK,lineheight=1.25)
-
-# Page 2: the EVB idea and browser activities
-p=base('Two bonding descriptions, one reaction','Understanding EVB')
-boxes=[fitz.Rect(62,132,340,322),fitz.Rect(354,132,632,322),fitz.Rect(646,132,924,322)]
-card(p,boxes[0],'Reactant state (R)','Before','The substrate still has its C-H bond and closed N-O-containing ring. Asp162 is a carboxylate ready to accept the proton.',BLUE)
-card(p,boxes[1],'Product state (P)','After','Asp162 has accepted the proton. The N-O bond is broken, the nitrile has formed, and the ring-opened phenoxide product remains.',GREEN)
-card(p,boxes[2],'EVB','How the states mix','EVB uses a 2 × 2 table to combine the reactant and product energy descriptions for the same atoms. The diagonal boxes hold the energies; alpha shifts the product energy; H12 controls mixing in the other two boxes.',ACCENT)
-p.insert_text((62,365),'Explore the saved examples in this order',fontsize=18,fontname='hebo',color=INK)
-activities=[('1','EVB fundamentals','Change coupling and offset one at a time.'),('2','Saved reaction profile','Find the reactant, high-energy region, and product.'),('3','Parameter comparison','Compare parameter pairs and their product energies.')]
-for i,(n,t,b) in enumerate(activities):
- y=405+i*29; p.insert_text((68,y),n,fontsize=12,fontname='hebo',color=ACCENT); p.insert_text((94,y),t,fontsize=12,fontname='hebo',color=INK); p.insert_text((285,y),b,fontsize=11,fontname='helv',color=MUTED)
-p.insert_textbox(fitz.Rect(62,478,924,496),'Paper Figure 3e shows barrier estimates; the OpenMM viewer shows a free-energy profile. Different boundaries, electrostatics, Morse references, and sampling mean these are not a direct comparison.',fontsize=9,fontname='helv',color=MUTED)
-
-# Page 3: real calculation stages
-p=base('From a structure to a free-energy profile','Full calculation workflow')
-boxes=[fitz.Rect(62,132,340,358),fitz.Rect(354,132,632,358),fitz.Rect(646,132,924,358)]
-card(p,boxes[0],'1 · Prepare','Build matched R and P','Use the same atoms in the same order. Assign state-specific bonds, charges, force-field terms, and EVB settings. Check the atom map, total charge, proton position, solvent, and ions before running.',BLUE)
-card(p,boxes[1],'2 · Relax','Follow the protocol','Q6 uses restrained low-temperature dynamics, heating and equilibration before mapping windows. Our OpenMM driver minimizes, heats and equilibrates the reactant mapping state before sequential windows. Check contacts and stability.',ACCENT)
-card(p,boxes[2],'3 · FEP/profile','Sample the lambda path','Sample a set of lambda windows between the state descriptions. Check neighboring-window overlap and convergence, compare independent replicas, then analyze the barrier and reaction free energy.',GREEN)
-p.draw_rect(fitz.Rect(62,382,924,470),color=LINE,fill=PALE,width=1)
-p.insert_text((80,409),'What this workshop contains',fontsize=15,fontname='hebo',color=INK)
-p.insert_textbox(fitz.Rect(80,418,905,462),'This repository includes a reduced five-atom live run, its inputs, and a Slurm job. Full-enzyme scripts are in the linked backend. The demo checks execution; it is not a physical barrier result.',fontsize=12,fontname='helv',color=INK,lineheight=1.25)
-
-# Page 4: actual calculations and uncertainty
-p=base('Compare runs and explain uncertainty','Native Q6 and EVBOpenMM')
-boxes=[fitz.Rect(62,132,340,365),fitz.Rect(354,132,632,365),fitz.Rect(646,132,924,365)]
-card(p,boxes[0],'Published Q6','13.2 +/-0.6 kcal/mol','Des27.7-IN, Nature 2025 SI Table 3. The uncertainty is replica SD over 30 replicas. Grey is this barrier height and SD band, not the paper profile curve.',MUTED)
-statistics_path=ROOT/'data/native_q6_replicas/replica_statistics.json'
-if statistics_path.is_file():
-    d=json.loads(statistics_path.read_text());body=f'Native Q6: n={d["n"]}, mean={d["mean_barrier_kcal_mol"]:.2f}, SD={d["sample_sd_kcal_mol"]:.3f}, SEM={d["sem_kcal_mol"]:.3f} kcal/mol. Both use 10.2 ps production. The saved OpenMM adaptation gives 9.57; do not average different engines/models together.'
-else:
-    body='Native Q6 seed 101: 9.82 kcal/mol from 10.2 ps production. A second seeded run is in progress. Saved OpenMM: 9.57 from 5.25 ps, with a changed Hamiltonian. Neither reproduces the full paper protocol.'
-card(p,boxes[1],'Our shortened runs','Conditional estimates',body,BLUE)
-card(p,boxes[2],'SD and SEM','Different questions','Sample SD measures between-replica spread (n-1). SEM = SD / sqrt(n). Here n counts complete seeded calculations, not windows or frames. At n=2, SEM is very uncertain and omits shared short-run/model bias.',ACCENT)
-p.insert_textbox(fitz.Rect(62,385,924,440),'Activity: identify both replica barriers, compute their mean, sample SD and SEM, then explain why a small SEM does not establish accuracy or convergence. The paper used 30 ns equilibration plus 10.2 ns production per replica, 30 replicas. Longer runs can improve sampling but cannot guarantee agreement or repair changed physics.',fontsize=12,fontname='helv',color=INK,lineheight=1.2)
-for i,(label,url) in enumerate([('Paper and SI: Listov et al., Nature 2025','https://doi.org/10.1038/s41586-025-09136-2'),('Published inputs: Zenodo 14563437','https://doi.org/10.5281/zenodo.14563437'),('Runnable Q6/OpenMM code and full instructions','https://github.com/ND7996/EVB_MHETase/tree/main/Kemp_EVB')]):
-    y=452+i*14;p.insert_text((62,y),label,fontsize=10,fontname='helv',color=BLUE);p.insert_link({'kind':fitz.LINK_URI,'from':fitz.Rect(60,y-11,500,y+2),'uri':url})
-
-doc.set_metadata({'title':'Kemp EVB participant guide','author':'Kemp EVB workshop'})
-doc.save(OUT,garbage=4,deflate=True)
+OUT=ROOT/"PARTICIPANT_HANDOUT.pdf"
+W,H=landscape((10*72,5.625*72))
+ink=HexColor("#203039"); muted=HexColor("#53636b"); accent=HexColor("#176b73"); soft=HexColor("#eaf2f1")
+styles=getSampleStyleSheet()
+body=ParagraphStyle("Body",parent=styles["BodyText"],fontName="Helvetica",fontSize=13,leading=18,textColor=ink,spaceAfter=10)
+title=ParagraphStyle("Title",parent=body,fontName="Helvetica-Bold",fontSize=27,leading=32,spaceAfter=18)
+head=ParagraphStyle("Head",parent=body,fontName="Helvetica-Bold",fontSize=17,leading=21,textColor=accent,spaceAfter=8)
+small=ParagraphStyle("Small",parent=body,fontSize=10,leading=14,textColor=muted)
+def page(c,n,label,heading,items):
+ c.setFillColor(HexColor("#f7f8f6"));c.rect(0,0,W,H,fill=1,stroke=0)
+ c.setFillColor(accent);c.setFont("Helvetica-Bold",10);c.drawString(42,H-38,label.upper())
+ p=Paragraph(heading,title);_,ph=p.wrap(W-84,H);p.drawOn(c,42,H-56-ph)
+ frame=Frame(42,44,W-84,H-154,leftPadding=0,rightPadding=0,topPadding=6,bottomPadding=0,showBoundary=0)
+ frame.addFromList(items,c)
+ c.setStrokeColor(HexColor("#d8e1e1"));c.line(42,32,W-42,32)
+ c.setFillColor(muted);c.setFont("Helvetica",9);c.drawString(42,19,"Kemp reaction and EVB hands-on");c.drawRightString(W-42,19,str(n))
+ c.showPage()
+c=canvas.Canvas(str(OUT),pagesize=(W,H))
+c.setTitle("Kemp reaction and EVB participant guide")
+page(c,1,"Start here","Three ways to model a reaction",[
+ Paragraph("<b>Molecular dynamics (MD).</b> Moves atoms through time. In ordinary classical MD, bonds usually stay fixed.",body),
+ Paragraph("<b>QM/MM MD.</b> Quantum mechanics describes the reacting atoms; a classical model describes the enzyme and solvent. It can represent bond changes, but costs more to run.",body),
+ Paragraph("<b>EVB.</b> Couples classical force-field descriptions of reactant and product. With sampling, it can follow bond changes efficiently; parameters need suitable reference data.",body),
+ Paragraph("The paper uses Q6 for EVB. This workshop uses OpenMM with EVBOpenMM for a short example. Both run EVB, with different setup and sampling.",small)
+])
+page(c,2,"Follow the chemistry","The Kemp reaction",[
+ Paragraph("Asp162 in the enzyme accepts Ht from the substrate as the small ring opens.",body),
+ Paragraph("<b>Atom labels:</b> C3 is the substrate carbon losing Ht; Ht is the transferred hydrogen; O1 and N2 are the ring atoms whose bond separates; Asp162 OD1 is the accepting oxygen.",body),
+ Paragraph("Reactant and product are two bonding descriptions of the same atoms. In the 2 × 2 EVB table, the diagonal boxes hold the two state energies. α shifts the product energy; H₁₂ controls mixing in the other boxes. Neither is the reaction barrier.",body),
+ Paragraph("A full calculation prepares matched states, relaxes them, samples FEP windows, then checks and analyzes the resulting profile.",body)
+])
+page(c,3,"Optional local run","Run the short example on Linux",[
+ Paragraph("Install Git and Conda or Miniforge, then run from a terminal:",body),
+ Paragraph("git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br/>cd Kemp-EVB-Workshop<br/>conda env create -f kemp_evb/calculation/environment.yml<br/>conda activate kemp-short<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br/>python kemp_evb/calculation/scripts/run_short_evb_demo.py",small),
+ Paragraph("The short run uses a CPU, five mapped atoms, and a prescribed geometry path. It writes an HTML plot and JSON summary. It is a software check, not molecular dynamics or a free-energy calculation.",body),
+ Paragraph("Paper: Listov et al., Nature (2025), doi:10.1038/s41586-025-09136-2. Published simulation inputs: Zenodo 10.5281/zenodo.14563437.",small)
+])
+c.save()
 print(OUT)

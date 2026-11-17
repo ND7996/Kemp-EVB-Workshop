@@ -16,12 +16,7 @@
 </head>
 <body>
   <main class="deck" aria-live="polite">
-    <section class="slide active">
-      <div class="kicker">Browser-based hands-on</div>
-      <h1>Try EVB with the Kemp reaction</h1>
-      <a class="action" href="index.html">Open the workshop guide</a>
-      <p class="source">Start with the arrows at the bottom, or use the left and right arrow keys.</p>
-    </section>
+    <section class="slide active"><div class="kicker">A hands-on with the Kemp reaction</div><h1>How EVB follows a reaction</h1><div class="grid three"><article class="card"><h3>Molecular dynamics</h3><p>Moves atoms through time; ordinary classical MD keeps bonds fixed.</p></article><article class="card"><h3>QM/MM MD</h3><p>Uses quantum mechanics for reacting atoms and a classical model for their surroundings.</p></article><article class="card"><h3>EVB</h3><p>Connects reactant and product force-field descriptions so sampling can include bond changes.</p></article></div><p class="note">The paper uses Q6 for EVB. This short example uses OpenMM with EVBOpenMM. Both run EVB with different setup and sampling.</p></section>
 
     <section class="slide">
       <div class="kicker">1 · The reaction</div>
@@ -33,19 +28,11 @@
       <p class="note">This workshop follows the linked changes between reactant and product. It does not add a separately simulated intermediate.</p>
     </section>
 
-    <section class="slide">
-      <div class="kicker">2 · Before and after</div>
-      <h2>Two descriptions of the same atoms</h2>
-      <div class="grid">
-        <article class="card reactant"><div class="state">Reactant state</div><h3>Before</h3><p>The substrate holds the proton and its ring is closed. Asp162 is ready to accept the proton.</p></article>
-        <article class="card product"><div class="state">Product state</div><h3>After</h3><p>Asp162 holds the proton. The substrate ring is open.</p></article>
-      </div>
-      <p class="sequence">EVB uses both descriptions to model the bond changes.</p>
-    </section>
+
 
     <section class="slide">
-      <div class="kicker">3 · EVB basics</div>
-      <h2>How does the small EVB table work?</h2>
+      <div class="kicker">2 · EVB basics</div>
+      <h2>Two descriptions go in; one energy comes out</h2>
       <div class="grid three">
         <article class="card"><div class="state">Two states</div><h3>Reactant and product</h3><p>Each has its own bond and charge description for the same atoms.</p></article>
         <article class="card"><div class="state">α</div><h3>Energy offset</h3><p>Moves the product-state energy up or down relative to the reactant.</p></article>
@@ -55,7 +42,7 @@
     </section>
 
     <section class="slide">
-      <div class="kicker">4 · Read the comparison</div>
+      <div class="kicker">3 · Read the comparison</div>
       <h2>These plots show different things</h2>
       <div class="grid">
         <article class="card"><div class="state">The paper · Figure 3e</div><h3>Q6 activation barriers</h3><p>The figure compares experimental and Q6 barrier estimates for Des27 and Des27.7, including “in” and “out” substrate conformations. It is not a free-energy profile trace.</p><a class="plain-link" href="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41586-025-09136-2/MediaObjects/41586_2025_9136_Fig3_HTML.png">Open the paper's complete Figure 3 →</a></article>
@@ -66,7 +53,7 @@
     </section>
 
     <section class="slide">
-      <div class="kicker">5 · A full Kemp calculation</div>
+      <div class="kicker">4 · A full Kemp calculation</div>
       <h2>Prepare, relax, then sample</h2>
       <div class="grid three">
         <article class="card"><div class="state">Prepare</div><h3>Build R and P</h3><p>Use the same atoms and atom order. Assign bonds, charges, force-field terms, and EVB settings. Check mapping, charge, proton placement, solvent, and ions.</p></article>
@@ -77,23 +64,14 @@
     </section>
 
     <section class="slide">
-      <div class="kicker">6 · Your turn</div>
+      <div class="kicker">5 · Your turn</div>
       <h2>Try changing the settings</h2>
       <p>Open the small EVB example. Move one control at a time. Watch how the curve changes when you change the energy offset, then when you change the coupling.</p>
       <a class="action" href="viewers/evb_core.html">Open the EVB example</a>
       <p class="source">The saved viewer is useful without installation. The live reduced demo is in calculation/; it is not the full enzyme calculation.</p>
     </section>
 
-    <section class="slide">
-      <div class="kicker">6 · Run it on a cluster</div>
-      <h2>Submit the short live calculation</h2>
-      <p>Create the environment and check the bundled inputs on a login node. Then submit the Slurm job from the workshop repository root.</p>
-      <div class="command">conda env create -f kemp_evb/calculation/environment.yml
-conda activate kemp-short
-python kemp_evb/calculation/scripts/run_short_evb_demo.py --check
-CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/short_evb_demo.slurm</div>
-      <p class="note">This evaluates an 81-position, reduced five-atom model. For the full-enzyme short workflow, longer production, and scheduler setup, use the <a class="plain-link" href="https://github.com/ND7996/Kemp-EVB-Workshop/blob/main/kemp_evb/guides/CLUSTER_QUICKSTART.md" target="_blank" rel="noopener">cluster guide</a>.</p>
-    </section>
+    <section class="slide"><div class="kicker">Optional live run</div><h2>Run the short example on Linux</h2><p>Install Git and Conda or Miniforge. From the repository root:</p><div class="command">git clone https://github.com/ND7996/Kemp-EVB-Workshop.git<br>cd Kemp-EVB-Workshop<br>conda env create -f kemp_evb/calculation/environment.yml<br>conda activate kemp-short<br>python kemp_evb/calculation/scripts/run_short_evb_demo.py --check<br>python kemp_evb/calculation/scripts/run_short_evb_demo.py</div><p class="note">The run uses a CPU and saves a browser plot with a JSON summary. It follows a five-atom imposed path, not a molecular-dynamics trajectory or physical free-energy calculation.</p></section>
 
     <section class="slide">
       <div class="kicker">7 · Saved profile</div>
@@ -104,7 +82,7 @@ CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/sho
     </section>
 
     <section class="slide">
-      <div class="kicker">8 · Compare settings</div>
+      <div class="kicker">7 · Compare settings</div>
       <h2>One barrier does not choose one model</h2>
       <p>Try the parameter comparison. You will find different offset/coupling pairs that give similar peak heights, while their product-versus-reactant energies can differ.</p>
       <a class="action" href="viewers/parameter_scan.html">Open the settings comparison</a>
@@ -112,7 +90,7 @@ CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/sho
     </section>
 
     <section class="slide">
-      <div class="kicker">9 · The point of the exercise</div>
+      <div class="kicker">8 · The point of the exercise</div>
       <h2>What should you take away?</h2>
       <ul>
         <li>EVB connects reactant and product bonding descriptions.</li>
@@ -124,14 +102,7 @@ CONDA_BASE="/cluster/path/to/miniforge3" sbatch kemp_evb/calculation/cluster/sho
     </section>
 
 <!-- BEGIN REFERENCE APPENDIX -->
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>The EVB Hamiltonian</h2><ul><li>H = [[VR, H12], [H12, VP + alpha]]. The same coordinates are evaluated under reactant and product force-field descriptions.</li><li>Alpha shifts the product diagonal; H12 is the off-diagonal coupling. Both have energy units, and neither is the activation barrier.</li><li>Diagonalization gives E-minus/E-plus and mixing weights. At equal diagonals the splitting is 2|H12|.</li><li>The website calculator demonstrates this energy calculation. Lambda is a sampling weight; a Morse alpha is a separate inverse-length parameter.</li></ul><p class="source">Warshel and Weiss1980: 10.1021/ja00540a008</p></section>
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>Native Q6: preparation to profile</h2><ul><li>Start from the authors Amber-prepared coordinates, topology and FEP mapping; retain state-specific charges/bonded terms and Q boundary conditions.</li><li>Qdyn performs restrained relaxation, heating and equilibration. The source protocol uses Berendsen coupling, leap-frog integration and SCAAS/LRF.</li><li>Published sampling: 30ns equilibration, then51 mapping windows x200ps, with30 replicas per case.</li><li>QFEP connects windows and reconstructs the EVB profile from native energy records. Original Des27 .en files are absent from the inspected deposit.</li></ul><p class="source">Listov2025: 10.1038/s41586-025-09136-2; Gutierrez-Rus2025: 10.1021/jacs.4c09428</p></section>
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>EVBOpenMM: actual adaptation</h2><ul><li>Import mapped R/P systems for6330 particles using EVBOpenMM, converting units, LJ coefficients and Morse energy origins.</li><li>The current driver relaxes lambda_R=1, heats50/150/300K, equilibrates, then traverses21 trial windows with window equilibration and production.</li><li>Our direct-electrostatics droplet, wall, fixed outer protein and Langevin dynamics differ from the Q6 boundary and dynamics setup.</li><li>EVBOpenMM analysis reconstructs the saved profile. Exact Q6 equivalence requires matched forces, restraints, sampling and analysis; more fitting alone cannot establish it.</li></ul><p class="source">EVBOpenMM source: Martin-Floor/EVBOpenMM, revision dedf301eb9b0021a4be200327cea53f5b7f034c6</p></section>
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>What has actually been reproduced?</h2><ul><li>Reported Q6 Des27.7-IN:13.2 +/-0.6 kcal/mol. Recomputed short OpenMM estimate:9.572629 kcal/mol; difference=-3.627371.</li><li>Two shortened native Q6/QFEP replicas: 9.82 and 8.10; mean=8.96, SD=1.216, SEM=0.860 kcal/mol (n=2).</li><li>All65 shortened native stages completed normally; recovered/sibling templates are documented. Full-duration production and the30-replica result remain incomplete.</li><li>Full-enzyme EVBOpenMM finite-energy/force checks passed. Saved-data repeatability does not establish convergence or parameter transfer.</li></ul><p class="source">Evidence: data/reproduction_audit.json; full native instructions in EVB_MHETase/Kemp_EVB/docs</p></section>
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>Parameter history and calibration</h2><ul><li>Hong2018 SI Table10 reports H12=225, alpha=-324 kcal/mol; reactive parameter Tables10-21 and aqueous-reference target21.2 are available.</li><li>Risso2020 explicitly reuses that older Q5.10 calibration. The2025 Q6 archive updates Morse/LJ terms and supplies100.4/-110.</li><li>Do not combine older coupling/offsets with the updated force field. The solution-reference barrier21.2 is not the enzyme barrier13.2.</li><li>All papers, supporting information, archives and review limitations are linked in the website parameter-history section.</li></ul><p class="source">Hong2018: 10.1038/s41467-018-06305-y; Risso2020: 10.1039/D0SC01935F</p></section>
-<section class="slide"><div class="kicker">Optional technical detail</div><h2>Grey is not the paper profile</h2><ul><li>Grey horizontal line/band: published Q6 barrier13.2 +/-0.6 (replica SD). It is not a full paper profile.</li><li>Blue: selected computed profile, changing with H12/alpha. Optional amber: archived parameters on our OpenMM samples.</li><li>The binned maximum is not a validated molecular transition state. Shifting it to x=0 changes the display origin only.</li><li>Target matching is an illustration of parameter sensitivity. The native barrier has not been independently reproduced and cannot be claimed from a matched teaching curve.</li></ul><p class="source">Q6 method: Bauer et al.2018, 10.1016/j.softx.2017.12.001; full bibliography on the website</p></section>
-<!-- END REFERENCE APPENDIX -->
-  </main>
+</main>
   <div class="progress" id="progress"></div>
   <nav class="controls" aria-label="Slide controls">
     <button type="button" id="prev" aria-label="Previous slide">← Previous</button>
