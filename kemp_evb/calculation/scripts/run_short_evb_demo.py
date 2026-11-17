@@ -13,7 +13,7 @@ from kemp_inputs import audit_case
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--case', choices=['Des27_7_IN'], default='Des27_7_IN')
+    parser.add_argument('--case', choices=['Des27_7_IN'], default='Des27_7_IN', help='select the supplied Kemp reference case')
     parser.add_argument('--coupling', type=float, default=10.0, help='Illustrative H12, kcal/mol')
     parser.add_argument('--offset', type=float, default=0.0, help='Illustrative extra product offset, kcal/mol')
     parser.add_argument('--output', type=Path, help='New output directory; default includes date/time')

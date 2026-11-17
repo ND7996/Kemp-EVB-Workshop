@@ -6,7 +6,7 @@ This Linux-friendly example uses OpenMM to evaluate an EVB model for five mapped
 
 - scripts/run_short_evb_demo.py: input check and run command.
 - scripts/evb_teaching.py and scripts/kemp_inputs.py: reduced model and source reader.
-- inputs/q6/Des27_7_IN/: mapped coordinates, topology, and reaction file.
+- the mapped Q6 coordinates, topology, and reaction file.
 - environment.yml: Python, OpenMM, NumPy, and pinned EVBOpenMM.
 
 ## Install and run on Linux
