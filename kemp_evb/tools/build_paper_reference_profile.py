@@ -36,15 +36,13 @@ def svg():
 
 
 def build():
-    import pymupdf as fitz
     s=svg()
-    for name in ('source_profile.svg','source_profile_slide.svg'):(ROOT/'assets'/name).write_text(s)
+    (ROOT/'assets'/'source_profile.svg').write_text(s)
     p=ROOT/'viewers/source_profile.html';text=p.read_text();text=re.sub(r'<svg\b.*?</svg>',lambda m:s,text,flags=re.S)
     explanation='<p><strong>Grey is the published barrier height, not the paper’s profile curve.</strong> The shaded band is replica SD. Blue is our short, unvalidated OpenMM result. Short sampling and changed electrostatics/boundaries can both explain disagreement; longer sampling alone does not guarantee13.2.</p><p><a href="parameter_scan.html">Change H12 and alpha and watch the blue candidate</a> · <a href="https://doi.org/10.1038/s41586-025-09136-2" target="_blank" rel="noopener">Paper and supporting information</a></p>'
     text=re.sub(r'<div id="paper-reference-explanation">.*?</div>', '', text, flags=re.S)
     if explanation in text:text=text.replace(explanation,'')
     text=text.replace('</body>','<div id="paper-reference-explanation">'+explanation+'</div></body>');p.write_text(text)
-    doc=fitz.open(stream=s.encode(),filetype='svg');pdf=fitz.open('pdf',doc.convert_to_pdf());pdf[0].get_pixmap(matrix=fitz.Matrix(2,2)).save(ROOT/'assets/source_profile_slide.png');doc.close();pdf.close()
 
 
 if __name__=='__main__':build()

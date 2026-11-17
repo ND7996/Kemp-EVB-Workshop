@@ -1,5 +1,5 @@
 # Kemp reaction hands-on
 
-Open `index.html` or visit the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). The page starts with the difference between MD, QM/MM MD and EVB, then follows the reaction and the calculation stages.
+Open `index.html` or visit the [public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/). Follow the page from EVB basics, to the Kemp example, to the exercises.
 
-The optional Linux example and its commands are in [calculation/README.md](calculation/README.md).
+The saved browser exercises need no installation. To try the short calculation on Linux, follow [calculation/README.md](calculation/README.md).

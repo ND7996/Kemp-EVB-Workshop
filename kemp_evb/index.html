@@ -20,31 +20,33 @@
     <div class="kicker">A hands-on introduction</div>
     <h1>Try EVB with the Kemp reaction</h1>
     <div class="actions">
-      <a class="button" href="#hands-on">Start the hands-on</a>
-      <a class="button secondary" href="presentation.html" target="_blank" rel="noopener">Open the short slides</a>
+      <a class="button" href="#try">Start the hands-on</a>
     </div>
   </header>
 
   <nav aria-label="Workshop sections">
-    <a href="#reaction">The reaction</a>
-    <a href="#evb">How EVB works</a>
-    <a href="#results">Q6 and OpenMM</a>
-    <a href="#hands-on">Try it</a>
-    <a href="#workflow">The calculation stages</a>
-    <a href="#linux">Linux setup</a>
-    <a href="#profile">Read the plot</a>
-    <a href="#sources">Sources</a>
+    <a href="#evb">What is EVB?</a>
+    <a href="#kemp">What has Kemp shown?</a>
+    <a href="#try">Try it</a>
   </nav>
 
   <main>
-<section id="methods"><div class="tag">Before we start</div><h2>Three ways to model a reaction</h2><div class="three">
+
+    <section id="evb"><div class="tag">Before we start</div><h2>What is EVB?</h2><div class="three">
 <article class="card"><h3>Molecular dynamics (MD)</h3><p>MD moves atoms through time. Ordinary classical MD keeps bonds fixed, so it cannot describe bond breaking by itself.</p></article>
 <article class="card"><h3>QM/MM MD</h3><p>Quantum mechanics describes the reacting atoms; a classical model describes the rest of the enzyme and solvent. It can describe bond changes, but costs more to run.</p></article>
 <article class="card"><h3>EVB</h3><p>EVB couples classical force-field descriptions of reactant and product. With sampling, it follows bond changes efficiently; its parameters need suitable reference data.</p></article>
-</div><p class="takeaway"><strong>In this workshop:</strong> the paper uses Q6 to run EVB. The short example uses OpenMM with EVBOpenMM. Both run EVB, with different setup and sampling.</p></section>
-    <section id="reaction">
+</div><p class="takeaway"><strong>In this workshop:</strong> the paper uses Q6 to run EVB. The short example uses OpenMM with EVBOpenMM. Both run EVB, with different setup and sampling.</p><div class="tag">The main idea</div><h2>Two bonding descriptions, one energy</h2>
+<p>At each arrangement of atoms, EVB evaluates a reactant description and a product description, then combines them into one energy. This lets the model represent bonds changing.</p>
+<div class="two"><article class="card"><h3>The 2 × 2 table</h3><p>The diagonal boxes hold reactant and product energies. The other two boxes contain the coupling between them.</p></article>
+<article class="card"><h3>Two settings</h3><p><strong>α</strong> shifts the product energy. <strong>H₁₂</strong> controls how strongly the descriptions mix. Neither is the reaction barrier.</p></article></div>
+<article class="card"><h3>Read the table</h3><div class="table-wrap"><table><thead><tr><th></th><th>Reactant description</th><th>Product description</th></tr></thead><tbody><tr><th>Reactant</th><td>Reactant energy</td><td>Mixing strength H₁₂</td></tr><tr><th>Product</th><td>Mixing strength H₁₂</td><td>Product energy + α</td></tr></tbody></table></div><p>The computer combines these entries and uses the lower mixed energy for that arrangement of atoms.</p></article>
+<details id="hamiltonian"><summary>Optional: equation and interactive calculator</summary><p>H(x) = [[V<sub>R</sub>(x), H<sub>12</sub>], [H<sub>12</sub>, V<sub>P</sub>(x) + α]]. The lower eigenvalue is the EVB energy at that geometry. A free-energy profile requires sampling; the matrix alone is not a barrier.</p>
+<label>Reactant energy <input id="matrix-r" type="range" min="-30" max="30" value="0"></label><label>Product energy <input id="matrix-p" type="range" min="-30" max="30" value="0"></label><label>Product offset α <input id="matrix-alpha" type="range" min="-30" max="30" value="0"></label><label>Coupling H₁₂ <input id="matrix-h" type="range" min="0" max="20" value="10"></label><p id="matrix-result" aria-live="polite"></p></details></section>
+
+    <section id="kemp">
       <div class="tag">First, the chemistry</div>
-      <h2>What changes in the reaction?</h2>
+      <h2>What reaction does the paper study?</h2>
       <p class="plain">The example is the Kemp reaction studied in the paper. The substrate is the molecule the enzyme acts on. Asp162, part of the enzyme, accepts a proton (a hydrogen nucleus) from it. As the C–H bond breaks, a bond in the substrate's small ring breaks too, opening the ring and forming the products.</p>
       <figure class="figure">
         <img src="assets/kemp_states.png" alt="Reactant and product descriptions for the Kemp reaction. Asp162 accepts a proton as the substrate ring opens.">
@@ -63,21 +65,22 @@
       <p class="small">This workshop treats proton transfer and ring opening as linked changes between the reactant and product descriptions. The exercise does not add a separately simulated intermediate.</p>
     <details><summary>Detailed mechanism and all 22 native atom names</summary><p>The drawing labels are C3=CH (PDB4002), Ht=HT (4014), O1=OR (4005) and N2=NR (4006). Scheme labels and native atom names refer to the same mapped particles.</p><span class="eyebrow">First, follow the atoms</span><h2>How the reaction changes the molecule</h2><p>The labels below are checked against the <strong>Des27.7-IN structure and the numerical FEP atom map</strong>. The substrate is <strong>SUB257</strong>, and the catalytic residue is <strong>ASP162</strong>. A few comments in the archived FEP files use older residue numbers or Glu-like atom labels. For this workshop, use the atom map and the ASP162 names shown here.</p><div class="grid"><div class="card"><span class="tag">Reactant state R</span><h3>Proton donor meets base</h3><p>CH–HT and OR–NR are bonded. Asp162 is a carboxylate: OD1 is the model's proton acceptor. The substrate is neutral and Asp carries formal charge −1.</p></div><div class="card"><span class="tag">Coupled chemical change</span><h3>Abstraction and ring opening</h3><p>Asp OD1 accepts HT as the CH–HT bond breaks. Electron redistribution increases CH–NR bond order toward a nitrile while the NR–OR bond breaks and negative charge develops on OR. These are coupled changes in the two-state model, not a sequence of separately simulated intermediates.</p></div><div class="card"><span class="tag">Product state P</span><h3>Nitrile / phenoxide + AspH</h3><p>OD1–HT is bonded; CH–HT and OR–NR are absent. CH–NR has nitrile-like parameters. OR stays attached to the aromatic framework as phenoxide. Asp is neutral; the substrate product has formal charge −1, so total reactive charge remains −1.</p></div></div><h3>Which bonds and parameters change?</h3><div class="table-wrap"><table><thead><tr><th>Atom pair (PDB serials)</th><th>Reactant → product</th></tr></thead><tbody><tr><td>CH–HT (4002–4014)</td><td>Bond present → absent: C–H cleavage.</td></tr><tr><td>OR–NR (4005–4006)</td><td>Bond present → absent: N–O ring opening.</td></tr><tr><td>OD1–HT (2526–4014)</td><td>Bond absent → present: Asp O–H formation.</td></tr><tr><td>CH–NR (4002–4006)</td><td>Bond retained with changed force constant / equilibrium distance: 1.320 → 1.157 Å (model parameters, not measured trajectory distances).</td></tr><tr><td>CH–CB2; CG–OD1; CG–OD2</td><td>Bond parameters change with conjugation and Asp protonation. Angles, torsions, impropers, charges, types and exclusions also change.</td></tr></tbody></table></div><p>EVB does not track individual electrons. It combines the reactant and product energy descriptions as the atoms move. This two-state model does not include a separate carbanion intermediate; the changing product-state contribution is a mathematical mixture, not a new chemical species.</p><h3>All 22 mapped reactive atoms</h3><p><strong>Q index</strong> is a local reactive-region index; <strong>PDB serial</strong> is the global atom identifier. Neither is a residue number. Atom names such as CH and CA are distinct from force-field type labels such as sub_CA or pro_CA. OpenMM array indices are zero-based; the source serial mapping is one-based.</p><div class="table-wrap"><table><thead><tr><th>Q index</th><th>PDB serial</th><th>Actual identity</th><th>Chemical role</th></tr></thead><tbody><tr><td>1</td><td>4002</td><td>SUB257.CH</td><td>Substrate carbon bearing HT; becomes the nitrile carbon. CH is one atom name, not a carbon–hydrogen pair.</td></tr><tr><td>2</td><td>4003</td><td>SUB257.CB2</td><td>Aromatic framework carbon bonded to CH; its bond parameters to CH change.</td></tr><tr><td>3</td><td>4004</td><td>SUB257.CA</td><td>Aromatic framework carbon bonded to the ring oxygen OR.</td></tr><tr><td>4</td><td>4005</td><td>SUB257.OR</td><td>Heterocycle oxygen; loses its bond to NR and remains attached to the aromatic ring as phenoxide oxygen.</td></tr><tr><td>5</td><td>4006</td><td>SUB257.NR</td><td>Heterocycle nitrogen; remains bonded to CH and becomes the nitrile nitrogen.</td></tr><tr><td>6</td><td>4007</td><td>SUB257.CB1</td><td>Aromatic framework carbon.</td></tr><tr><td>7</td><td>4008</td><td>SUB257.CC1</td><td>Aromatic framework carbon.</td></tr><tr><td>8</td><td>4009</td><td>SUB257.CZ</td><td>Aromatic framework carbon.</td></tr><tr><td>9</td><td>4010</td><td>SUB257.CC2</td><td>Aromatic framework carbon.</td></tr><tr><td>10</td><td>4011</td><td>SUB257.NO</td><td>Nitro-group nitrogen; distinct from the reactive ring nitrogen NR.</td></tr><tr><td>11</td><td>4012</td><td>SUB257.ON1</td><td>Nitro-group oxygen; distinct from the ring oxygen OR.</td></tr><tr><td>12</td><td>4013</td><td>SUB257.ON2</td><td>Second nitro-group oxygen.</td></tr><tr><td>13</td><td>4014</td><td>SUB257.HT</td><td>Transferred hydrogen: moves from CH to Asp162 OD1.</td></tr><tr><td>14</td><td>4015</td><td>SUB257.HB1</td><td>Non-transferred substrate ring hydrogen.</td></tr><tr><td>15</td><td>4016</td><td>SUB257.HC1</td><td>Non-transferred substrate ring hydrogen.</td></tr><tr><td>16</td><td>4017</td><td>SUB257.HC2</td><td>Non-transferred substrate ring hydrogen.</td></tr><tr><td>17</td><td>2522</td><td>ASP162.CB</td><td>Asp side-chain beta carbon.</td></tr><tr><td>18</td><td>2523</td><td>ASP162.HB2</td><td>Asp beta-carbon hydrogen.</td></tr><tr><td>19</td><td>2524</td><td>ASP162.HB3</td><td>Second Asp beta-carbon hydrogen.</td></tr><tr><td>20</td><td>2525</td><td>ASP162.CG</td><td>Asp carboxyl carbon; remains bonded to both oxygens.</td></tr><tr><td>21</td><td>2526</td><td>ASP162.OD1</td><td>Asp carboxylate oxygen accepting HT; becomes the hydroxyl oxygen.</td></tr><tr><td>22</td><td>2527</td><td>ASP162.OD2</td><td>Other Asp carboxylate oxygen; acquires carbonyl-like product parameters.</td></tr></tbody></table></div><details><summary>Which coordinates can I inspect in a trajectory?</summary><p>Track r(CH–HT), r(OD1–HT), r(OR–NR) and r(CH–NR). A useful geometric proton-transfer coordinate is r(CH–HT) − r(OD1–HT): negative favours donor attachment, positive acceptor attachment. It is a different coordinate from the energy-gap axis. A short mapping trajectory or a binned energy-gap maximum alone does not establish the molecular transition state.</p></details></details></section>
 
-    <section id="evb"><div class="tag">The main idea</div><h2>Two bonding descriptions, one energy</h2>
-<p>At each arrangement of atoms, EVB evaluates a reactant description and a product description, then combines them into one energy. This lets the model represent bonds changing.</p>
-<div class="two"><article class="card"><h3>The 2 × 2 table</h3><p>The diagonal boxes hold reactant and product energies. The other two boxes contain the coupling between them.</p></article>
-<article class="card"><h3>Two settings</h3><p><strong>α</strong> shifts the product energy. <strong>H₁₂</strong> controls how strongly the descriptions mix. Neither is the reaction barrier.</p></article></div>
-<article class="card"><h3>Read the table</h3><div class="table-wrap"><table><thead><tr><th></th><th>Reactant description</th><th>Product description</th></tr></thead><tbody><tr><th>Reactant</th><td>Reactant energy</td><td>Mixing strength H₁₂</td></tr><tr><th>Product</th><td>Mixing strength H₁₂</td><td>Product energy + α</td></tr></tbody></table></div><p>The computer combines these entries and uses the lower mixed energy for that arrangement of atoms.</p></article>
-<details id="hamiltonian"><summary>Optional: equation and interactive calculator</summary><p>H(x) = [[V<sub>R</sub>(x), H<sub>12</sub>], [H<sub>12</sub>, V<sub>P</sub>(x) + α]]. The lower eigenvalue is the EVB energy at that geometry. A free-energy profile requires sampling; the matrix alone is not a barrier.</p>
-<label>Reactant energy <input id="matrix-r" type="range" min="-30" max="30" value="0"></label><label>Product energy <input id="matrix-p" type="range" min="-30" max="30" value="0"></label><label>Product offset α <input id="matrix-alpha" type="range" min="-30" max="30" value="0"></label><label>Coupling H₁₂ <input id="matrix-h" type="range" min="0" max="20" value="10"></label><p id="matrix-result" aria-live="polite"></p></details></section>
-
     <section id="results"><div class="eyebrow">Paper and workshop examples</div><h2>These plots show different things</h2>
 <div class="two"><article class="card"><h3>Q6 in the paper</h3><p>The paper reports Q6 activation-barrier estimates for enzyme variants. Figure 3e is not a full free-energy curve. Des27.7-IN is reported at 13.2 ± 0.6 kcal/mol.</p><a class="plain-link" href="https://doi.org/10.1038/s41586-025-09136-2">Paper and supporting information</a></article>
 <article class="card"><h3>OpenMM in this workshop</h3><p>The saved 21-window profile is from a short adapted run. Its 9.57 kcal/mol peak is not validated.</p><a class="plain-link" href="viewers/source_profile.html">Open the saved profile</a></article></div>
 <p class="note">System boundaries, electrostatics, parameter conventions, and sampling differ. These examples are not a direct comparison of software engines.</p></section>
 
-    <section id="hands-on"><span class="eyebrow">Hands-on exercises</span><h2>Try three things</h2><p>All saved activities open in your browser. No setup is needed.</p><div class="three">
-<article class="card"><h3>1. Follow the reaction</h3><p>Find the proton donor, acceptor, and bonds that change.</p><a class="plain-link" href="#reaction">Open the reaction scheme</a></article>
+    <section id="profile">
+      <div class="tag">Saved OpenMM example</div>
+      <h2>The reaction profile</h2>
+      <figure class="figure">
+        <img src="assets/source_profile.svg" alt="Saved Kemp free-energy profile. Horizontal axis: offset-adjusted EVB energy gap in kilocalories per mole. Vertical axis: free energy relative to reactant in kilocalories per mole.">
+        <figcaption class="caption">Saved short-run profile. <a class="plain-link" href="viewers/source_profile.html">View the profile and archived data →</a></figcaption>
+      </figure>
+    </section>
+
+    <section id="try"><span class="eyebrow">Hands-on exercises</span><h2>Try three things</h2><p>All saved activities open in your browser. No setup is needed.</p><div class="three">
+<article class="card"><h3>1. Follow the reaction</h3><p>Find the proton donor, acceptor, and bonds that change.</p><a class="plain-link" href="#kemp">Open the reaction scheme</a></article>
 <article class="card"><h3>2. Change EVB settings</h3><p>Move α and H₁₂ one at a time and see how the energy changes.</p><a class="plain-link" href="viewers/evb_core.html" target="_blank" rel="noopener">Open the EVB viewer</a></article>
 <article class="card"><h3>3. Compare the examples</h3><p>See what the Q6 paper reports and what the short OpenMM example shows.</p><a class="plain-link" href="#results">Open the comparison</a></article>
 </div></section>
@@ -111,21 +114,10 @@ python kemp_evb/calculation/scripts/run_short_evb_demo.py</pre>
 <tr><th>6 · Reconstruct</th><td>QFEP connects window free energies and evaluates the EVB profile using coupling/offset parameters, binning and reweighting.</td><td>Connect windows with forward/reverse FEP diagnostics. Mix EVB energies per frame before exponential bin averaging and cumulative window normalization. Inspect overlap and missing bins; a smooth plot alone does not establish convergence.</td></tr>
 </tbody></table></div><details><summary>Where are the implementation and longer-run settings?</summary><p><code>Kemp_EVB/scripts/full_enzyme.py</code> builds the imported states. <code>full_workflow.py</code> handles relaxation, heating, mapping and checkpoints. <code>source_profile.py</code> reconstructs the source-parameter profile.</p><p>Edit <code>Kemp_EVB/configs/full_enzyme_short.json</code>: <code>equilibration_steps</code>, <code>window_equilibration_steps</code>, <code>production_steps_per_window</code>, <code>lambda_schedule</code>, <code>sample_interval</code> and <code>seed</code>. Use a new run directory for a changed configuration. Increasing length does not automatically validate the model.</p></details></details></section>
 
-
-
-<section id="profile">
-      <div class="tag">Saved OpenMM example</div>
-      <h2>The reaction profile</h2>
-      <figure class="figure">
-        <img src="assets/source_profile.svg" alt="Saved Kemp free-energy profile. Horizontal axis: offset-adjusted EVB energy gap in kilocalories per mole. Vertical axis: free energy relative to reactant in kilocalories per mole.">
-        <figcaption class="caption">Saved short-run profile. <a class="plain-link" href="viewers/source_profile.html">View the profile and archived data →</a></figcaption>
-      </figure>
-    </section>
-
     <section id="sources">
       <div class="tag">For later reading</div>
       <h2>Workshop materials and source</h2>
-      <p><a class="plain-link" href="Kemp_EVB_workshop.pdf">Download the slides (PDF)</a> · <a class="plain-link" href="PARTICIPANT_HANDOUT.pdf">Optional detailed worksheet</a> · <a class="plain-link" href="calculation/README.md">Linux setup for live calculations</a></p>
+      <p><a class="plain-link" href="PARTICIPANT_HANDOUT.pdf">Optional detailed worksheet</a> · <a class="plain-link" href="calculation/README.md">Linux setup for live calculations</a></p>
       <p class="small">Paper: Listov et al., “Complete computational design of high-efficiency Kemp elimination enzymes,” <em>Nature</em> (2025). <a href="https://doi.org/10.1038/s41586-025-09136-2" target="_blank" rel="noopener">Open the paper</a> · <a href="https://doi.org/10.5281/zenodo.14563437" target="_blank" rel="noopener">Deposited simulation inputs</a>.</p>
     </section>
   </main>
