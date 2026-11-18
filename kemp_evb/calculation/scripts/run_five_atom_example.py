@@ -4,6 +4,7 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 import sys
+import webbrowser
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -18,6 +19,7 @@ def main():
     parser.add_argument('--offset', type=float, default=0.0, help='Illustrative extra product offset, kcal/mol')
     parser.add_argument('--output', type=Path, help='New output directory; default includes date/time')
     parser.add_argument('--check', action='store_true', help='Check the bundled mapped inputs; do not calculate')
+    parser.add_argument('--open', action='store_true', help='Open the generated teaching profile in your browser')
     args = parser.parse_args()
     if args.check:
         audit = audit_case(args.case)
@@ -31,6 +33,8 @@ def main():
     print(f"Saved {len(rows)} points in {output}")
     print(f"Open {output / 'teaching_evb.html'}")
     print('This is a reduced teaching scan, not an enzyme free-energy profile.')
+    if args.open:
+        webbrowser.open((output / 'teaching_evb.html').resolve().as_uri())
 
 
 if __name__ == '__main__':
