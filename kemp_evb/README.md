@@ -1,6 +1,6 @@
 # Kemp EVB workshop
 
-Use the **[public workshop page](https://nd7996.github.io/Kemp-EVB-Workshop/?v=energy-gap)** for the introduction, chemistry, actual Q6/OpenMM comparison and full-enzyme run commands.
+Use the **[public workshop page](https://nd7996.github.io/Kemp-EVB-Workshop/?v=simplified-workshop)** for the introduction, chemistry, actual Q6/OpenMM comparison and full-enzyme run commands.
 
 The main live calculation is now the [full 6,330-atom enzyme workflow](full_enzyme/README.md), using the included top-level EVBOpenMM package. It prepares matching states, relaxes/heats/equilibrates, collects mapping energies and reconstructs a profile. PDB, DCD, CSV/JSON and transactional restart outputs remain local.
 

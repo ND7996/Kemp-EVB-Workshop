@@ -109,30 +109,7 @@ python -m pip install --no-deps --no-build-isolation ./EVBOpenMM</pre>
 <pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode profile --bins 18 --open</pre>
       <p>This reads your sampled energies and opens <code>profile.html</code>. It does not draw a prescribed five-atom path. Gaps indicate insufficiently resolved sampling; coarser bins do not create new information.</p>
       <p class="status"><strong>A complete short workflow is not a converged scientific result.</strong> The preset collects only 5.25 ps total production. Before interpreting a barrier, inspect the diagnostics, sampling and model-transfer limitations.</p>
-      <details><summary>Inspect sampling or resume an interrupted run</summary><pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode diagnose
-python kemp_evb/calculation/scripts/run_kemp_evb.py --resume</pre><p>Resume requires unchanged config, code, inputs, OpenMM and platform. Keep <code>run.sqlite</code>; it commits the state and sampled records together.</p></details>
-      <details><summary>Rebuild the saved full-enzyme plot without waiting for new dynamics</summary><pre>python kemp_evb/calculation/scripts/run_kemp_evb.py --mode profile --records kemp_evb/full_enzyme/demo_results/source_parameter_comparison/replica_101_raw.json --output-dir kemp_evb/full_enzyme/runs/recorded_comparison --bins 18 --open</pre><p>This reconstructs the archived result shown above; it is not new sampling.</p></details>
-      <details><summary>Run longer, change parameters or get installation help</summary><p>Copy <code>kemp_evb/full_enzyme/configs/full_enzyme_short.json</code>, change the step counts, seed and window schedule, and select it with <code>--config</code>. Always choose a new output directory for changed settings. Use the <a href="https://github.com/ND7996/Kemp-EVB-Workshop/blob/main/kemp_evb/full_enzyme/README.md">full run guide</a> for exact stage, duration and restart commands.</p><p>For an installation error, activate <code>kemp-short</code> and repeat the local pip command in step 1. It should not contact Martin’s private repository.</p></details>
-      <details><summary>The separate five-atom illustration</summary><p>It remains available for learning the energy matrix, but it is not the enzyme workflow:</p><pre>python kemp_evb/calculation/scripts/run_five_atom_example.py --coupling 12 --offset 2</pre></details>
-    </section>
-
-    <section id="workflow">
-      <div class="tag">For a full Kemp calculation</div>
-      <h2>Prepare → relax → sample the profile</h2>
-      <p class="plain">The browser activities use saved examples. A full calculation has three separate stages. Each stage checks something different before you move on.</p>
-      <div class="three">
-        <article class="card"><div class="number">1 · Prepare</div><h3>Build matching R and P states</h3><p>Start from the Kemp enzyme and substrate. Make reactant and product descriptions with the same atoms and atom order. Assign each state's bonds, charges, force-field terms, and EVB settings; check the mapping, total charge, proton position, solvent, and ions.</p></article>
-        <article class="card"><div class="number">2 · Relax</div><h3>Settle the starting state</h3><p>Minimize the reactant mapping state, then heat and equilibrate it. Check the geometry, energy and temperature before starting the window calculations. In this OpenMM workflow, relaxation and heating are performed at the reactant endpoint.</p></article>
-        <article class="card"><div class="number">3 · FEP/profile</div><h3>Sample across lambda windows</h3><p>Map between the R and P energy descriptions through lambda windows. Sample every window, check overlap and convergence, and compare independent replicas. Analyze the energies to estimate the profile, activation barrier, and reaction free energy.</p></article>
-      </div>
-      <p class="small">The full-enzyme scripts now implement these stages locally. Browser viewers analyse saved data; the terminal run command starts the dynamics. This is an OpenMM adaptation, not a validated replacement for the native Q6 protocol.</p></section>
-
-    <section id="sources">
-      <div class="tag">For later reading</div>
-      <h2>Workshop materials and source</h2>
-      <p class="small">Paper: Listov et al., “Complete computational design of high-efficiency Kemp elimination enzymes,” <em>Nature</em> (2025). <a href="https://doi.org/10.1038/s41586-025-09136-2" target="_blank" rel="noopener">Open the paper</a> · <a href="https://doi.org/10.5281/zenodo.14563437" target="_blank" rel="noopener">Deposited simulation inputs</a>.</p>
     </section>
   </main>
-  <footer>Kemp EVB workshop · Full-enzyme OpenMM workflow, saved results and parameter exercises. Changed boundaries and short sampling are labelled explicitly.</footer>
 </body>
 </html>
