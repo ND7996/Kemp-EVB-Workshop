@@ -1,8 +1,8 @@
 # Kemp EVB workshop
 
-Open the **[updated public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/?v=five-atom-view)** to learn EVB, compare the actual Q6 and OpenMM protocols, and run the full-enzyme calculation.
+Open the **[updated public workshop](https://nd7996.github.io/Kemp-EVB-Workshop/?v=profile-parameters)** to learn EVB, compare the actual Q6 and OpenMM protocols, and run the full-enzyme calculation.
 
-The **[installation and run section](https://nd7996.github.io/Kemp-EVB-Workshop/?v=five-atom-view#linux)** now runs the complete 6,330-atom OpenMM system, from relaxation through mapping production and profile analysis. The five-atom illustration is a separate optional example.
+The **[installation and run section](https://nd7996.github.io/Kemp-EVB-Workshop/?v=profile-parameters#linux)** now runs the complete 6,330-atom OpenMM system, from relaxation through mapping production and profile analysis.
 
 [Full-enzyme guide](kemp_evb/full_enzyme/README.md) · [Bundled EVBOpenMM source](EVBOpenMM/) · [Saved full-enzyme profile](https://nd7996.github.io/Kemp-EVB-Workshop/viewers/full_enzyme_recorded_profile.html)
 
